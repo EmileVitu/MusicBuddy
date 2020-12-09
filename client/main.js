@@ -3,16 +3,35 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 /* First of all the routing */
-		/* The route for the layout template */
+		/* The route for the "layout" template */
 Router.configure({
   layoutTemplate: 'layout'
 });
-		/* The route for the mainpage */
+		/* The route for the "homepage" */
 Router.route('/', {
-  name: 'main',
-  template: 'main'
+  name: 'home',
+  template: 'home'
 });
-
+		/* The route for the "general" discussions */
+Router.route('/General', {
+  name: 'general',
+  template: 'general'
+});
+		/* The route for the "instruments" discussion */
+Router.route('/Instruments', {
+  name: 'instruments',
+  template: 'instruments'
+});
+		/* The route for the "music theory" discussions */
+Router.route('/Theory', {
+  name: 'theory',
+  template: 'theory'
+});
+		/* The route for the "Buddy bands" meetup */
+Router.route('/BuddyBands', {
+  name: 'buddybands',
+  template: 'buddybands'
+});
 
 /* Code for the layout (in relation to the main ID !!!) */
 	/* First to rename the function names */
@@ -34,22 +53,6 @@ function closeNav() {
 
 /* For future routes
 
-Router.route('/nfnoscar', {
-  name: 'nfnoscar',
-  template: 'nfnoscar'
-});
-Router.route('/nfnoscarsdonut', {
-  name: 'nfnoscarsdonut',
-  template: 'nfnoscarsdonut'
-});
-Router.route('/alliterationstation', {
-  name: 'alliterationstation',
-  template: 'alliterationstation'
-});
-Router.route('/btakpm', {
-  name: 'btakpm',
-  template: 'btakpm'
-});
 Router.route('/homonyms', {
   name: 'homonyms',
   template: 'homonyms'
@@ -58,4 +61,5 @@ Router.route('/acrostics', {
   name: 'acrostics',
   template: 'acrostics'
 });
+
 */

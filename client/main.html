@@ -18,14 +18,14 @@
 	  <div class="container-fluid">
 				<!-- First the Header, title of the website and home page link-->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Welcome to Music Buddy!</a>
+				<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
 			</div>
 				<!-- Now the links for the four main music-related discussion pages-->
 			<ul class="nav navbar-nav">
-				<li><a href="#">General</a></li>
-				<li><a href="#">Instruments</a></li>
-				<li><a href="#">Theory</a></li>
-				<li><a href="#">Buddy bands</a></li>
+				<li><a href="/General">General</a></li>
+				<li><a href="/Instruments">Instruments</a></li>
+				<li><a href="/Theory">Theory</a></li>
+				<li><a href="/BuddyBands">Buddy bands</a></li>
 			</ul>
 				<!-- Now the sign-in form for users who want to be able to participate-->
 				<!-- We want it to the full right so it must be read in first !!!! -->
@@ -83,7 +83,7 @@
 
 
 <!-- Now the template for the mainpage -->
-<template name="main">
+<template name="home">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
 	<div id="main">
 		
@@ -105,22 +105,22 @@
 					<!-- The container is created and it has also a css class to manage it -->
 						<!-- Now to create the 5 columns with a css class for them too -->
 					<div class="grid-item">
-						<a>General</a>
+						<a href="/General">General</a>
 						<p>Description of what happens here blablablabla</p>
 						<p>Maybe a nice image as well</p>
 					</div>
 					<div class="grid-item">
-						<a>Instruments</a>
+						<a href="/Instruments">Instruments</a>
 						<p>Description of what happens here blablablabla</p>
 						<p>Maybe a nice image as well</p>
 					</div>
 					<div class="grid-item">
-						<a>Theory</a>
+						<a href="/Theory">Theory</a>
 						<p>Description of what happens here blablablabla</p>
 						<p>Maybe a nice image as well</p>
 					</div>
 					<div class="grid-item">
-						<a>Buddy Bands</a>
+						<a href="/BuddyBands">Buddy Bands</a>
 						<p>Description of what happens here blablablabla</p>
 						<p>Maybe a nice image as well</p>
 					</div>
@@ -147,4 +147,39 @@
 				<!-- And to end the div with the whole page (id=main) -->
 	</div>
 </template>
-<!-- End of the mainpage template -->
+<!-- End of the "home" template -->
+
+<!-- Now to create the "general discussion" template! -->
+<template name="general">
+	<div id="main" class="homepage">
+		<h1> Hello General !</h1>
+	</div>
+</template>
+<!-- End of the "general discussion" template -->
+
+<!-- Now to create the "instruments discussion" template! -->
+<template name="instruments">
+	<div id="main" class="homepage">
+		<h1> Hello, here we can discuss about instruments !</h1>
+	</div>
+</template>
+<!-- End of the "instruments" discussion template -->
+
+<!-- Now to create the "music theory" discussion template! -->
+<template name="theory">
+	<div id="main" class="homepage">
+		<h1> Hello, here we can discuss about music theory !</h1>
+	</div>
+</template>
+<!-- End of the "music theory" discussion template -->
+
+<!-- Now to create the "buddy bands" discussion template! -->
+<template name="buddybands">
+	<div id="main" class="homepage">
+		<h1> Hello, here we can meet up with other buddys to make music together !</h1>
+	</div>
+</template>
+<!-- End of the "buddy bands" discussion template -->
+
+
+
