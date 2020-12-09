@@ -1,18 +1,146 @@
 <head>
+		<!-- Creating the Title of the page -->
   <title>MusicBuddy</title>
+ 		<!-- Adding jquery and bootstrapp -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
+
+
 <template name="layout">
-{{> main}}
-{{> yield}}
+				<!-- First the navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+				<!-- First the Header, title of the website and home page link-->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Welcome to Music Buddy!</a>
+			</div>
+				<!-- Now the links for the four main music-related discussion pages-->
+			<ul class="nav navbar-nav">
+				<li><a href="#">General</a></li>
+				<li><a href="#">Instruments</a></li>
+				<li><a href="#">Theory</a></li>
+				<li><a href="#">Buddy bands</a></li>
+			</ul>
+				<!-- Now the sign-in form for users who want to be able to participate-->
+				<!-- We want it to the full right so it must be read in first !!!! -->
+			<ul class="nav navbar-nav navbar-right">
+			  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>		
+				<!-- Now the search tool to find directly a keyword-related topic-->
+			<form class="navbar-form navbar-right" action="/action_page.php">
+			  <div class="input-group">
+				<input type="text" class="form-control" placeholder="Search">
+				<div class="input-group-btn">
+				  <button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				  </button>
+				</div>
+			  </div>
+			</form>
+	  </div>
+	</nav>
+			<!-- End of the navbar-->
+
+			<!-- Now to implement the sidebar -->
+	<div id="mySidenav" class="sidenav">
+				<!-- First the close button, that will appear when mySidenav is active -->
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><p>&times; close</p></a>
+				<!-- Now all the links for all the latest topics and modifications added by users -->
+		<a href="#">Topic 1 plus récent
+			<br>sa cathégorie
+			<br>sa description</a>	
+		<a href="#">Topic 2 plus récent
+			<br>sa cathégorie
+			<br>sa description</a>
+		<a href="#">Topic 3 plus récent
+			<br>sa cathégorie
+			<br>sa description</a>
+		<a href="#">Topic 4 plus récent
+			<br>sa cathégorie
+			<br>sa description</a>
+		<!-- Manque le infinite scroll plus la liste infinie !!!!! -->
+	</div>
+				<!-- End of the sidebar -->
+		
+				<!-- now two return features in order for the navbar not to take the place of the title below-->
+	<br>
+	<br>
+				<!-- now the span tag to open the navbar -->
+	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+				<!-- Now to load the three templates for the main page -->
+				
+{{> yield}} <!-- to load the path of '/' aka the main page (see .js file) -->
 </template>
 
+
+
+
+
 <template name="main">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
+	<div id="main">
+		
+		<div class="mainpage">
+					<!-- First the template for the welcome -->
+			<div>
+				<h1 class="homepage">Welcome, Music Buddy!</h1>
+			</div>
+					<!-- Now the template for the description of the site -->
+		  <p class="homepage">Tout d'abord le texte de bienvenue</p>
+		  <p class="homepage">In petit descriptif de la raison d'être du site</p>
+		  <p class="homepage">Expliquer ce qui peux être fait sur le site</p>
+		  <p class="homepage">Enfin guider gentiment vers le dessous pour les 4 choix</p>  
+					<!-- Finally the template with the 5 choices a user can do from the home page -->
+					<!-- First of all, a quick text to explain the choice the user has on where to go -->
+			<p class="homepage">What can you do now ? 4 choices, or sign in if your new !</p>
+					<!-- Now to create the 5 columns on what to do -->
+			<div class="grid-container">
+					<!-- The container is created and it has also a css class to manage it -->
+						<!-- Now to create the 5 columns with a css class for them too -->
+					<div class="grid-item">
+						<a>General</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a>Instruments</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a>Theory</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a>Buddy Bands</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a>Latests topics</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+						<!-- Ending the items list -->
+			</div>
+				<!-- Ending the container of this template -->
+		</div>
+						<!-- and another div for the news feed below -->
+		<div class="newsfeed">
+				<!-- Now the template for the latest changes done to the database -->
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+			<p class="homepage">Here will be all the latest changes to the database</p>
+		</div>
+				<!-- And to end the div with the whole page (id=main) -->
+	</div>
 </template>
