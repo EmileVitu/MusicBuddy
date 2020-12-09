@@ -3,103 +3,97 @@ body {
   font-family: sans-serif;
 }
 
-/* The side navigation menu attributes */
-.sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 100px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
 
-/* The navigation menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-/* The links hovering attributes */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* The text of the sidenav attributes */
-.sidenav p {
-  padding: 6px 6px 6px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-/* Position and style of the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 40px;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* We will have to check these last two attributes */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
-}
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+/* First for the layout template (the one that is for every page of the website */
+		/* The side navigation menu attributes */
+	.sidenav {
+	  height: 100%; /* 100% Full-height */
+	  width: 0; /* 0 width - change this with JavaScript */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Stay on top */
+	  top: 0; /* Stay at the top */
+	  left: 0;
+	  background-color: #111; /* Black*/
+	  overflow-x: hidden; /* Disable horizontal scroll */
+	  padding-top: 100px; /* Place content 60px from the top */
+	  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	}
+		/* The navigation menu links */
+	.sidenav a {
+	  padding: 8px 8px 8px 32px;
+	  text-decoration: none;
+	  font-size: 25px;
+	  color: #818181;
+	  display: block;
+	  transition: 0.3s;
+	}
+		/* The links hovering attributes */
+	.sidenav a:hover {
+	  color: #f1f1f1;
+	}
+		/* The text of the sidenav attributes */
+	.sidenav p {
+	  padding: 6px 6px 6px 32px;
+	  text-decoration: none;
+	  font-size: 25px;
+	  color: #818181;
+	  display: block;
+	}
+		/* Position and style of the close button (top right corner) */
+	.sidenav .closebtn {
+	  position: absolute;
+	  top: 40px;
+	  right: 25px;
+	  font-size: 36px;
+	  margin-left: 50px;
+	}
+/* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
+	#main {
+	  transition: margin-left .5s;
+	  padding: 20px;
+	}
+	@media screen and (max-height: 450px) {
+	  .sidenav {padding-top: 15px;}
+	  .sidenav a {font-size: 18px;}
+	}
 
 
-
-/* First to give attributes to the homepage templates */
-.mainpage{
-	margin-top: 70px;
-}
-
-/* Now styles for the newsfeed */
-.newsfeed{
-	margin-top: 20px;
-	font-size: 15px;
-	color: #2106F3;
-}
-
-/* Will have to merge with the.main class later */
-.homepage{
-	text-align: center;
-}
-
-/* Styles for the Homepage layout */
-.column {
-  float: left;
-}
-
-.grid-container {
-	/* first to add the margin the size of the sidebar */
-  margin-left: 0px;
-	/* then the general settings */
-  display: grid;
-  grid-column-gap: 100px;
-	/* now to put the number of columns */
-  grid-template-columns: auto auto auto auto auto;
-  /* background-color: #2196F3; */
-  /* padding: 10px; */
-}
-
-.grid-item {
-  /*background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px; */
-  font-size: 20px;
-  text-align: center;
-}
+/* Now the class attributes for the main page (homepage) */
+		/* First to give attributes to the homepage templates */
+	.mainpage{
+		margin-top: 0px;
+	}
+		/* Now styles for the newsfeed */
+	.newsfeed{
+		margin-top: 20px;
+		font-size: 15px;
+		color: #2106F3;
+	}
+		/* Will have to merge with the.main class later */
+	.homepage{
+		text-align: center;
+	}
+		/* Styles for the Homepage layout */
+	.column {
+	  float: left;
+	}
+		/* Styles for the containers */
+	.grid-container {
+		/* first to add the margin the size of the sidebar */
+	  margin-left: 0px;
+		/* then the general settings */
+	  display: grid;
+	  grid-column-gap: 100px;
+		/* now to put the number of columns */
+	  grid-template-columns: auto auto auto auto auto;
+	  /* background-color: #2196F3; */
+	  /* padding: 10px; */
+	}
+		/* Styles for the items */
+	.grid-item {
+	  /*background-color: rgba(255, 255, 255, 0.8);
+	  border: 1px solid rgba(0, 0, 0, 0.8);
+	  padding: 20px; */
+	  font-size: 20px;
+	  text-align: center;
+	}

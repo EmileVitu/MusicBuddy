@@ -5,10 +5,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<!-- End of the head -->
 </head>
 
+<!-- There is no body since we are using iron router, only templates !!!! -->
 
 
+<!-- First the layout template which will be used on all the pages -->
 <template name="layout">
 				<!-- First the navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -72,14 +75,14 @@
 				<!-- now the span tag to open the navbar -->
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 				<!-- Now to load the three templates for the main page -->
-				
-{{> yield}} <!-- to load the path of '/' aka the main page (see .js file) -->
+		<!-- to load the path of '/' aka the main page (see .js file) -->	
+{{> yield}}
 </template>
+<!-- End of the layout template -->
 
 
 
-
-
+<!-- Now the template for the mainpage -->
 <template name="main">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
 	<div id="main">
@@ -144,3 +147,4 @@
 				<!-- And to end the div with the whole page (id=main) -->
 	</div>
 </template>
+<!-- End of the mainpage template -->
