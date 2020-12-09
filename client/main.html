@@ -2,19 +2,12 @@
   <title>MusicBuddy</title>
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
-<h2>test</h2>
-  {{> hello}}
-  {{> info}}
-</body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="layout">
+{{> main}}
+{{> yield}}
 </template>
 
-<template name="info">
+<template name="main">
   <h2>Learn Meteor!</h2>
   <ul>
     <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
