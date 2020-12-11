@@ -5,6 +5,10 @@ body {
 
 
 /* First for the layout template (the one that is for every page of the website */
+		/* The navbar */
+	.welcomeUserItem{
+		text-align: center;
+	}
 		/* The side navigation menu attributes */
 	.sidenav {
 	  height: 100%; /* 100% Full-height */
@@ -97,3 +101,8 @@ body {
 	  font-size: 20px;
 	  text-align: center;
 	}
+
+/* Now to put a top margin to the account dialog box when it is opened */
+.accounts-dialog {
+	margin-top: 36px;
+}
