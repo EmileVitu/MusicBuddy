@@ -33,16 +33,20 @@ Router.route('/BuddyBands', {
   template: 'buddybands'
 });
 
+
 /* Code for the layout (in relation to the main ID !!!) */
 	/* First to rename the function names */
 window.openNav= openNav;
 window.closeNav= closeNav;
+
+/*Template.layout.event({"click.openbtn":function(event){});*/
 /* Now the openNav function */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+function openNav() {document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
+  
+
 /* Now the closeNav Function */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0px";
@@ -50,6 +54,12 @@ function closeNav() {
   document.body.style.backgroundColor = "white";
 }
 
+
+/* Now about the login buttons, to add a username to the sign in form */
+if (Meteor.isClient){
+	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"})
+;}
+	
 
 /* For future routes
 

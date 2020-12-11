@@ -30,8 +30,8 @@
 				<!-- Now the sign-in form for users who want to be able to participate-->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- We want it to the full right so it must be read in first !!!! -->
-			  <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons}}</p></li>
-			  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><p class="navbar-text">Welcome {{username}}</p></li>
+				<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
 			</ul>		
 				<!-- Now the search tool to find directly a keyword-related topic-->
 			<form class="navbar-form navbar-right" action="/action_page.php">
@@ -73,7 +73,7 @@
 	<br>
 	<br>
 				<!-- now the span tag to open the navbar -->
-	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+	<span class="openbtn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 				<!-- Now to load the three templates for the main page -->
 		<!-- to load the path of '/' aka the main page (see .js file) -->	
 {{> yield}}
