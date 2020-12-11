@@ -136,18 +136,11 @@
 				<!-- Ending the container of this template -->
 		</div>
 						<!-- and another div for the news feed below -->
-		<div class="newsfeed">
-				<!-- Now the template for the latest changes done to the database -->
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-			<p class="homepage">Here will be all the latest changes to the database</p>
-		</div>
+		{{> newsfeed}}
+		
 				<!-- And to end the div with the whole page (id=main) -->
 	</div>
+
 </template>
 <!-- End of the "home" template -->
 
@@ -183,5 +176,22 @@
 </template>
 <!-- End of the "buddy bands" discussion template -->
 
+<!-- Now to create the template for the newsfeed of the homepage -->
+<template name="topic">
+	<p>Arse</p>
+	<li>{{text}}</li>
+</template>
 
 
+<template name="newsfeed">
+		<!-- Now the template for the latest changes done to the database -->
+			<div class="container">
+				<h1>Newest modified topic</h1>
+				<ul>
+					<!--{{#each topic}}-->
+					{{> topic}}
+					<!--{{/each}}-->
+				</ul>
+			</div>
+		<!-- End of the news feed -->
+</template>

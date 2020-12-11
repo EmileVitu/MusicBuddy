@@ -2,6 +2,16 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
+/*if(Meteor.isClient){
+Template.newsfeed.helpers({
+  topic: [
+    { text: 'This is task 1' },
+    { text: 'This is task 2' },
+    { text: 'This is task 3' },
+  ],
+});
+}*/
+
 /* First of all the routing */
 		/* The route for the "layout" template */
 Router.configure({
@@ -33,7 +43,6 @@ Router.route('/BuddyBands', {
   template: 'buddybands'
 });
 
-
 /* Code for the layout (in relation to the main ID !!!) */
 	/* First to rename the function names */
 window.openNav= openNav;
@@ -60,6 +69,10 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"})
 ;}
 	
+
+/* Now to build the database for the homepage newsfeed */
+
+
 
 /* For future routes
 
