@@ -69,12 +69,8 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 }
 
-/* Here is the template helper to display the database in the newsfeed template of the homepage*/
-Template.newsfeed.helpers({
-    topics() {
-        return Topics.find({});
-      },
-});
+
+
 /* And now the event handler for adding information in the topics collection */
 Template.newTopic.events({
     'submit .new-topic'(event) {
@@ -91,7 +87,13 @@ Template.newTopic.events({
 			// Clear form
 		target.text.value = '';
     },
-}); 
+});
+/* Now to sort the newsfeed by newest dates using a template helper*/
+Template.newsfeed.helpers({
+    topics() {
+        return Topics.find({}, { sort: { createdAt: -1 } });
+      },
+});
 
 
 
