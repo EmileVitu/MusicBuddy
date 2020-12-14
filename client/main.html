@@ -27,7 +27,7 @@
 				<li><a href="/Theory">Theory</a></li>
 				<li><a href="/BuddyBands">BuddyBands</a></li>
 <!-- Must fix the welcoming part with the username -->
-				<li><p class="navbar-text welcomeUserItem">Welcome {{username}}</p></li>
+				<li><p class="navbar-text welcomeUserItem">Welcome {{userId}}</p></li>
 			</ul>
 				<!-- Now the sign-in form for users who want to be able to participate-->
 			<ul class="nav navbar-nav navbar-right">
@@ -188,9 +188,9 @@
 			<div class="container">
 				<h1>Newest modified topic</h1>
 				<ul>
-					<!--{{#each topic}}-->
+					{{#each topics}}
 					{{> topic}}
-					<!--{{/each}}-->
+					{{/each}}
 				</ul>
 			</div>
 		<!-- End of the news feed -->

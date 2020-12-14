@@ -2,15 +2,14 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
-/*if(Meteor.isClient){
+
 Template.newsfeed.helpers({
-  topic: [
+  topics: [
     { text: 'This is task 1' },
     { text: 'This is task 2' },
     { text: 'This is task 3' },
   ],
 });
-}*/
 
 /* First of all the routing */
 		/* The route for the "layout" template */
