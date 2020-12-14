@@ -9,6 +9,9 @@ body {
 	.welcomeUserItem{
 		text-align: center;
 	}
+/* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
+	.plus{
+	}
 /* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
 	.accounts-dialog {
 		margin-top: 36px;

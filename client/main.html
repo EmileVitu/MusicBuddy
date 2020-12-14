@@ -26,6 +26,7 @@
 				<li><a href="/Instruments">Instruments</a></li>
 				<li><a href="/Theory">Theory</a></li>
 				<li><a href="/BuddyBands">BuddyBands</a></li>
+				<li><a href="/NewTopic">New topic <span class="plus">&#43;</span></a></li>
 <!-- Must fix the welcoming part with the username -->
 				<li><p class="navbar-text welcomeUserItem">Welcome {{userId}}</p></li>
 			</ul>
@@ -84,7 +85,7 @@
 
 
 
-<!-- Now the template for the mainpage -->
+<!-- Now the template for the homepage -->
 <template name="home">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
 	<div id="main">
@@ -135,14 +136,52 @@
 			</div>
 				<!-- Ending the container of this template -->
 		</div>
-						<!-- and another div for the news feed below -->
+						<!-- and another div for the newsfeed below -->
 		{{> newsfeed}}
-		
 				<!-- And to end the div with the whole page (id=main) -->
 	</div>
 
 </template>
 <!-- End of the "home" template -->
+
+<!-- Now to create the template for the newsfeed of the homepage --> 
+<template name="newsfeed">
+		<!-- Now the template for the latest changes done to the database -->
+	<div class="container">
+		<header>
+		<!-- Now the title for the newsfeed topics -->
+			<h1>Latest updated topics</h1>
+
+		</header>
+		<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+				{{> topic}}
+			{{/each}}
+		</ul>
+	</div>
+		<!-- End of the news feed -->
+</template>
+		<!-- Finally the topic template -->
+<template name="topic">
+	<li>{{text}}</li>
+	<p>{{createdAt}}</p>
+	<p>By: {{userId}}</p>
+</template>
+<!-- Here is the end of the newsfeed for the homepage -->
+
+
+<!-- Now to create the "new topic" template! -->
+<template name="newTopic">
+	<div id="main" class="homepage">
+		<h1> Here you can create a new topic !</h1>
+	<!-- Here is the form to update the database linked to the JS client file -->
+		<form class="new-topic">
+			<input type="text" name="text" placeholder="Type to add a new topic" />
+		</form>
+	</div>
+</template>
+
 
 <!-- Now to create the "general discussion" template! -->
 <template name="general">
@@ -175,23 +214,3 @@
 	</div>
 </template>
 <!-- End of the "buddy bands" discussion template -->
-
-<!-- Now to create the template for the newsfeed of the homepage --> 
-<template name="topic">
-	<p>Arse</p>
-	<li>{{text}}</li>
-</template>
-
-
-<template name="newsfeed">
-		<!-- Now the template for the latest changes done to the database -->
-			<div class="container">
-				<h1>Newest modified topic</h1>
-				<ul>
-					{{#each topics}}
-					{{> topic}}
-					{{/each}}
-				</ul>
-			</div>
-		<!-- End of the news feed -->
-</template>

@@ -37,6 +37,11 @@ Router.route('/BuddyBands', {
   name: 'buddybands',
   template: 'buddybands'
 });
+		/* The route for the "New topic!" page */
+Router.route('/NewTopic', {
+  name: 'newTopic',
+  template: 'newTopic'
+});
 
 /* Code for the layout (in relation to the main ID !!!) */
 	/* First to rename the function names */
@@ -64,19 +69,38 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 }
 
-/* Here is the template helper to display the database */
+/* Here is the template helper to display the database in the newsfeed template of the homepage*/
 Template.newsfeed.helpers({
     topics() {
         return Topics.find({});
       },
 });
+/* And now the event handler for adding information in the topics collection */
+Template.newTopic.events({
+    'submit .new-topic'(event) {
+			// Prevent default browser form submit
+		event.preventDefault();
+			// Get value from form element
+		const target = event.target;
+		const text = target.text.value;
+			// Insert a task into the collection
+		Topics.insert({
+        text,
+        createdAt: new Date(), // current time
+		});
+			// Clear form
+		target.text.value = '';
+    },
+}); 
+
+
+
+
+
+
 
 /* For future routes
 
-Router.route('/homonyms', {
-  name: 'homonyms',
-  template: 'homonyms'
-});
 Router.route('/acrostics', {
   name: 'acrostics',
   template: 'acrostics'
