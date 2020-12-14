@@ -6,3 +6,5 @@ Meteor.startup(() => {
 
 /* Now to create the topic collection */
 /* topics = new Mongo.collection("topics"); */
+
+Topics = new Mongo.Collection('topics');

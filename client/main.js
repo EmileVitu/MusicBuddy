@@ -1,15 +1,11 @@
+/* First to link the documents between themselves */
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Mongo } from 'meteor/mongo';
 import './main.html';
 
-
-Template.newsfeed.helpers({
-  topics: [
-    { text: 'This is task 1' },
-    { text: 'This is task 2' },
-    { text: 'This is task 3' },
-  ],
-});
+/* Creating the topics database */
+Topics = new Mongo.Collection('topics');
 
 /* First of all the routing */
 		/* The route for the "layout" template */
@@ -65,13 +61,15 @@ function closeNav() {
 
 /* Now about the login buttons, to add a username to the sign in form */
 if (Meteor.isClient){
-	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"})
-;}
-	
+	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
+}
 
-/* Now to build the database for the homepage newsfeed */
-
-
+/* Here is the template helper to display the database */
+Template.newsfeed.helpers({
+    topics() {
+        return Topics.find({});
+      },
+});
 
 /* For future routes
 
