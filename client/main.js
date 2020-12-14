@@ -39,9 +39,9 @@ Router.route('/BuddyBands', {
 });
 		/* The route for the "New topic!" page */
 Router.route('/NewTopic', {
-  name: 'newTopic',
-  template: 'newTopic'
-});
+	name: 'newTopic',
+	template: 'newTopic'
+		});
 
 /* Code for the layout (in relation to the main ID !!!) */
 	/* First to rename the function names */
@@ -69,6 +69,25 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 }
 
+/* Now to add an event for the create new topic fo users to be logged in */
+/* Doesn't work for now, will have to do it later
+
+Template.layout.events({
+	"click-js-add-topic": function(event){
+		event.preventDefault();
+		if(!Meteor.user()){
+		alert("You need to login first!");}
+		else{
+
+})*/
+/*
+Meteor.methods({
+	addTopic: function(){
+		var topic;
+		if(!this.userId){return;}
+		else{topic = {owner: this.userId,createdOn: new Date(),title: "mynewtopic"};
+				Topics.insert(topic);}
+}) */
 
 
 /* And now the event handler for adding information in the topics collection */
@@ -97,6 +116,24 @@ Template.newsfeed.helpers({
 
 
 
+/* Now to implement the infinite scroll for the newsfeed */
+/* 
+if(Meteor.isClient){
+	Session.set("topicLimit", 8);
+	lastScrollTop = 0;
+	$(window).scroll(function(event){
+		if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
+			/* where are we in the page 
+			var scrollTop = $(this).scrollTop();
+			/* test if we are going down 
+			if(scrollTop>lastScrollTop){
+			/* yes we are going down 
+			Session.set("topicLimit",Session.get("topicLimit") + 4;}
+		}
+	})
+}
+
+*/
 
 
 

@@ -26,7 +26,7 @@
 				<li><a href="/Instruments">Instruments</a></li>
 				<li><a href="/Theory">Theory</a></li>
 				<li><a href="/BuddyBands">BuddyBands</a></li>
-				<li><a href="/NewTopic">New topic <span class="plus">&#43;</span></a></li>
+				<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus"></span></a></li>
 <!-- Must fix the welcoming part with the username -->
 				<li><p class="navbar-text welcomeUserItem">Welcome {{userId}}</p></li>
 			</ul>
@@ -72,12 +72,11 @@
 		<!-- Manque le infinite scroll plus la liste infinie !!!!! -->
 	</div>
 				<!-- End of the sidebar -->
-		
-				<!-- now two return features in order for the navbar not to take the place of the title below-->
-	<br>
-	<br>
+
 				<!-- now the span tag to open the navbar -->
-	<span class="openbtn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+	<div class="openbtn">
+		<span class="openbtn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+	</div>
 		<!-- to load the path of '/' aka the main page (see .js file) -->	
 {{> yield}}
 </template>
@@ -96,13 +95,13 @@
 				<h1 class="homepage">Welcome, Music Buddy!</h1>
 			</div>
 					<!-- Now the template for the description of the site -->
-		  <p class="homepage">Tout d'abord le texte de bienvenue</p>
-		  <p class="homepage">Feel free to go through the existing conversations and topics!</p>
-		  <p class="homepage">But remember you must login if you want to contribute to any topic or create a new one!</p>
-		  <p class="homepage">Don't worry, it's free :)</p>  
+		<p class="homepage">Tout d'abord le texte de bienvenue</p>
+		<p class="homepage">Feel free to go through the existing conversations and topics!</p>
+		<p class="homepage">But remember you must login if you want to contribute to any topic or create a new one!</p>
+		<p class="homepage">Don't worry, it's free :)</p>  
 					<!-- Finally the template with the 5 choices a user can do from the home page -->
 					<!-- First of all, a quick text to explain the choice the user has on where to go -->
-			<p class="homepage">What can you do now ? 4 choices, or sign in if your new !</p>
+		<p class="homepage">What can you do now ? 4 choices, or sign in if your new !</p>
 					<!-- Now to create the 5 columns on what to do -->
 			<div class="grid-container">
 					<!-- The container is created and it has also a css class to manage it -->
@@ -135,6 +134,7 @@
 						<!-- Ending the items list -->
 			</div>
 				<!-- Ending the container of this template -->
+			<h1 class="homepage">Latest updated topics</h1>
 		</div>
 						<!-- and another div for the newsfeed below -->
 		{{> newsfeed}}
@@ -147,18 +147,19 @@
 <!-- Now to create the template for the newsfeed of the homepage --> 
 <template name="newsfeed">
 		<!-- Now the template for the latest changes done to the database -->
-	<div class="container">
-		<header>
+	<div name="content" class="container">
+		<div class="updatedTopics">
+			<header>
 		<!-- Now the title for the newsfeed topics -->
-			<h1>Latest updated topics</h1>
 
-		</header>
+			</header>
 		<!-- Now to iterate every topics of the database by calling the topic template -->
-		<ul>
-			{{#each topics}}
-				{{> topic}}
-			{{/each}}
-		</ul>
+			<ul>
+				{{#each topics}}
+					{{> topic}}
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 		<!-- End of the news feed -->
 </template>
