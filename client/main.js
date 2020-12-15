@@ -59,9 +59,9 @@ function openNav() {
 
 /* Now the closeNav Function */
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0px";
-  document.getElementById("main").style.marginLeft = "0px";
-  document.body.style.backgroundColor = "white";
+	document.getElementById("mySidenav").style.width = "0px";
+	document.getElementById("main").style.marginLeft = "0px";
+	document.body.style.backgroundColor = "white";
 }
 
 

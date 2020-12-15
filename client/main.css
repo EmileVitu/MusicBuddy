@@ -64,7 +64,8 @@
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 	#main {
 	  transition: margin-left .5s;
-	  padding: 0px;
+	  padding: 50px; /* Here was the issue with the unclickable open button
+the main attribute was ontop, we will have to correct that */
 	}
 	@media screen and (max-height: 450px) {
 	  .sidenav {padding-top: 15px;}
