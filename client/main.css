@@ -1,3 +1,8 @@
+/* body {
+  padding: 10px;
+  font-family: sans-serif;
+} */
+
 /* First for the layout template (the one that is for every page of the website */
 		/* The navbar */
 	.welcomeUserItem{
@@ -74,6 +79,7 @@
 	.mainpage{
 		margin-top: 35px;
 		position: fixed;
+		text-align: center;
 	}
 		/* Now styles for the newsfeed */
 	.newsfeed{
