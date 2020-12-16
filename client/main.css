@@ -1,4 +1,7 @@
-/* First for the layout template (the one that is for every page of the website */
+/* Here we have all the css attributes for MusicBuddy */
+
+
+/* First for the layout template (the one that is for every page of the website) */
 		/* The navbar */
 	.welcomeUserItem{
 		text-align: center;
@@ -6,7 +9,7 @@
 /* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
 	.plus{
 	}
-/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
+		/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
 	.accounts-dialog {
 		margin-top: 36px;
 	}
@@ -20,7 +23,7 @@
 	  left: 0;
 	  background-color: #111; /* Black*/
 	  overflow-x: hidden; /* Disable horizontal scroll */
-	  padding-top: 60px; /* Place content 60px from the top */
+	  padding-top: 60px; /* (hen sidebar open)Place content 60px from the top */
 	  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 	}
 		/* The navigation menu links */
@@ -52,48 +55,25 @@
 	  font-size: 36px;
 	  margin-left: 50px;
 	}
+		/* The styles for the open button */
 	.openbtn{
-		padding-top: 50px;
+		padding-top: 50px; /* This is to avoid an overlap with the navbar */
+		position: fixed; /* This is for the button to stay even while scrolling down */
 	}
-/* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
+
+
+/* Now the class attributes for the main page (home route) */
+		/* This is for all the banners of the main pages */
 	#main {
 		transition: margin-left .5s;
-		padding: 0px;
 		text-align: center;
-	/* Here was the issue with the unclickable open button
-the main attribute was ontop, we will have to correct that */
-	}
-	@media screen and (max-height: 450px) {
-		.sidenav {padding-top: 15px;}
-		.sidenav a {font-size: 18px;}
+		padding-top: 45px;
+		position: float;
 	}
 
-
-/* Now the class attributes for the main page (homepage) */
-		/* First to give attributes to the homepage templates */
-		/* We want it to be fixed even when we scroll down along the newsfeed */
-		/* We also need a margin on top to not overlap with the navbar*/
-	.mainpage{
-		position: fixed;
-	}
-		/* Now styles for the newsfeed */
-	.newsfeed{
-		font-size: 15px;
-		color: #2106F3;
-	}
-		/* Now we want to have the topics list to be scrolled down in another entity */
-	.updatedTopics{
-		height: 45vh;
-		margin-top: 0vh;
-		overflow-y: scroll;
-		text-align: center;
-	}
-		/* Now we need to format the unordered list separately from the title */
-	ul {
-		text-align: left;
-		list-style-position: center-left;
-	}
-		/* Styles for the Homepage layout */
+	
+/* Now the styles for the home page */
+		/* Styles for the Home fixed  banner */
 	.column {
 	  float: left;
 	}
@@ -117,6 +97,29 @@ the main attribute was ontop, we will have to correct that */
 	  font-size: 20px;
 	  text-align: center;
 	}
+	/* Now we need to style the newsfeed scrolling bottom of the home route */
+		/* Now styles for the newsfeed */
+	.newsfeed{
+		font-size: 15px;
+		color: #2106F3;
+	}
+		/* Now we want to have the topics list to be scrolled down in another entity */
+	.updatedTopics{
+		height: 50vh;
+		margin-top: 0vh;
+		overflow-y: scroll;
+		text-align: center;
+	}
+		/* Now we need to format the unordered list separately from the title */
+	ul {
+		text-align: left;
+		list-style-position: center-left;
+	}
 	
-/* Now to take care about the database template, first the newest topics of the homepage */
 
+
+/* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
+	@media screen and (max-height: 450px) {
+		.sidenav {padding-top: 15px;}
+		.sidenav a {font-size: 18px;}
+	}

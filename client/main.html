@@ -1,3 +1,4 @@
+	<!-- Welcome to the MusicBuddy website -->
 <head>
 		<!-- Creating the Title of the page -->
   <title>MusicBuddy</title>
@@ -13,14 +14,14 @@
 
 <!-- First the layout template which will be used on all the pages -->
 <template name="layout">
-				<!-- First the navbar -->
+				<!-- The navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
-				<!-- First the Header, title of the website and home page link-->
+				<!-- Here is the Header, title of the website and home page link-->
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
 			</div>
-				<!-- Now the links for the four main music-related discussion pages-->
+				<!-- Now the links for the five main music-related discussion pages-->
 			<ul class="nav navbar-nav">
 				<li><a href="/General">General</a></li>
 				<li><a href="/Instruments">Instruments</a></li>
@@ -31,6 +32,7 @@
 				<li><p class="navbar-text welcomeUserItem">Welcome {{userId}}</p></li>
 			</ul>
 				<!-- Now the sign-in form for users who want to be able to participate-->
+<!-- Do we reall need a ul ? -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- We want it to the full right so it must be read in first !!!! -->
 				<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
@@ -67,7 +69,7 @@
 		<a href="#">Topic 4 plus récent
 			<br>sa cathégorie
 			<br>sa description</a>
-		<!-- Manque le infinite scroll plus la liste infinie !!!!! -->
+<!-- Manque le infinite scroll plus la liste infinie !!!!! -->
 	</div>
 				<!-- End of the sidebar -->
 
@@ -75,7 +77,7 @@
 	<div class="openbtn">
 		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 	</div>
-		<!-- to load the path of '/' aka the 'home' page (see .js file) -->	
+		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
 	{{> yield}}
 </template>
 <!-- End of the layout template -->
@@ -84,17 +86,15 @@
 
 <!-- Now the template for the homepage -->
 <template name="home">
-				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
+				<!-- In a first thing I will put everything in one div in order to assign a class to style it and an Id for JS -->
 	<div id="main" class="mainpage">
-					<!-- First the template for the welcome -->
+					<!-- First the Title -->
 			<h1>Welcome, Music Buddy!</h1>
-					<!-- Now the template for the description of the site -->
+					<!-- Now some text -->
 			<p>Tout d'abord le texte de bienvenue</p>
 			<p>Feel free to go through the existing conversations and topics!</p>
 			<p>But remember you must login if you want to contribute to any topic or create a new one!</p>
 			<p>Don't worry, it's free :)</p>  
-						<!-- Finally the template with the 5 choices a user can do from the home page -->
-						<!-- First of all, a quick text to explain the choice the user has on where to go -->
 			<p>What can you do now ? 4 choices, or sign in if your new !</p>
 						<!-- Now to create the 5 columns on what to do -->
 			<div class="grid-container">
@@ -121,19 +121,18 @@
 						<p>Maybe a nice image as well</p>
 					</div>
 					<div class="grid-item">
-						<a>Latests topics</a>
+						<a href="/NewTopic">Latests topics</a>
 						<p>Description of what happens here blablablabla</p>
 						<p>Maybe a nice image as well</p>
 					</div>
-						<!-- Ending the items list -->
+				<!-- Ending the container of the grid -->
 			</div>
-				<!-- Ending the container of this template -->
+			<!-- and another title for the newsfeed below -->
 		<h1>Latest updated topics</h1>
-		<!-- and another div for the newsfeed below -->
+			<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
 		{{> newsfeed}}
 		<!-- And to end the div with the whole page (id=main) -->
 	</div>
-
 </template>
 <!-- End of the "home" template -->
 
@@ -152,6 +151,7 @@
 	</div>
 		<!-- End of the news feed -->
 </template>
+
 		<!-- Finally the topic template -->
 <template name="topic">
 	<li>{{text}}</li>
@@ -159,6 +159,47 @@
 	<p>By: {{userId}}</p>
 </template>
 <!-- Here is the end of the newsfeed for the homepage -->
+
+
+
+<!-- Now to create the "general discussion" template! -->
+<template name="general">
+	<div id="main" class="mainpage">
+		<h1> Hello General !</h1>
+	</div>
+</template>
+<!-- End of the "general discussion" template -->
+
+
+
+<!-- Now to create the "instruments discussion" template! -->
+<template name="instruments">
+	<div id="main" class="mainpage">
+		<h1> Hello, here we can discuss about instruments !</h1>
+	</div>
+</template>
+<!-- End of the "instruments" discussion template -->
+
+
+
+<!-- Now to create the "music theory" discussion template! -->
+<template name="theory">
+	<div id="main" class="mainpage">
+		<h1> Hello, here we can discuss about music theory !</h1>
+	</div>
+</template>
+<!-- End of the "music theory" discussion template -->
+
+
+
+<!-- Now to create the "buddy bands" discussion template! -->
+<template name="buddybands">
+	<div id="main" class="mainpage">
+		<h1> Hello, here we can meet up with other buddys to make music together !</h1>
+	</div>
+</template>
+<!-- End of the "buddy bands" discussion template -->
+
 
 
 <!-- Now to create the "new topic" template! -->
@@ -171,36 +212,8 @@
 		</form>
 	</div>
 </template>
+<!-- End of the "new topic" discussion template -->
 
 
-<!-- Now to create the "general discussion" template! -->
-<template name="general">
-	<div id="main" class="mainpage">
-		<h1> Hello General !</h1>
-	</div>
-</template>
-<!-- End of the "general discussion" template -->
 
-<!-- Now to create the "instruments discussion" template! -->
-<template name="instruments">
-	<div id="main" class="mainpage">
-		<h1> Hello, here we can discuss about instruments !</h1>
-	</div>
-</template>
-<!-- End of the "instruments" discussion template -->
-
-<!-- Now to create the "music theory" discussion template! -->
-<template name="theory">
-	<div id="main" class="mainpage">
-		<h1> Hello, here we can discuss about music theory !</h1>
-	</div>
-</template>
-<!-- End of the "music theory" discussion template -->
-
-<!-- Now to create the "buddy bands" discussion template! -->
-<template name="buddybands">
-	<div id="main" class="mainpage">
-		<h1> Hello, here we can meet up with other buddys to make music together !</h1>
-	</div>
-</template>
-<!-- End of the "buddy bands" discussion template -->
+<!-- End of the MusicBuddy HTML code -->

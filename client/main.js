@@ -1,13 +1,16 @@
+/* Javascript file for MusicBuddy */
+
+	/* First the general code for the whole website */
 /* First to link the documents between themselves */
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
 
-/* Creating the topics database */
+/* Creating the topics database (mongo collection) */
 Topics = new Mongo.Collection('topics');
 
-/* First of all the routing */
+/* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
 Router.configure({
   layoutTemplate: 'layout'
@@ -43,21 +46,29 @@ Router.route('/NewTopic', {
 	template: 'newTopic'
 		});
 
-/* Code for the layout (in relation to the main ID !!!) */
-	/* First to rename the function names */
-window.openNav= openNav;
-window.closeNav= closeNav;
+	
+/* Now the code for the website */
 
+
+/* Code for the layout (in relation to the main Id) */
+	/* The navbar */
+		/* Now about the login buttons, to add a username to the sign in form */
+if (Meteor.isClient){
+	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
+}
+	/* The sidebar */
 /*Template.layout.event({"click.openbtn":function(event){});*/
-/* Now the openNav function */
+/* This should have worked, I'll have to repair it later */
+	/* First to rename the function names */
+window.openNav = openNav;
+window.closeNav = closeNav;
+	/* Now the openNav function */
 function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
 	document.getElementById("main").style.marginLeft = "250px";
 	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
-  
-
-/* Now the closeNav Function */
+ 	/* Now the closeNav Function */
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0px";
 	document.getElementById("main").style.marginLeft = "0px";
@@ -65,12 +76,11 @@ function closeNav() {
 }
 
 
-/* Now about the login buttons, to add a username to the sign in form */
-if (Meteor.isClient){
-	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
-}
+/* Now the code for the routed-pages */
 
-/* And now the event handler for adding information in the topics collection */
+
+/* Now the code for the home page */
+	/* The event handler for adding information in the topics collection */
 Template.newTopic.events({
     'submit .new-topic'(event) {
 			// Prevent default browser form submit
@@ -88,12 +98,17 @@ Template.newTopic.events({
     },
 });
 
-/* Now to sort the newsfeed by newest dates using a template helper*/
+	/* Now to sort the newsfeed by newest dates using a template helper*/
 Template.newsfeed.helpers({
     topics() {
         return Topics.find({}, { sort: { createdAt: -1 } });
       },
 });
+
+
+
+/* Here ends the code for MusicBuddy */
+
 
 
 
