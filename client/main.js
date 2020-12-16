@@ -70,6 +70,35 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 }
 
+/* And now the event handler for adding information in the topics collection */
+Template.newTopic.events({
+    'submit .new-topic'(event) {
+			// Prevent default browser form submit
+		event.preventDefault();
+			// Get value from form element
+		const target = event.target;
+		const text = target.text.value;
+			// Insert a task into the collection
+		Topics.insert({
+        text,
+        createdAt: new Date(), // current time
+		});
+			// Clear form
+		target.text.value = '';
+    },
+});
+
+/* Now to sort the newsfeed by newest dates using a template helper*/
+Template.newsfeed.helpers({
+    topics() {
+        return Topics.find({}, { sort: { createdAt: -1 } });
+      },
+});
+
+
+
+
+
 /* Now to add an event for the create new topic fo users to be logged in */
 /* Doesn't work for now, will have to do it later
 
@@ -89,31 +118,6 @@ Meteor.methods({
 		else{topic = {owner: this.userId,createdOn: new Date(),title: "mynewtopic"};
 				Topics.insert(topic);}
 }) */
-
-
-/* And now the event handler for adding information in the topics collection */
-Template.newTopic.events({
-    'submit .new-topic'(event) {
-			// Prevent default browser form submit
-		event.preventDefault();
-			// Get value from form element
-		const target = event.target;
-		const text = target.text.value;
-			// Insert a task into the collection
-		Topics.insert({
-        text,
-        createdAt: new Date(), // current time
-		});
-			// Clear form
-		target.text.value = '';
-    },
-});
-/* Now to sort the newsfeed by newest dates using a template helper*/
-Template.newsfeed.helpers({
-    topics() {
-        return Topics.find({}, { sort: { createdAt: -1 } });
-      },
-});
 
 
 

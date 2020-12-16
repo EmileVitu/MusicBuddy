@@ -33,7 +33,6 @@
 				<!-- Now the sign-in form for users who want to be able to participate-->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- We want it to the full right so it must be read in first !!!! -->
-				
 				<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
 			</ul>		
 				<!-- Now the search tool to find directly a keyword-related topic-->
@@ -47,7 +46,6 @@
 				</div>
 			  </div>
 			</form>
-			
 	  </div>
 	</nav>
 			<!-- End of the navbar-->
@@ -75,9 +73,9 @@
 
 				<!-- now the span tag to open the navbar -->
 	<div class="openbtn">
-		<span class="openbtn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 	</div>
-		<!-- to load the path of '/' aka the main page (see .js file) -->	
+		<!-- to load the path of '/' aka the 'home' page (see .js file) -->	
 	{{> yield}}
 </template>
 <!-- End of the layout template -->
@@ -87,22 +85,18 @@
 <!-- Now the template for the homepage -->
 <template name="home">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it -->
-	<div id="main">
-		
-		<div class="mainpage">
+	<div id="main" class="mainpage">
 					<!-- First the template for the welcome -->
-			<div>
-				<h1 class="homepage">Welcome, Music Buddy!</h1>
-			</div>
+			<h1>Welcome, Music Buddy!</h1>
 					<!-- Now the template for the description of the site -->
-		<p class="homepage">Tout d'abord le texte de bienvenue</p>
-		<p class="homepage">Feel free to go through the existing conversations and topics!</p>
-		<p class="homepage">But remember you must login if you want to contribute to any topic or create a new one!</p>
-		<p class="homepage">Don't worry, it's free :)</p>  
-					<!-- Finally the template with the 5 choices a user can do from the home page -->
-					<!-- First of all, a quick text to explain the choice the user has on where to go -->
-		<p class="homepage">What can you do now ? 4 choices, or sign in if your new !</p>
-					<!-- Now to create the 5 columns on what to do -->
+			<p>Tout d'abord le texte de bienvenue</p>
+			<p>Feel free to go through the existing conversations and topics!</p>
+			<p>But remember you must login if you want to contribute to any topic or create a new one!</p>
+			<p>Don't worry, it's free :)</p>  
+						<!-- Finally the template with the 5 choices a user can do from the home page -->
+						<!-- First of all, a quick text to explain the choice the user has on where to go -->
+			<p>What can you do now ? 4 choices, or sign in if your new !</p>
+						<!-- Now to create the 5 columns on what to do -->
 			<div class="grid-container">
 					<!-- The container is created and it has also a css class to manage it -->
 						<!-- Now to create the 5 columns with a css class for them too -->
@@ -134,11 +128,10 @@
 						<!-- Ending the items list -->
 			</div>
 				<!-- Ending the container of this template -->
-			<h1 class="homepage">Latest updated topics</h1>
-		</div>
-						<!-- and another div for the newsfeed below -->
+		<h1>Latest updated topics</h1>
+		<!-- and another div for the newsfeed below -->
 		{{> newsfeed}}
-				<!-- And to end the div with the whole page (id=main) -->
+		<!-- And to end the div with the whole page (id=main) -->
 	</div>
 
 </template>
@@ -149,10 +142,6 @@
 		<!-- Now the template for the latest changes done to the database -->
 	<div name="content" class="container">
 		<div class="updatedTopics">
-			<header>
-		<!-- Now the title for the newsfeed topics -->
-
-			</header>
 		<!-- Now to iterate every topics of the database by calling the topic template -->
 			<ul>
 				{{#each topics}}
