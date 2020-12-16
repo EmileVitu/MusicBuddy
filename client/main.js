@@ -44,7 +44,7 @@ Router.route('/BuddyBands', {
 Router.route('/NewTopic', {
 	name: 'newTopic',
 	template: 'newTopic'
-		});
+});
 
 	
 /* Now the code for the website */
@@ -73,9 +73,10 @@ if (Meteor.isClient){
 window.openNav = openNav;
 window.closeNav = closeNav;
 	/* Now the openNav function */ 
-function openNav() {document.getElementById("mySidenav").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+function openNav() {
+	document.getElementById("mySidenav").style.width = "250px";
+	document.getElementById("main").style.marginLeft = "250px";
+	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 
 }
  	/*Now the closeNav Function */
@@ -98,19 +99,19 @@ Template.newTopic.events({
 		event.preventDefault();
 			// Get value from form element
 		const target = event.target;
-		const text = target.text.value;
+		const title = target.title.value;
 		const content = target.content.value;
 		const category = target.category.value;
 			// Insert a task into the collection
 		Topics.insert({
-			text,
+			title,
 			category,
 			createdBy: Meteor.user()._id,
 			createdAt: new Date(), // current time
 			content
 		});
 			// Clear form
-		target.text.value = '';
+		target.title.value = '';
 		target.content.value = '';
 		alert('Your topic has been created!');
 /* Now we need to send the user to his new topic page using routes */

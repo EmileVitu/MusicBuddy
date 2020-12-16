@@ -116,7 +116,10 @@
 		list-style-position: center-left;
 	}
 	
-
+/* Now the styles for the New Topic page */
+.createNewTopic{
+	margin-top: 50px;
+}
 
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 	@media screen and (max-height: 450px) {

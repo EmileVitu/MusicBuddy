@@ -154,7 +154,7 @@
 
 		<!-- Finally the topic template -->
 <template name="topic">
-	<li>{{text}}</li>
+	<li>{{title}}</li>
 	<p>{{category}}</p>
 	<p>By: {{getUser createdBy}}</p>
 	<p>{{createdAt}}</p>
@@ -206,26 +206,69 @@
 
 <!-- Now to create the "new topic" template! -->
 <template name="newTopic">
-	<div id="main" class="mainpage">
-		<h1> Here you can create a new topic !</h1>
-	<!-- Here is the form to update the database linked to the JS client file -->
-		<form>
-			<input type="text" name="text" placeholder="Type to add a new topic" />
+	<div id="main">
+		<div class="createNewTopic">
+			<h1> Here you can create your new topic !</h1>
+		<!-- Here is the form to update the database linked to the JS client file -->
 			<br>
-			<input type="text" name="content" placeholder="Type to add your content" />
+			<form>
+				<label for="topic-title">Please enter a title for you new Music Buddy topic :</label>
+				<input id="topic-title" type="text" name="title" placeholder="Type to add a new topic" />
+				<br>
+				<br>
+				<label for="topic-content">You can now enter your subject brief description:</label>
+				<input id="topic-content" type="text" name="content" placeholder="Type to add your content" />
+				<br>
+				<br>
+				  <label for="category">Choose a category for your topic:</label>
+				  <select id="category" name="cathegory">
+					<option value="general">General</option>
+					<option value="instruments">Instruments</option>
+					<option value="theory">Theory</option>
+					<option value="buddybands">BuddyBands</option>
+				  </select>
+				<br>
+				<br>
+				<button class="new-topic btn btn-info">Create!</button>
+			</form>
 			<br>
 			<br>
-			  <label for="category">Choose a category:</label>
-			  <select id="category" name="cathegory">
-				<option value="general">General</option>
-				<option value="instruments">Instruments</option>
-				<option value="theory">Theory</option>
-				<option value="buddybands">BuddyBands</option>
-			  </select>
 			<br>
-			<br>
-			<button class="new-topic btn btn-info">Create!</button>
-		</form>
+			<p>Not sure what category you want to assign your topic to? No worries!</p>
+			<p>Here is a brief reminder of them:</p>
+			<p>And if you are not sure yet, just choose "general" ;-)</p> 
+		</div>
+		<br>
+		<br>
+		<div class="grid-container">
+			<!-- Here we can add the 4 columns to help the user if he is unsure bout the category -->
+					<div class="grid-item">
+						<a href="/General">General</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a href="/Instruments">Instruments</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a href="/Theory">Theory</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a href="/BuddyBands">Buddy Bands</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+					<div class="grid-item">
+						<a href="/NewTopic">Latests topics</a>
+						<p>Description of what happens here blablablabla</p>
+						<p>Maybe a nice image as well</p>
+					</div>
+				<!-- Ending the container of the grid -->
+		</div>
 	</div>
 </template>
 <!-- End of the "new topic" discussion template -->
