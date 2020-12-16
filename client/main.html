@@ -9,6 +9,7 @@
 		<!-- End of the head -->
 </head>
 
+
 <!-- There is no body since we are using iron router, only templates !!!! -->
 
 
@@ -154,10 +155,11 @@
 
 		<!-- Finally the topic template -->
 <template name="topic">
-	<li>{{title}}</li>
-	<p>{{category}}</p>
-	<p>By: {{getUser createdBy}}</p>
-	<p>{{createdAt}}</p>
+	<li>Title: {{title}}</li>
+	<p>Category: {{category}}</p>
+	<p>User: {{getUser createdBy}}</p>
+	<p>Created on: {{createdAt}}</p>
+	<p>Comment:</p>
 	<p>{{content}}</p>
 </template>
 <!-- Here is the end of the newsfeed for the homepage -->
@@ -221,11 +223,11 @@
 				<br>
 				<br>
 				  <label for="category">Choose a category for your topic:</label>
-				  <select id="category" name="cathegory">
-					<option value="general">General</option>
-					<option value="instruments">Instruments</option>
-					<option value="theory">Theory</option>
-					<option value="buddybands">BuddyBands</option>
+				  <select id="category" name="category">
+					<option value="General">General</option>
+					<option value="Instruments">Instruments</option>
+					<option value="Theory">Theory</option>
+					<option value="Buddybands">BuddyBands</option>
 				  </select>
 				<br>
 				<br>

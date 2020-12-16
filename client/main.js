@@ -89,11 +89,10 @@ function closeNav() {
 
 /* Now the code for the routed-pages */
 
-
 /* Now the code for the home page */
 	/* The event handler for adding information in the topics collection */
 Template.newTopic.events({
-			// This event is for new-topic class given to the button
+		// This event is for new-topic class given to the button
     'submit.new-topic'(event) {
 			// Prevent default browser form submit
 		event.preventDefault();
@@ -115,9 +114,8 @@ Template.newTopic.events({
 		target.content.value = '';
 		alert('Your topic has been created!');
 /* Now we need to send the user to his new topic page using routes */
-    },
+    }
 });
-
 
 	/* Now to sort the newsfeed by newest dates using a template helper*/
 Template.newsfeed.helpers({
@@ -126,9 +124,18 @@ Template.newsfeed.helpers({
 	},
 
 });
+
+	/* Here are the helpers for the topic template */
 Template.topic.helpers({
-	getUser: function(user_id){
-		var user = Meteor.users.findOne({_id:user_id});
+		/* First the helper to extract the username and upload it */
+	getUser:function(user_id){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anon";
+	  }
 	}
 });
 
