@@ -57,18 +57,28 @@ if (Meteor.isClient){
 	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 }
 	/* The sidebar */
-/*Template.layout.event({"click.openbtn":function(event){});*/
+/*Template.layout.event({
+	"click.js-open-btn":function(event){alert('Hello!')
+		/*document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "250px";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+}); */
+/*Template.layout.events({
+'click .js-open-btn':function(event){
+    alert('Hello!');
+}, 
 /* This should have worked, I'll have to repair it later */
-	/* First to rename the function names */
+	/*First to rename the function names */
 window.openNav = openNav;
 window.closeNav = closeNav;
-	/* Now the openNav function */
-function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-	document.getElementById("main").style.marginLeft = "250px";
-	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	/* Now the openNav function */ 
+function openNav() {document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "250px";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
 }
- 	/* Now the closeNav Function */
+ 	/*Now the closeNav Function */
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0px";
 	document.getElementById("main").style.marginLeft = "0px";
@@ -88,13 +98,17 @@ Template.newTopic.events({
 			// Get value from form element
 		const target = event.target;
 		const text = target.text.value;
+		const content = target.content.value;
 			// Insert a task into the collection
 		Topics.insert({
         text,
-        createdAt: new Date(), // current time
+		createdBy: Meteor.user()._id,
+		createdAt: new Date(), // current time
+		content
 		});
 			// Clear form
 		target.text.value = '';
+		target.content.value = '';
     },
 });
 
@@ -102,7 +116,10 @@ Template.newTopic.events({
 Template.newsfeed.helpers({
     topics() {
         return Topics.find({}, { sort: { createdAt: -1 } });
-      },
+	  },
+/*getUser: function(user_id){
+		var user = Meteor.users.findOne({_id:user_id});
+	}*/
 });
 
 

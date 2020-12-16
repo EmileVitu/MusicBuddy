@@ -76,7 +76,7 @@
 				<!-- now the span tag to open the navbar -->
 	<div class="openbtn">
 		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-	</div>
+	</div> <!-- class="js-open-btn"-->
 		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
 	{{> yield}}
 </template>
@@ -155,8 +155,9 @@
 		<!-- Finally the topic template -->
 <template name="topic">
 	<li>{{text}}</li>
+	<p>By: {{createdBy}}</p>
 	<p>{{createdAt}}</p>
-	<p>By: {{userId}}</p>
+	<p>{{content}}</p>
 </template>
 <!-- Here is the end of the newsfeed for the homepage -->
 
@@ -209,6 +210,11 @@
 	<!-- Here is the form to update the database linked to the JS client file -->
 		<form class="new-topic">
 			<input type="text" name="text" placeholder="Type to add a new topic" />
+			<br>
+			<input type="text" name="content" placeholder="Type to add the content" />
+			<br>
+			<br>
+			<button class="btn btn-success">Create!</button>
 		</form>
 	</div>
 </template>
