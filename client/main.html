@@ -155,7 +155,8 @@
 		<!-- Finally the topic template -->
 <template name="topic">
 	<li>{{text}}</li>
-	<p>By: {{createdBy}}</p>
+	<p>{{category}}</p>
+	<p>By: {{getUser createdBy}}</p>
 	<p>{{createdAt}}</p>
 	<p>{{content}}</p>
 </template>
@@ -208,13 +209,22 @@
 	<div id="main" class="mainpage">
 		<h1> Here you can create a new topic !</h1>
 	<!-- Here is the form to update the database linked to the JS client file -->
-		<form class="new-topic">
+		<form>
 			<input type="text" name="text" placeholder="Type to add a new topic" />
 			<br>
-			<input type="text" name="content" placeholder="Type to add the content" />
+			<input type="text" name="content" placeholder="Type to add your content" />
 			<br>
 			<br>
-			<button class="btn btn-success">Create!</button>
+			  <label for="category">Choose a category:</label>
+			  <select id="category" name="cathegory">
+				<option value="general">General</option>
+				<option value="instruments">Instruments</option>
+				<option value="theory">Theory</option>
+				<option value="buddybands">BuddyBands</option>
+			  </select>
+			<br>
+			<br>
+			<button class="new-topic btn btn-info">Create!</button>
 		</form>
 	</div>
 </template>

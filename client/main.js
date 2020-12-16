@@ -92,37 +92,44 @@ function closeNav() {
 /* Now the code for the home page */
 	/* The event handler for adding information in the topics collection */
 Template.newTopic.events({
-    'submit .new-topic'(event) {
+			// This event is for new-topic class given to the button
+    'submit.new-topic'(event) {
 			// Prevent default browser form submit
 		event.preventDefault();
 			// Get value from form element
 		const target = event.target;
 		const text = target.text.value;
 		const content = target.content.value;
+		const category = target.category.value;
 			// Insert a task into the collection
 		Topics.insert({
-        text,
-		createdBy: Meteor.user()._id,
-		createdAt: new Date(), // current time
-		content
+			text,
+			category,
+			createdBy: Meteor.user()._id,
+			createdAt: new Date(), // current time
+			content
 		});
 			// Clear form
 		target.text.value = '';
 		target.content.value = '';
+		alert('Your topic has been created!');
+/* Now we need to send the user to his new topic page using routes */
     },
 });
+
 
 	/* Now to sort the newsfeed by newest dates using a template helper*/
 Template.newsfeed.helpers({
     topics() {
         return Topics.find({}, { sort: { createdAt: -1 } });
-	  },
-/*getUser: function(user_id){
-		var user = Meteor.users.findOne({_id:user_id});
-	}*/
+	},
+
 });
-
-
+Template.topic.helpers({
+	getUser: function(user_id){
+		var user = Meteor.users.findOne({_id:user_id});
+	}
+});
 
 /* Here ends the code for MusicBuddy */
 
