@@ -95,8 +95,10 @@
 			<p>Tout d'abord le texte de bienvenue</p>
 			<p>Feel free to go through the existing conversations and topics!</p>
 			<p>But remember you must login if you want to contribute to any topic or create a new one!</p>
-			<p>Don't worry, it's free :)</p>  
 			<p>What can you do now ? 4 choices, or sign in if your new !</p>
+			<p>Don't worry, it's free :)</p>
+			<!-- A separator to separate the homepage to the newsfeed (check css too) -->
+		<hr class="dashed">			
 						<!-- Now to create the 5 columns on what to do -->
 			<div class="grid-container">
 					<!-- The container is created and it has also a css class to manage it -->
@@ -128,6 +130,8 @@
 					</div>
 				<!-- Ending the container of the grid -->
 			</div>
+			<!-- A separator to separate the homepage to the newsfeed (check css too) -->
+		<hr class="solid">
 			<!-- and another title for the newsfeed below -->
 		<h1>Latest updated topics</h1>
 			<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
@@ -155,12 +159,13 @@
 
 		<!-- Finally the topic template -->
 <template name="topic">
-	<li>Title: {{title}}</li>
-	<p>Category: {{category}}</p>
-	<p>User: {{getUser createdBy}}</p>
-	<p>Created on: {{createdAt}}</p>
-	<p>Comment:</p>
+	<p><b>Title: </b><a href="#">{{title}}</a></p>
+	<p><b>Category: </b>{{category}}</p>
+	<p><b>User: </b>{{getUser createdBy}}</p>
+	<p><b>Created on: </b>{{createdAt}}</p>
+	<p><b>Comment:</b></p>
 	<p>{{content}}</p>
+	<hr class="dotted">
 </template>
 <!-- Here is the end of the newsfeed for the homepage -->
 
@@ -214,12 +219,12 @@
 		<!-- Here is the form to update the database linked to the JS client file -->
 			<br>
 			<form>
-				<label for="topic-title">Please enter a title for you new Music Buddy topic :</label>
-				<input id="topic-title" type="text" name="title" placeholder="Type to add a new topic" />
+				<label for="topic-title">Please enter a title for you new Music Buddy topic: </label>
+				<input id="topic-title" type="text" name="title" placeholder="Type to add a new topic" size="50"/>
 				<br>
 				<br>
-				<label for="topic-content">You can now enter your subject brief description:</label>
-				<input id="topic-content" type="text" name="content" placeholder="Type to add your content" />
+				<label for="topic-content" style="vertical-align:middle">You can now enter your subject brief description: </label>
+				<textarea id="topic-content" type="text" name="content" placeholder="Please enter your description" rows="10" cols="52"></textarea>
 				<br>
 				<br>
 				  <label for="category">Choose a category for your topic:</label>
@@ -231,7 +236,7 @@
 				  </select>
 				<br>
 				<br>
-				<button class="new-topic btn btn-info">Create!</button>
+				<a href="/target.category.value"><button class="new-topic btn btn-info">Create!</button></a>
 			</form>
 			<br>
 			<br>
@@ -275,6 +280,8 @@
 </template>
 <!-- End of the "new topic" discussion template -->
 
-
+<template name="singleTopic">
+	<h1>It worked!</h1>
+</template>
 
 <!-- End of the MusicBuddy HTML code -->

@@ -46,6 +46,11 @@ Router.route('/NewTopic', {
 	template: 'newTopic'
 });
 
+Router.route('/post/:_id/comments/:commentId', function () {
+  var id = this.params._id; // "5"
+  var commentId = this.params.commentId; // "100"
+});
+
 	
 /* Now the code for the website */
 
@@ -114,6 +119,10 @@ Template.newTopic.events({
 		target.content.value = '';
 		alert('Your topic has been created!');
 /* Now we need to send the user to his new topic page using routes */
+		/*Router.route('/blabla', {
+			name: 'blabla',
+			template: 'blabla'
+		}); doesnt work */
     }
 });
 
@@ -138,6 +147,18 @@ Template.topic.helpers({
 	  }
 	}
 });
+
+
+/* Template.newTopic.events({
+    'submit.new-topic'(event) {
+        return Router.route('/category/title', {
+				name: 'title',
+				template: 'singleTopic'
+		});
+	}
+});
+*/
+
 
 /* Here ends the code for MusicBuddy */
 
