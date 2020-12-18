@@ -45,11 +45,22 @@ Router.route('/NewTopic', {
 	name: 'newTopic',
 	template: 'newTopic'
 });
-
-Router.route('/post/:_id/comments/:commentId', function () {
-  var id = this.params._id; // "5"
-  var commentId = this.params.commentId; // "100"
+		/* This is the route that will be rendered for each topic link that a user clicks */
+/* Still missing the category to assign instead of the 'topic' like '/category/:_id */
+Router.route('/:category/:_id', {
+	template: 'singleTopic',
+	data: function(){
+		var currentList = this.params._id;
+		return Topics.findOne({ _id: currentList });
+		var currentCategory = this.params.category;
+		return Topics.findOne({ category: currentCategory });
+    }
 });
+
+/* Router.route('/topic/:_id', function () {
+  var topic = Topics.findOne({_id: this.params._id});
+  this.render('singleTopic', {data: item});
+}); */
 
 	
 /* Now the code for the website */
@@ -72,7 +83,8 @@ if (Meteor.isClient){
 /*Template.layout.events({
 'click .js-open-btn':function(event){
     alert('Hello!');
-}, 
+},
+
 /* This should have worked, I'll have to repair it later */
 	/*First to rename the function names */
 window.openNav = openNav;

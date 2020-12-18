@@ -159,7 +159,7 @@
 
 		<!-- Finally the topic template -->
 <template name="topic">
-	<p><b>Title: </b><a href="#">{{title}}</a></p>
+	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
 	<p><b>Category: </b>{{category}}</p>
 	<p><b>User: </b>{{getUser createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
@@ -236,7 +236,8 @@
 				  </select>
 				<br>
 				<br>
-				<a href="/target.category.value"><button class="new-topic btn btn-info">Create!</button></a>
+				<a href="/{{category}}/{{_id}}"><button class="new-topic btn btn-info">Create!</button></a>
+<!-- We still need to go to the route for the topic when clicking on this button after the alert -->
 			</form>
 			<br>
 			<br>
@@ -281,7 +282,12 @@
 <!-- End of the "new topic" discussion template -->
 
 <template name="singleTopic">
-	<h1>It worked!</h1>
+	<div id="main">
+		<h1>{{category}}</h1>
+		<h1>{{title}}</h1>
+		{{> topic}}
+<!-- Here we will need each comment for this topic -->
+	</div>
 </template>
 
 <!-- End of the MusicBuddy HTML code -->
