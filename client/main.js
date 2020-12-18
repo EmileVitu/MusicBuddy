@@ -116,7 +116,7 @@ Template.newTopic.events({
 			// Get value from form element
 		const target = event.target;
 		const title = target.title.value;
-		const content = target.content.value;
+		const description = target.description.value;
 		const category = target.category.value;
 			// Insert a task into the collection
 		Topics.insert({
@@ -124,11 +124,11 @@ Template.newTopic.events({
 			category,
 			createdBy: Meteor.user()._id,
 			createdAt: new Date(), // current time
-			content
+			description
 		});
 			// Clear form
 		target.title.value = '';
-		target.content.value = '';
+		target.description.value = '';
 		alert('Your topic has been created!');
 /* Now we need to send the user to his new topic page using routes */
 		/*Router.route('/blabla', {
