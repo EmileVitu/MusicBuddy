@@ -175,6 +175,7 @@
 <template name="general">
 	<div id="main" class="mainpage">
 		<h1> Hello General !</h1>
+		<hr class="dashed">	
 	</div>
 </template>
 <!-- End of the "general discussion" template -->
@@ -185,6 +186,7 @@
 <template name="instruments">
 	<div id="main" class="mainpage">
 		<h1> Hello, here we can discuss about instruments !</h1>
+		<hr class="dashed">	
 	</div>
 </template>
 <!-- End of the "instruments" discussion template -->
@@ -195,6 +197,7 @@
 <template name="theory">
 	<div id="main" class="mainpage">
 		<h1> Hello, here we can discuss about music theory !</h1>
+		<hr class="dashed">	
 	</div>
 </template>
 <!-- End of the "music theory" discussion template -->
@@ -204,7 +207,23 @@
 <!-- Now to create the "buddy bands" discussion template! -->
 <template name="buddybands">
 	<div id="main" class="mainpage">
-		<h1> Hello, here we can meet up with other buddys to make music together !</h1>
+		<h1>BuddyBands</h1>
+		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
+		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
+		<p>Missing a drummer in your existing band?</p>
+		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
+		<p>This section is for you! Enjoy! :)</p>
+		<hr class="dashed">
+	</div>
+	<div name="content" class="container">
+		<div class="updatedTopics">
+		<!-- Now to iterate every topics of the database by calling the topic template -->
+			<ul>
+				{{#each topics}}
+					{{> topic}}
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 </template>
 <!-- End of the "buddy bands" discussion template -->
@@ -232,7 +251,7 @@
 					<option value="General">General</option>
 					<option value="Instruments">Instruments</option>
 					<option value="Theory">Theory</option>
-					<option value="Buddybands">BuddyBands</option>
+					<option value="BuddyBands">BuddyBands</option>
 				  </select>
 				<br>
 				<br>
@@ -281,13 +300,45 @@
 </template>
 <!-- End of the "new topic" discussion template -->
 
+<!-- Beginning of the singleTopic template that will be the same for every template created -->
 <template name="singleTopic">
 	<div id="main">
 		<h1>{{category}}</h1>
-		<h1>{{title}}</h1>
+		<hr class="solid">
+		<h2>{{title}}</h2>
+		<hr class="dashed">
 		{{> topic}}
-<!-- Here we will need each comment for this topic -->
 	</div>
+<!-- Here we will need each comment for this topic -->
+<!-- First of all the comment form -->
+	<form>
+		<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
+		<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
+		<button class="new-comment btn btn-info">Send!</button>
+	</form>
+	{{> commentfeed}}
+</template>
+	<!-- Then the comment list -->
+<template name="commentfeed">
+	<div name="content" class="container">
+		<div class="updatedComments">
+		<!-- Now to iterate every topics of the database by calling the topic template -->
+			<ul>
+				{{#each comments}}
+					{{> comment}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</template>
+<!-- End of the singleTopic template -->
+
+<template name="comment">
+	<p><b>User: </b>{{getUser createdBy}}</p>
+	<p><b>Created on: </b>{{createdAt}}</p>
+	<p><b>Comment:</b></p>
+	<p>{{commentary}}</p>
+	<hr class="dotted">
 </template>
 
 <!-- End of the MusicBuddy HTML code -->

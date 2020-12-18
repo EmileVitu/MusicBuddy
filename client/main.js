@@ -7,8 +7,9 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
 
-/* Creating the topics database (mongo collection) */
+/* Creating the topics and comments databases (mongo collection) */
 Topics = new Mongo.Collection('topics');
+Comments = new Mongo.Collection('comments');
 
 /* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
@@ -124,7 +125,7 @@ Template.newTopic.events({
 			category,
 			createdBy: Meteor.user()._id,
 			createdAt: new Date(), // current time
-			description
+			description,
 		});
 			// Clear form
 		target.title.value = '';
@@ -143,7 +144,13 @@ Template.newsfeed.helpers({
     topics() {
         return Topics.find({}, { sort: { createdAt: -1 } });
 	},
+});
 
+	/* Now to sort the buddybands by category using a template helper*/
+Template.buddybands.helpers({
+    topics() {
+        return Topics.find({}, { category: 'BuddyBands'});
+	},
 });
 
 	/* Here are the helpers for the topic template */
@@ -159,6 +166,47 @@ Template.topic.helpers({
 	  }
 	}
 });
+
+Template.singleTopic.events({
+		// This event is for new-topic class given to the button
+    'submit.new-comment'(event) {
+			// Prevent default browser form submit
+		event.preventDefault();
+			// Get value from form element
+		const target = event.target;
+		const commentary = target.commentary.value;
+			// Insert a task into the collection
+		Comments.insert({
+			commentary,
+			createdBy: Meteor.user()._id,
+			createdAt: new Date()
+		});
+			// Clear form
+		target.commentary.value = '';
+		alert('Your comment has been created!');
+    }
+});
+
+Template.commentfeed.helpers({
+    comments() {
+        return Comments.find({}, { sort: { createdAt: -1 } });
+	},
+});
+
+Template.comment.helpers({
+		/* First the helper to extract the username and upload it */
+	getUser:function(user_id){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anon";
+	  }
+	}
+});
+
+
 
 
 /* Template.newTopic.events({
