@@ -146,6 +146,27 @@ Template.newsfeed.helpers({
 	},
 });
 
+	/* Now to sort the General topics by category using a template helper*/
+Template.general.helpers({
+    topics() {
+        return Topics.find({}, { category: 'General'});
+	},
+});
+
+	/* Now to sort the Instruments by category using a template helper*/
+Template.instruments.helpers({
+    topics() {
+        return Topics.find({}, { category: 'Instruments'});
+	},
+});
+
+	/* Now to sort the Instruments by category using a template helper*/
+Template.theory.helpers({
+    topics() {
+        return Topics.find({}, { category: 'Theory'});
+	},
+});
+
 	/* Now to sort the buddybands by category using a template helper*/
 Template.buddybands.helpers({
     topics() {
@@ -189,7 +210,7 @@ Template.singleTopic.events({
 
 Template.commentfeed.helpers({
     comments() {
-        return Comments.find({}, { sort: { createdAt: -1 } });
+        return Comments.find({}, { sort: { category: [name=2] } });
 	},
 });
 
