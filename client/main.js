@@ -104,6 +104,20 @@ function closeNav() {
 	document.body.style.backgroundColor = "white";
 }
 
+	/* Now the code for the search tool (client side!) */
+/* 
+'searchtool': _.debounce(function(event, template) {
+  event.preventDefault();
+  Session.set('searchQuery', template.find('form input').value);
+}, 300)
+
+var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
+
+if (Session.get('searchQuery')) {
+  return Topics.find({}, { sort: [['score', 'desc']] });
+}
+return Topics.find();
+*/
 
 /* Now the code for the routed-pages */
 
