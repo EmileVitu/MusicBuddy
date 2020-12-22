@@ -85,7 +85,7 @@
 	  display: grid;
 	  grid-column-gap: 100px;
 		/* now to put the number of columns */
-	  grid-template-columns: auto auto auto auto auto;
+	  grid-template-columns: auto auto auto auto;
 	  /* background-color: #2196F3; */
 	  /* padding: 10px; */
 	}
