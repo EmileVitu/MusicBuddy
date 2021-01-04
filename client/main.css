@@ -68,7 +68,7 @@
 		transition: margin-left .5s;
 		text-align: center;
 		padding-top: 45px;
-		position: fixed;
+		position: float;
 		height: 100%;
 	}
 
@@ -130,8 +130,14 @@ hr.dotted {
   border-top: 3px dotted #bbb;
 }
 
-	
-	
+	/* Now the styles for the 5 other main pages */
+		/* First we want to have the topics list to be scrolled down in another entity like in the home page but with more length */
+.updatedTopics2{
+	height: 67vh;
+	margin-top: 0vh;
+	overflow-y: scroll;
+	text-align: center;
+}
 /* Now the styles for the New Topic page */
 .createNewTopic{
 	margin-top: 50px;
