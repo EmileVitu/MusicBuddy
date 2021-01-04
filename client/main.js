@@ -160,6 +160,14 @@ Template.newTopic.events({
     }
 });
 
+
+	/* Now to sort the newsfeed by newest dates using a template helper*/
+Template.layout.helpers({
+    topics() {
+        return Topics.find({}, { sort: { createdAt: -1 } });
+	},
+});
+
 	/* Now to sort the newsfeed by newest dates using a template helper*/
 Template.newsfeed.helpers({
     topics() {
@@ -167,6 +175,7 @@ Template.newsfeed.helpers({
 	},
 });
 
+/* Here we still need to sort with the category */
 	/* Now to sort the General topics by category using a template helper*/
 Template.general.helpers({
     topics() {
