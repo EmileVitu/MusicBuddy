@@ -50,6 +50,11 @@ Router.route('/NewTopic', {
 	name: 'newTopic',
 	template: 'newTopic'
 });
+		/* The route for the "search engine" page */
+Router.route('/Search', {
+	name: 'search',
+	template: 'search'
+});
 		/* This is the route that will be rendered for each topic link that a user clicks */
 /* Still missing the category to assign instead of the 'topic' like '/category/:_id */
 Router.route('/:category/:_id', {
@@ -85,10 +90,11 @@ if (Meteor.isClient){
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 }); */
-/*Template.layout.events({
-'click .js-open-btn':function(event){
-    alert('Hello!');
-},
+
+Template.layout.events({
+'onkeyup.searchFunction':function(event){
+    alert('Hello!');}
+});
 
 /* This should have worked, I'll have to repair it later */
 	/*First to rename the function names */
@@ -108,19 +114,52 @@ function closeNav() {
 	document.body.style.backgroundColor = "white";
 }
 
-	/* Now the code for the search tool (client side!) */
-/*'searchtool': _.debounce(function(event, template) {
-  event.preventDefault();
-  Session.set('searchQuery', template.find('form input').value);
-}, 300)
 
-var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
 
-if (Session.get('searchQuery')) {
-  return Topics.find({}, { sort: [['score', 'desc']] });
-}
-return Topics.find();
+/* Now the code for the search tool (client side!) */
+
+/* window.searchInput = searchInput;
 */
+	/* First we put an event on the onkeyup of the input search tool */	
+/*'searchtool': _.debounce(function(event, template) {
+		  event.preventDefault();
+		  Session.set('searchQuery', template.find('searchform').value);
+		}, 300);
+
+		var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
+
+		if (Session.get('searchQuery')) {
+		  return Topics.find({}, { sort: [['score', 'desc']] });
+		}
+		return Topics.find();
+
+	/* Now to sort the newsfeed by newest dates using a template helper*/
+/*Template.search.helpers({
+    topics() {
+
+			};
+});
+
+/*Template.search.events({
+		// This event is for new-topic class given to the button
+    'submit.new-comment'(event) {
+			// Prevent default browser form submit
+		event.preventDefault();
+			// Get value from form element
+		const target = event.target;
+		const commentary = target.commentary.value;
+			// Insert a task into the collection
+		Comments.insert({
+			commentary,
+			createdBy: Meteor.user()._id,
+			createdAt: new Date()
+		});
+			// Clear form
+		target.commentary.value = '';
+		alert('Your comment has been created!');
+    }
+});
+
 
 /* Now the code for the routed-pages */
 
