@@ -204,7 +204,7 @@ Template.topic.helpers({
 		return user.username;
 	  }
 	  else {
-		return "anon";
+		return "anonymous";
 	  }
 	}
 });
@@ -229,9 +229,10 @@ Template.singleTopic.events({
     }
 });
 
+/* Here we still need to sort only the comments of this very topic */
 Template.commentfeed.helpers({
     comments() {
-        return Comments.find({}, { sort: { category: [name=2] } });
+        return Comments.find({}, { createdAt: -1, /*{ category: [name=2]*/ });
 	},
 });
 
