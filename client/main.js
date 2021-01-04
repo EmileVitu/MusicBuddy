@@ -118,47 +118,10 @@ function closeNav() {
 
 /* Now the code for the search tool (client side!) */
 
-/* window.searchInput = searchInput;
-*/
-	/* First we put an event on the onkeyup of the input search tool */	
-/*'searchtool': _.debounce(function(event, template) {
-		  event.preventDefault();
-		  Session.set('searchQuery', template.find('searchform').value);
-		}, 300);
 
-		var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
 
-		if (Session.get('searchQuery')) {
-		  return Topics.find({}, { sort: [['score', 'desc']] });
-		}
-		return Topics.find();
 
-	/* Now to sort the newsfeed by newest dates using a template helper*/
-/*Template.search.helpers({
-    topics() {
 
-			};
-});
-
-/*Template.search.events({
-		// This event is for new-topic class given to the button
-    'submit.new-comment'(event) {
-			// Prevent default browser form submit
-		event.preventDefault();
-			// Get value from form element
-		const target = event.target;
-		const commentary = target.commentary.value;
-			// Insert a task into the collection
-		Comments.insert({
-			commentary,
-			createdBy: Meteor.user()._id,
-			createdAt: new Date()
-		});
-			// Clear form
-		target.commentary.value = '';
-		alert('Your comment has been created!');
-    }
-});
 
 
 /* Now the code for the routed-pages */

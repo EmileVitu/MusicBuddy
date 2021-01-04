@@ -19,16 +19,17 @@ Meteor.publish('comments-recent', function publishFunction() {
 })
 
 
+
+
 /* This is the server code to create the search tool */
-Topics._ensureIndex({
+/* Topics._ensureIndex({
   'title': 'text',
   'description': 'text',
   'category': 'text',
   'createdBy': 'text'
-});
-
-/* This is to ensure the search query will be published */
-Meteor.publish('searchTopics', function(query) {
+}); */
+	/* This is to ensure the search query will be published */
+/* Meteor.publish('searchTopics', function(query) {
   if (query) {
     return Topics.find(
       { $text: {
@@ -52,5 +53,5 @@ Meteor.publish('searchTopics', function(query) {
     return Topics.find();
   }
 });
-
+*/
 
