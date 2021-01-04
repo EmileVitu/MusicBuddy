@@ -79,10 +79,10 @@ Router.route('/:category/:_id', {
 /* Code for the layout (in relation to the main Id) */
 	/* The navbar */
 		/* Now about the login buttons, to add a username to the sign in form */
-if (Meteor.isClient){
-	Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
-}
+Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
+
 	/* The sidebar */
+/* This should have worked, I'll have to repair it later */
 /*Template.layout.event({
 	"click.js-open-btn":function(event){alert('Hello!')
 		/*document.getElementById("mySidenav").style.width = "250px";
@@ -90,13 +90,6 @@ if (Meteor.isClient){
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 }); */
-
-Template.layout.events({
-'onkeyup.searchFunction':function(event){
-    alert('Hello!');}
-});
-
-/* This should have worked, I'll have to repair it later */
 	/*First to rename the function names */
 window.openNav = openNav;
 window.closeNav = closeNav;
@@ -117,7 +110,7 @@ function closeNav() {
 
 
 /* Now the code for the search tool (client side!) */
-
+/* !!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
 
@@ -129,32 +122,41 @@ function closeNav() {
 /* Now the code for the home page */
 	/* The event handler for adding information in the topics collection */
 Template.newTopic.events({
-		// This event is for new-topic class given to the button
+		/* This event is for new-topic class given to the button */
     'submit.new-topic'(event) {
-			// Prevent default browser form submit
+			/* Prevent default browser form submit */
 		event.preventDefault();
-			// Get value from form element
+			/* Get value from form element */
 		const target = event.target;
 		const title = target.title.value;
 		const description = target.description.value;
 		const category = target.category.value;
-			// Insert a task into the collection
-		Topics.insert({
-			title,
-			category,
-			createdBy: Meteor.user()._id,
-			createdAt: new Date(), // current time
-			description,
-		});
-			// Clear form
+			/* Insert a task into the collection only if the user is logged in */
+		if(Meteor.user()){Topics.insert({
+							title,
+							category,
+							createdBy: Meteor.user()._id,
+							createdAt: new Date(),
+							description,
+		});}
+		else{alert('You must log in to create a topic!');
+		return false
+		};
+			/* Clear form if topic created */
 		target.title.value = '';
 		target.description.value = '';
 		alert('Your topic has been created!');
-/* Now we need to send the user to his new topic page using routes */
-		/*Router.route('/blabla', {
-			name: 'blabla',
-			template: 'blabla'
-		}); doesnt work */
+			/* Now we need to send the user to his new topic page using routes */
+/* Still missing the correct adress but it is going better */
+		Router.go('/:category/:_id', {
+			template: 'singleTopic',
+			data: function(){
+				var currentList = this.params._id;
+				return Topics.findOne({ _id: currentList });
+				var currentCategory = this.params.category;
+				return Topics.findOne({ category: currentCategory });
+			}
+		});
     }
 });
 
