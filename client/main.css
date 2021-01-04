@@ -106,7 +106,7 @@
 	}
 		/* Now we want to have the topics list to be scrolled down in another entity */
 	.updatedTopics{
-		height: 50vh;
+		height: 44vh;
 		margin-top: 0vh;
 		overflow-y: scroll;
 		text-align: center;
