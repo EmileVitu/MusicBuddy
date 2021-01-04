@@ -8,6 +8,17 @@ Meteor.startup(() => {
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
+/* The next code is to publish the mongo collections */
+	/* First the Topics collection */
+Meteor.publish('topics-recent', function publishFunction() {
+  return Topics.find({}, {sort: {date: -1}});
+})
+	/* Now the Comments collection */
+Meteor.publish('comments-recent', function publishFunction() {
+  return Comments.find({}, {sort: {date: -1}});
+})
+
+
 /* This is the server code to create the search tool */
 Topics._ensureIndex({
   'title': 'text',
@@ -41,6 +52,5 @@ Meteor.publish('searchTopics', function(query) {
     return Topics.find();
   }
 });
-
 
 

@@ -11,6 +11,10 @@ import './main.html';
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
+/* Now to subscribe to the collections */
+Meteor.subscribe('topics-recent');
+Meteor.subscribe('comments-recent');
+
 /* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
 Router.configure({
@@ -105,8 +109,7 @@ function closeNav() {
 }
 
 	/* Now the code for the search tool (client side!) */
-/* 
-'searchtool': _.debounce(function(event, template) {
+/*'searchtool': _.debounce(function(event, template) {
   event.preventDefault();
   Session.set('searchQuery', template.find('form input').value);
 }, 300)
