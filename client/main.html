@@ -10,10 +10,10 @@
 </head>
 
 
-<!-- There is no body since we are using iron router, only templates !!!! -->
+	<!-- There is no body since we are using iron router, only templates !!!! -->
 
 
-<!-- First the layout template which will be used on all the pages -->
+	<!-- First the layout template which will be used on all the pages -->
 <template name="layout">
 				<!-- The navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +31,6 @@
 				<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus"></span></a></li>
 			</ul>
 				<!-- Now the sign-in form for users who want to be able to participate-->
-<!-- Do we reall need a ul ? -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- We want it to the full right so it must be read in first !!!! -->
 				<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
@@ -63,8 +62,8 @@
 				<!-- End of the sidebar -->
 
 				<!-- now the span tag to open the navbar -->
-	<div class="openbtn">
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+	<div>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776; Latest topics</span>
 	</div> <!-- class="js-open-btn"-->
 		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
 	{{> yield}}
@@ -77,7 +76,8 @@
 		<p><b>Title: </b>{{title}}</p>
 	</a>
 		<p><b>Category: </b>{{category}}</p>
-	<!--	<b>User: </b>
+<!--We will be needing the last comment here ! 
+		<b>User: </b>
 		<p><b>Created on: </b>{{createdAt}}</p>
 		<p><b>Description:</b></p>
 		<p>{{description}}</p> -->

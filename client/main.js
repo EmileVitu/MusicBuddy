@@ -261,17 +261,6 @@ Template.comment.helpers({
 
 
 
-/* Template.newTopic.events({
-    'submit.new-topic'(event) {
-        return Router.route('/category/title', {
-				name: 'title',
-				template: 'singleTopic'
-		});
-	}
-});
-*/
-
-
 /* Here ends the code for MusicBuddy */
 
 
@@ -317,17 +306,5 @@ if(Meteor.isClient){
 		}
 	})
 }
-
-*/
-
-
-
-
-/* For future routes
-
-Router.route('/acrostics', {
-  name: 'acrostics',
-  template: 'acrostics'
-});
 
 */
