@@ -11,6 +11,10 @@ import './main.html';
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
+/* Now to subscribe to the collections */
+Meteor.subscribe('topics-recent');
+Meteor.subscribe('comments-recent');
+
 
 
 /* Now the routing for all the tabs of my navbar */
@@ -96,6 +100,7 @@ function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
 	document.getElementById("main").style.marginLeft = "250px";
 	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
 }
  	/*Now the closeNav Function */
 function closeNav() {
@@ -176,7 +181,7 @@ Template.newsfeed.helpers({
 	/* Now to sort the General topics by category using a template helper*/
 Template.general.helpers({
     topics() {
-        return Topics.find({ /*text: { search:''}*/}, {sort: { createdAt: -1 } });
+        return Topics.find({ /*text: ''*/ }, {sort: { createdAt: -1 } });
 	},
 });
 
@@ -257,15 +262,70 @@ Template.comment.helpers({
 });
 
 
+Template.search.helpers({
+		/* First the helper to extract the username and upload it */
+	getSearch:function(query){
+	  var result = Topics.find({});
+	  if (result){
+		return result;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
+});
+
+		/* Trying the infinite scroll */
+
+/*
+	Session.set("topicLimit", 8);
+	lastScrollTop = 0;
+	$(window).scroll(function(event){
+		if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
+			// where are we in the page 
+			var scrollTop = $(this).scrollTop();
+			// test if we are going down 
+			if(scrollTop>lastScrollTop){
+			// yes we are going down 
+				Session.set("topicLimit",Session.get("topicLimit") + 4};
+		lastSrollTop=ScrollTop;
+		}
+	})
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Here ends the code for MusicBuddy */
 
-/* Test... */
+/* Test... 
 console.log(
 	Comments.find().count()
 );
 
+'keyup form input': _.debounce(function(event, template) {
+  event.preventDefault();
+  Session.set('searchQuery', template.find('form input').value);
+}, 300)
+
+var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
+
+if (Session.get('searchQuery')) {
+  return Topics.find({}, { sort: [['score', 'desc']] });
+}
+return Topics.find();
 
 /* Now to add an event for the create new topic fo users to be logged in */
 /* Doesn't work for now, will have to do it later
@@ -288,22 +348,18 @@ Meteor.methods({
 }) */
 
 
-
-/* Now to implement the infinite scroll for the newsfeed */
-/* 
-if(Meteor.isClient){
+/*
 	Session.set("topicLimit", 8);
 	lastScrollTop = 0;
 	$(window).scroll(function(event){
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
-			/* where are we in the page 
+			// where are we in the page 
 			var scrollTop = $(this).scrollTop();
-			/* test if we are going down 
+			// test if we are going down 
 			if(scrollTop>lastScrollTop){
-			/* yes we are going down 
-			Session.set("topicLimit",Session.get("topicLimit") + 4;}
+			// yes we are going down 
+				Session.set("topicLimit",Session.get("topicLimit") + 4};
+		lastSrollTop=ScrollTop;
 		}
 	})
-}
-
 */
