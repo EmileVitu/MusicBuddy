@@ -92,6 +92,7 @@ Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 }); */
+
 	/*First to rename the function names */
 window.openNav = openNav;
 window.closeNav = closeNav;
@@ -277,6 +278,11 @@ Template.search.helpers({
 
 		/* Trying the infinite scroll */
 
+
+
+
+
+
 /*
 	Session.set("topicLimit", 8);
 	lastScrollTop = 0;
@@ -292,8 +298,39 @@ Template.search.helpers({
 		}
 	})
 */
+//window.generalscroll = generalscroll;
+/*window.onload=function(){
+	var pageNumber = new ReactiveVar(0);
+	var noMoreItem = new ReactiveVar(false);
+	var mainContainer = document.getElementById('hello');
+	mainContainer.addEventListener('scroll', function(){
+		if(mainContainer.scrollHeight - mainContainer.scrollTop === mainContainer.clientHeight) {
+			getMoreItems();
+		}
+	});
+	var getMoreItems = function () {
+	   if(pageNumber.get() < Math.floor(Counts.get('countItems')/12)) {
+		  pageNumber.set(Number(pageNumber.get())+1);
+		  Meteor.subscribe('pubName', pageNumber.get(), 12);
+	  } else {
+		 noMoreItem.set(true);
+	  }
+	}
 
+	Template.general.rendered = function () {
+	   pageNumber.set(0);
+	   Meteor.subscribe('pubName', pageNumber.get(), 12);
+	}
 
+	Template.general.helpers({
+	   'dataArr': function () {
+		  return Topics.find();
+	   },
+	  'noMoreItem': function () {
+		  return noMoreItem.get();
+	   }
+	})
+}*/
 
 
 
@@ -361,5 +398,4 @@ Meteor.methods({
 				Session.set("topicLimit",Session.get("topicLimit") + 4};
 		lastSrollTop=ScrollTop;
 		}
-	})
-*/
+	})*/

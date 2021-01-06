@@ -18,6 +18,7 @@ Meteor.publish('comments-recent', function publishFunction() {
   return Comments.find({}, {sort: {date: -1}});
 })
 
+	/* Infinite scroll */
 
 
 
@@ -26,6 +27,25 @@ Meteor.publish('comments-recent', function publishFunction() {
 
 
 
+
+
+
+/*Meteor.publish("pubName", function (pageNumber, pageSize) {
+   Counts.publish(this, 'countItems', Meteor.users.find(filter), {
+      noReady: true
+   });
+   return Topics.find({}, {
+      skip: pageNumber > 0 ? ((pageNumber) * pageSize) : 0,
+      limit: pageSize
+   })
+});*/
+
+
+
+
+
+
+/*
 
 var createTextIndex = function(db, callback) {
   // Get the documents collection
@@ -41,7 +61,7 @@ var createTextIndex = function(db, callback) {
     callback(result);
   });
 };
-
+*/
 
 /*Topics.createIndex({
   'title': 'text',
