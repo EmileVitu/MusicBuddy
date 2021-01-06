@@ -22,14 +22,6 @@ Meteor.publish('comments-recent', function publishFunction() {
 
 
 /* This is the server code to create the search tool */
-/*Topics.createIndex({
-  'title': 'text',
-  'description': 'text',
-  'category': 'text',
-  'createdBy': 'text',
-  //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
-});*/
-
 Topics._ensureIndex({
   'title': 'text',
   'description': 'text',
@@ -37,8 +29,8 @@ Topics._ensureIndex({
   'createdBy': 'text',
   //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
 });
-	/* This is to ensure the search query will be published */
-/* Meteor.publish('searchTopics', function(query) {
+
+Meteor.publish('searchTopics', function(query) {
   if (query) {
     return Topics.find(
       { $text: {
@@ -62,5 +54,38 @@ Topics._ensureIndex({
     return Topics.find();
   }
 });
-*/
+
+
+
+
+
+
+
+
+
+var createTextIndex = function(db, callback) {
+  // Get the documents collection
+  var topics = db.Topics('users');
+  // Create the index
+  Topics.createIndex(
+    {   title : 'text',
+		category: 'text',
+		description: 'text',
+		createdBy: 'text'}, 
+	function(err, result) {
+    console.log(result);
+    callback(result);
+  });
+};
+
+
+/*Topics.createIndex({
+  'title': 'text',
+  'description': 'text',
+  'category': 'text',
+  'createdBy': 'text',
+  //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
+});*/
+
+
 

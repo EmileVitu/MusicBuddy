@@ -15,6 +15,8 @@ Comments = new Mongo.Collection('comments');
 Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
 
+
+
 /* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
 Router.configure({
@@ -179,7 +181,7 @@ Template.newsfeed.helpers({
 	/* Now to sort the General topics by category using a template helper*/
 Template.general.helpers({
     topics() {
-        return Topics.find({ /*text: { search: 'hello'}*/}, {sort: { createdAt: -1 } });
+        return Topics.find({ /*text: { search:''}*/}, {sort: { createdAt: -1 } });
 	},
 });
 
@@ -235,7 +237,7 @@ Template.singleTopic.events({
 		});
 			// Clear form
 		target.commentary.value = '';
-		alert('Your comment has been created!');
+		alert('Your comment has been added!');
     }
 });
 
@@ -264,10 +266,22 @@ Template.comment.helpers({
 
 /* Here ends the code for MusicBuddy */
 
+/* Test... */
+console.log(
+	Comments.find().count()
+);
 
+'keyup form input': _.debounce(function(event, template) {
+  event.preventDefault();
+  Session.set('searchQuery', template.find('form input').value);
+}, 300)
 
+var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
 
-
+if (Session.get('searchQuery')) {
+  return Topics.find({}, { sort: [['score', 'desc']] });
+}
+return Topics.find();
 
 /* Now to add an event for the create new topic fo users to be logged in */
 /* Doesn't work for now, will have to do it later
