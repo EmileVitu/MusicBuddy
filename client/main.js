@@ -11,10 +11,6 @@ import './main.html';
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
-/* Now to subscribe to the collections */
-Meteor.subscribe('topics-recent');
-Meteor.subscribe('comments-recent');
-
 
 
 /* Now the routing for all the tabs of my navbar */
@@ -100,7 +96,6 @@ function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
 	document.getElementById("main").style.marginLeft = "250px";
 	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-
 }
  	/*Now the closeNav Function */
 function closeNav() {
@@ -271,17 +266,6 @@ console.log(
 	Comments.find().count()
 );
 
-'keyup form input': _.debounce(function(event, template) {
-  event.preventDefault();
-  Session.set('searchQuery', template.find('form input').value);
-}, 300)
-
-var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
-
-if (Session.get('searchQuery')) {
-  return Topics.find({}, { sort: [['score', 'desc']] });
-}
-return Topics.find();
 
 /* Now to add an event for the create new topic fo users to be logged in */
 /* Doesn't work for now, will have to do it later
