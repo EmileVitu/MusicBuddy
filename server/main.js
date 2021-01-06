@@ -22,12 +22,21 @@ Meteor.publish('comments-recent', function publishFunction() {
 
 
 /* This is the server code to create the search tool */
-/* Topics._ensureIndex({
+/*Topics.createIndex({
   'title': 'text',
   'description': 'text',
   'category': 'text',
-  'createdBy': 'text'
-}); */
+  'createdBy': 'text',
+  //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
+});*/
+
+Topics._ensureIndex({
+  'title': 'text',
+  'description': 'text',
+  'category': 'text',
+  'createdBy': 'text',
+  //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
+});
 	/* This is to ensure the search query will be published */
 /* Meteor.publish('searchTopics', function(query) {
   if (query) {

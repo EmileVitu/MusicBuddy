@@ -179,28 +179,28 @@ Template.newsfeed.helpers({
 	/* Now to sort the General topics by category using a template helper*/
 Template.general.helpers({
     topics() {
-        return Topics.find({}, { category: 'General'});
+        return Topics.find({ /*text: { search: 'hello'}*/}, {sort: { createdAt: -1 } });
 	},
 });
 
 	/* Now to sort the Instruments by category using a template helper*/
 Template.instruments.helpers({
     topics() {
-        return Topics.find({}, { category: 'Instruments'});
+        return Topics.find({}, {sort: { createdAt: -1 } });
 	},
 });
 
 	/* Now to sort the Instruments by category using a template helper*/
 Template.theory.helpers({
     topics() {
-        return Topics.find({}, { category: 'Theory'});
+        return Topics.find({}, {sort: { createdAt: -1 } });
 	},
 });
 
 	/* Now to sort the buddybands by category using a template helper*/
 Template.buddybands.helpers({
     topics() {
-        return Topics.find({}, { category: 'BuddyBands'});
+        return Topics.find({}, {sort: { createdAt: -1 } });
 	},
 });
 
@@ -230,7 +230,8 @@ Template.singleTopic.events({
 		Comments.insert({
 			commentary,
 			createdBy: Meteor.user()._id,
-			createdAt: new Date()
+			createdAt: new Date(),
+			topic: this.topic
 		});
 			// Clear form
 		target.commentary.value = '';
@@ -253,7 +254,7 @@ Template.comment.helpers({
 		return user.username;
 	  }
 	  else {
-		return "anon";
+		return "anonymous";
 	  }
 	}
 });
