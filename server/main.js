@@ -7,6 +7,28 @@ Meteor.startup(() => {
 	/* Now to create the topic collection (will have to match it with the client .js file later*/
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
+
+	/* Now we need to allow the client to see the content of the collections */
+Topics.allow({
+	insert:function(userId,topics){
+	console.log('testing security on topic insert');
+	return true;
+	}/*,
+	getUser:function(user_id){
+	console.log('testing if users appear on topics');
+	return true;
+	}*/
+})
+Comments.allow({
+	insert:function(userId,comments){
+	console.log('testing security on comment insert');
+	return true;
+	}/*,
+	remove:function(user_id){ --if we needed to add a remove button for the own user id--
+	console.log('testing if users appear on topics');
+	return true;
+	}*/
+})
 	/* The next code is to publish the mongo collections */
 		/* First the Topics collection */
 Meteor.publish('topics-recent', function publishFunction() {
@@ -26,6 +48,17 @@ Meteor.publish('comments-recent', function publishFunction() {
   'createdBy': 'text',
   //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
 });*/
-
+Meteor.methods({
+  // method to add a new document
+  getUser:function(){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
+});
 
 

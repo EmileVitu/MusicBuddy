@@ -210,7 +210,6 @@ Template.commentfeed.helpers({
 });
 	/* Now the helper to extract the username and upload it in the topic template*/
 Template.topic.helpers({
-		/* F */
 	getUser:function(user_id){
 	  var user = Meteor.users.findOne({_id:user_id});
 	  if (user){

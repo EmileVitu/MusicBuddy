@@ -12,6 +12,7 @@
 		/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
 	.accounts-dialog {
 		margin-top: 36px;
+		background: lavender;
 	}
 		/* The side navigation menu attributes */
 	.sidenav {
@@ -109,8 +110,8 @@
 	}
 		/* Now we want to have the topics list to be scrolled down in another entity */
 	.updatedTopics{
-		height: 44vh;
-		margin-top: 56vh;
+		height: 67vh;
+		margin-top: 0vh;
 		text-align: center;
 	}
 		/* Now we need to format the unordered list separately from the title */
