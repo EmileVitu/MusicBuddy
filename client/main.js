@@ -16,8 +16,7 @@ Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
 
 
-
-/* Now the routing for all the tabs of my navbar */
+	/* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
 Router.configure({
   layoutTemplate: 'layout'
@@ -58,7 +57,7 @@ Router.route('/Search', {
 	template: 'search'
 });
 		/* This is the route that will be rendered for each topic link that a user clicks */
-/* Still missing the category to assign instead of the 'topic' like '/category/:_id */
+	/* Still missing the category to assign instead of the 'topic' like '/category/:_id */
 Router.route('/:category/:_id', {
 	template: 'singleTopic',
 	data: function(){
@@ -69,14 +68,9 @@ Router.route('/:category/:_id', {
     }
 });
 
-/* Router.route('/topic/:_id', function () {
-  var topic = Topics.findOne({_id: this.params._id});
-  this.render('singleTopic', {data: item});
-}); */
 
 	
-/* Now the code for the website */
-
+	/* Now the code for the routed pages */
 
 /* Code for the layout (in relation to the main Id) */
 	/* The navbar */
@@ -92,7 +86,6 @@ Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 }); */
-
 	/*First to rename the function names */
 window.openNav = openNav;
 window.closeNav = closeNav;
@@ -120,9 +113,14 @@ function closeNav() {
 
 
 
-/* Now the code for the routed-pages */
 
 /* Now the code for the home page */
+
+
+
+
+
+
 	/* The event handler for adding information in the topics collection */
 Template.newTopic.events({
 		/* This event is for new-topic class given to the button */
@@ -164,49 +162,6 @@ Template.newTopic.events({
 });
 
 
-	/* Now to sort the newsfeed by newest dates using a template helper*/
-Template.layout.helpers({
-    topics() {
-        return Topics.find({}, { sort: { createdAt: -1 } });
-	},
-});
-
-	/* Now to sort the newsfeed by newest dates using a template helper*/
-Template.newsfeed.helpers({
-    topics() {
-        return Topics.find({}, { sort: { createdAt: -1 } });
-	},
-});
-
-/* Here we still need to sort with the category */
-	/* Now to sort the General topics by category using a template helper*/
-Template.general.helpers({
-    topics() {
-        return Topics.find({ /*text: ''*/ }, {sort: { createdAt: -1 } });
-	},
-});
-
-	/* Now to sort the Instruments by category using a template helper*/
-Template.instruments.helpers({
-    topics() {
-        return Topics.find({}, {sort: { createdAt: -1 } });
-	},
-});
-
-	/* Now to sort the Instruments by category using a template helper*/
-Template.theory.helpers({
-    topics() {
-        return Topics.find({}, {sort: { createdAt: -1 } });
-	},
-});
-
-	/* Now to sort the buddybands by category using a template helper*/
-Template.buddybands.helpers({
-    topics() {
-        return Topics.find({}, {sort: { createdAt: -1 } });
-	},
-});
-
 	/* Here are the helpers for the topic template */
 Template.topic.helpers({
 		/* First the helper to extract the username and upload it */
@@ -242,12 +197,7 @@ Template.singleTopic.events({
     }
 });
 
-/* Here we still need to sort only the comments of this very topic */
-Template.commentfeed.helpers({
-    comments() {
-        return Comments.find({}, { createdAt: -1, /*{ category: [name=2]*/ });
-	},
-});
+
 
 Template.comment.helpers({
 		/* First the helper to extract the username and upload it */
@@ -276,7 +226,85 @@ Template.search.helpers({
 	}
 });
 
-		/* Trying the infinite scroll */
+		/* Here is the infinite scroll */
+	/* For the topics lists */	
+Session.set("topicLimit", 8);
+lastScrollTop = 0; 
+$(window).scroll(function(event){
+// test if we are near the bottom of the window
+if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+  // where are we in the page? 
+  var scrollTop = $(this).scrollTop();
+  // test if we are going down
+  if (scrollTop > lastScrollTop){
+    // yes we are heading down...
+   Session.set("topicLimit", Session.get("topicLimit") + 4);
+   }
+  lastScrollTop = scrollTop;
+  }
+})
+	/* For the comments lists */
+Session.set("commentLimit", 8);
+lastScrollTop = 0; 
+$(window).scroll(function(event){
+// test if we are near the bottom of the window
+if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+  // where are we in the page? 
+  var scrollTop = $(this).scrollTop();
+  // test if we are going down
+  if (scrollTop > lastScrollTop){
+    // yes we are heading down...
+   Session.set("commentLimit", Session.get("commentLimit") + 4);
+   }
+  lastScrollTop = scrollTop;
+  }
+})
+
+		/* And now the helpers to find the topics and get the session topic limit for the infinite scroll */
+	/*The first one for the layout, to have the infinite scroll in the sidenav */
+Template.layout.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+	/* Then for the mainpage and all the 4 secondary pages */
+/* !!!!!!! Here we still need to sort with the category !!!!!!!!*/
+Template.newsfeed.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+Template.general.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+Template.instruments.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+Template.theory.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+Template.buddybands.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+/* Here we still need to sort only the comments of this very topic */
+Template.commentfeed.helpers({
+    comments() {
+	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
+	},
+});
 
 
 

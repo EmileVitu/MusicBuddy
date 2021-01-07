@@ -148,10 +148,10 @@
 		<hr class="solid">
 			<!-- and another title for the newsfeed below -->
 		<h1>Latest updated topics</h1>
-			<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
-		{{> newsfeed}}
 		<!-- And to end the div with the whole page (id=main) -->
 	</div>
+				<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
+		{{> newsfeed}}
 </template>
 <!-- End of the "home" template -->
 
@@ -159,7 +159,7 @@
 <template name="newsfeed">
 		<!-- Now the template for the latest changes done to the database -->
 	<div name="content" class="container">
-		<div class="updatedTopics">
+		<div id="newsfeedscroll" class="updatedTopics">
 		<!-- Now to iterate every topics of the database by calling the topic template -->
 			<ul>
 				{{#each topics}}

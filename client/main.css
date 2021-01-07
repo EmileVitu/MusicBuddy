@@ -50,15 +50,17 @@
 		/* Position and style of the close button (top right corner) */
 	.sidenav .closebtn {
 	  position: absolute;
-	  top: 40px;
+	  padding-top: 40px;
 	  right: 25px;
 	  font-size: 36px;
 	  margin-left: 50px;
+	  z-index: 3;
 	}
 		/* The styles for the open button */
 	.openbtn{
 		padding-top: 50px; /* This is to avoid an overlap with the navbar */
 		position: fixed; /* This is for the button to stay even while scrolling down */
+		z-index: 2;
 	}
 
 
@@ -70,6 +72,7 @@
 		padding-top: 45px;
 		position: float;
 		height: 100%;
+		z-index: 1;
 	}
 
 	
@@ -107,8 +110,7 @@
 		/* Now we want to have the topics list to be scrolled down in another entity */
 	.updatedTopics{
 		height: 44vh;
-		margin-top: 0vh;
-		overflow-y: scroll;
+		margin-top: 56vh;
 		text-align: center;
 	}
 		/* Now we need to format the unordered list separately from the title */
@@ -135,9 +137,15 @@ hr.dotted {
 .updatedTopics2{
 	height: 67vh;
 	margin-top: 0vh;
-	overflow-y: scroll;
 	text-align: center;
 }
+
+.updateComments{
+	height: 67vh;
+	margin-top: 0vh;
+	text-align: center;
+}
+
 /* Now the styles for the New Topic page */
 .createNewTopic{
 	margin-top: 50px;
