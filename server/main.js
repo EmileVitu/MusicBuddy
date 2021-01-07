@@ -38,6 +38,11 @@ Meteor.publish('topics-recent', function publishFunction() {
 Meteor.publish('comments-recent', function publishFunction() {
   return Comments.find({});
 })
+		/* This is to allow the getUser function to fetch the username data from the collections */
+Meteor.publish('allUsers', function(){
+return Meteor.users.find();
+});
+/* This is unsafe, because anyone can see the users so..... */
 
 	/* Now we must create and subscribe to the indexes in the comments and the topics......... */
 	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -61,4 +66,7 @@ Meteor.methods({
 	}
 });
 
+Meteor.publish('allUsers', function(){
+return Meteor.users.find(); //adjust query to return the info you want public
+});
 

@@ -11,10 +11,11 @@ import './main.html';
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
-/* Now to subscribe to the collections */
+	/* Now to subscribe to the collections and publications */
 Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
-
+/* This is unsafe, but since it is a prototype website, let's say it's fine for now */
+Meteor.subscribe('allUsers');
 
 	/* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
