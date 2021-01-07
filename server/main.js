@@ -53,20 +53,65 @@ return Meteor.users.find();
   'createdBy': 'text',
   //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
 });*/
+
 Meteor.methods({
   // method to add a new document
-  getUser:function(){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
+  getSearch:function(){
+	  var createTextIndex = function(db, callback) {
+  // Get the documents collection
+  var topics = db.topics('users');
+  // Create the index
+  Topics.createIndex(
+    { title : "text" }, 
+	{ description : "text" }, 
+	{ category : "text" }, 
+	function(err, result) {
+		console.log(result);
+		callback(result);
+    });
+  };
 	}
 });
 
 Meteor.publish('allUsers', function(){
 return Meteor.users.find(); //adjust query to return the info you want public
 });
+
+var createTextIndex = function(db, callback) {
+  // Get the documents collection
+  var topics = db.topics('users');
+  // Create the index
+  Topics.createIndex(
+    { title : "text" }, 
+	{ description : "text" }, 
+	{ category : "text" }, 
+	function(err, result) {
+		console.log(result);
+		callback(result);
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

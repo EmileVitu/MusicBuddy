@@ -157,20 +157,22 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 	/*The first one for the layout, to have the infinite scroll in the sidenav */
 Template.layout.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")});
 	}
 });
 /* Now the helper for the search template for the searchbar */
 Template.search.helpers({
 		/* First the helper to extract the username and upload it */
-	getSearch:function(query){
-	  var result = Topics.find({});
-	  if (result){
-		return result;
-	  }
-	  else {
-		return "anonymous";
-	  }
+	topics:function(){
+	  var regexp = new RegExp(Session.get('search/keyword'), 'i');
+	  return Topics.find({title: regexp});
+	  return Topics.find({category: regexp});
+	  return Topics.find({description: regexp});
+	}
+});
+Template.layout.events({
+	'keyup #search': function(event){
+		Session.set('search/keyword', event.target.value);
 	}
 });
 
