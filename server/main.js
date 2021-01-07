@@ -10,11 +10,11 @@ Comments = new Mongo.Collection('comments');
 	/* The next code is to publish the mongo collections */
 		/* First the Topics collection */
 Meteor.publish('topics-recent', function publishFunction() {
-  return Topics.find({}, {sort: {date: -1}});
+  return Topics.find({});
 })
 		/* Now the Comments collection */
 Meteor.publish('comments-recent', function publishFunction() {
-  return Comments.find({}, {sort: {date: -1}});
+  return Comments.find({});
 })
 
 	/* Now we must create and subscribe to the indexes in the comments and the topics......... */

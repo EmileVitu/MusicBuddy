@@ -72,7 +72,7 @@ Router.route('/:category/:_id', {
 	
 	/* Now the code for the routed pages */
 
-/* Code for the layout (in relation to the main Id) */
+/* Code for the layout template */
 	/* The navbar */
 		/* Now about the login buttons, to add a username to the sign in form */
 Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
@@ -114,14 +114,131 @@ function closeNav() {
 
 
 
-/* Now the code for the home page */
+		/* Here is the infinite scroll */
+	/* For the topics lists */	
+Session.set("topicLimit", 8);
+lastScrollTop = 0; 
+$(window).scroll(function(event){
+// test if we are near the bottom of the window
+if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+  // where are we in the page? 
+  var scrollTop = $(this).scrollTop();
+  // test if we are going down
+  if (scrollTop > lastScrollTop){
+    // yes we are heading down...
+   Session.set("topicLimit", Session.get("topicLimit") + 4);
+   }
+  lastScrollTop = scrollTop;
+  }
+})
+	/* For the comments lists */
+Session.set("commentLimit", 8);
+lastScrollTop = 0; 
+$(window).scroll(function(event){
+// test if we are near the bottom of the window
+if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+  // where are we in the page? 
+  var scrollTop = $(this).scrollTop();
+  // test if we are going down
+  if (scrollTop > lastScrollTop){
+    // yes we are heading down...
+   Session.set("commentLimit", Session.get("commentLimit") + 4);
+   }
+  lastScrollTop = scrollTop;
+  }
+})
 
 
 
 
+		/* And now the helpers of the webpage */
+		
+	/*The first one for the layout, to have the infinite scroll in the sidenav */
+Template.layout.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+/* Now the helper for the search template for the searchbar */
+Template.search.helpers({
+		/* First the helper to extract the username and upload it */
+	getSearch:function(query){
+	  var result = Topics.find({});
+	  if (result){
+		return result;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
+});
 
 
-	/* The event handler for adding information in the topics collection */
+	/* Then for the mainpage and all the 4 secondary pages */
+/* !!!!!!! Here we still need to sort with the category !!!!!!!!*/
+Template.newsfeed.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+Template.general.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+Template.instruments.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+Template.theory.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+Template.buddybands.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	}
+});
+
+/* Here we still need to sort only the comments of this very topic */
+Template.commentfeed.helpers({
+    comments() {
+	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
+	},
+});
+	/* Now the helper to extract the username and upload it in the topic template*/
+Template.topic.helpers({
+		/* F */
+	getUser:function(user_id){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
+});
+	/* Here is the helper for the comment template */
+Template.comment.helpers({
+		/* First the helper to extract the username and upload it */
+	getUser:function(user_id){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
+});
+
+
+
+	/* Here are the events for the templates */
+		/* The event for adding data in the topics collection */
 Template.newTopic.events({
 		/* This event is for new-topic class given to the button */
     'submit.new-topic'(event) {
@@ -161,21 +278,7 @@ Template.newTopic.events({
     }
 });
 
-
-	/* Here are the helpers for the topic template */
-Template.topic.helpers({
-		/* First the helper to extract the username and upload it */
-	getUser:function(user_id){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
-	}
-});
-
+	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
 		// This event is for new-topic class given to the button
     'submit.new-comment'(event) {
@@ -199,166 +302,18 @@ Template.singleTopic.events({
 
 
 
-Template.comment.helpers({
-		/* First the helper to extract the username and upload it */
-	getUser:function(user_id){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
-	}
-});
-
-
-Template.search.helpers({
-		/* First the helper to extract the username and upload it */
-	getSearch:function(query){
-	  var result = Topics.find({});
-	  if (result){
-		return result;
-	  }
-	  else {
-		return "anonymous";
-	  }
-	}
-});
-
-		/* Here is the infinite scroll */
-	/* For the topics lists */	
-Session.set("topicLimit", 8);
-lastScrollTop = 0; 
-$(window).scroll(function(event){
-// test if we are near the bottom of the window
-if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-  // where are we in the page? 
-  var scrollTop = $(this).scrollTop();
-  // test if we are going down
-  if (scrollTop > lastScrollTop){
-    // yes we are heading down...
-   Session.set("topicLimit", Session.get("topicLimit") + 4);
-   }
-  lastScrollTop = scrollTop;
-  }
-})
-	/* For the comments lists */
-Session.set("commentLimit", 8);
-lastScrollTop = 0; 
-$(window).scroll(function(event){
-// test if we are near the bottom of the window
-if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-  // where are we in the page? 
-  var scrollTop = $(this).scrollTop();
-  // test if we are going down
-  if (scrollTop > lastScrollTop){
-    // yes we are heading down...
-   Session.set("commentLimit", Session.get("commentLimit") + 4);
-   }
-  lastScrollTop = scrollTop;
-  }
-})
-
-		/* And now the helpers to find the topics and get the session topic limit for the infinite scroll */
-	/*The first one for the layout, to have the infinite scroll in the sidenav */
-Template.layout.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-	/* Then for the mainpage and all the 4 secondary pages */
-/* !!!!!!! Here we still need to sort with the category !!!!!!!!*/
-Template.newsfeed.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-
-Template.general.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-
-Template.instruments.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-
-Template.theory.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-
-Template.buddybands.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-	}
-});
-
-/* Here we still need to sort only the comments of this very topic */
-Template.commentfeed.helpers({
-    comments() {
-	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
-	},
-});
 
 
 
 
 
 
-/*
-	Session.set("topicLimit", 8);
-	lastScrollTop = 0;
-	$(window).scroll(function(event){
-		if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
-			// where are we in the page 
-			var scrollTop = $(this).scrollTop();
-			// test if we are going down 
-			if(scrollTop>lastScrollTop){
-			// yes we are going down 
-				Session.set("topicLimit",Session.get("topicLimit") + 4};
-		lastSrollTop=ScrollTop;
-		}
-	})
-*/
-//window.generalscroll = generalscroll;
-/*window.onload=function(){
-	var pageNumber = new ReactiveVar(0);
-	var noMoreItem = new ReactiveVar(false);
-	var mainContainer = document.getElementById('hello');
-	mainContainer.addEventListener('scroll', function(){
-		if(mainContainer.scrollHeight - mainContainer.scrollTop === mainContainer.clientHeight) {
-			getMoreItems();
-		}
-	});
-	var getMoreItems = function () {
-	   if(pageNumber.get() < Math.floor(Counts.get('countItems')/12)) {
-		  pageNumber.set(Number(pageNumber.get())+1);
-		  Meteor.subscribe('pubName', pageNumber.get(), 12);
-	  } else {
-		 noMoreItem.set(true);
-	  }
-	}
 
-	Template.general.rendered = function () {
-	   pageNumber.set(0);
-	   Meteor.subscribe('pubName', pageNumber.get(), 12);
-	}
 
-	Template.general.helpers({
-	   'dataArr': function () {
-		  return Topics.find();
-	   },
-	  'noMoreItem': function () {
-		  return noMoreItem.get();
-	   }
-	})
-}*/
+
+
+
+
 
 
 

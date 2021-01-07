@@ -170,7 +170,6 @@
 	</div>
 		<!-- End of the news feed -->
 </template>
-
 		<!-- Finally the topic template -->
 <template name="topic">
 	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
@@ -389,7 +388,7 @@
 	</div>
 </template>
 <!-- End of the singleTopic template -->
-
+<!-- Now the comment template for the comment list above -->
 <template name="comment">
 	<p><b>User: </b>{{getUser createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
@@ -397,7 +396,7 @@
 	<p>{{commentary}}</p>
 	<hr class="dotted">
 </template>
-
+<!-- End of the comment template -->
 
 
 
