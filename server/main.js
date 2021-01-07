@@ -73,23 +73,7 @@ Meteor.methods({
 	}
 });
 
-Meteor.publish('allUsers', function(){
-return Meteor.users.find(); //adjust query to return the info you want public
-});
 
-var createTextIndex = function(db, callback) {
-  // Get the documents collection
-  var topics = db.topics('users');
-  // Create the index
-  Topics.createIndex(
-    { title : "text" }, 
-	{ description : "text" }, 
-	{ category : "text" }, 
-	function(err, result) {
-		console.log(result);
-		callback(result);
-  });
-};
 
 
 

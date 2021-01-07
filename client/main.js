@@ -163,7 +163,7 @@ Template.layout.helpers({
 /* Now the helper for the search template for the searchbar */
 Template.search.helpers({
 		/* First the helper to extract the username and upload it */
-	topics:function(){
+	topics(){
 	  var regexp = new RegExp(Session.get('search/keyword'), 'i');
 	  return Topics.find({title: regexp});
 	  return Topics.find({category: regexp});
