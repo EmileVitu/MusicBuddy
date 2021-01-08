@@ -96,16 +96,22 @@
 			<h1>Test!</h1>
 			<ul>
 				{{#each topics}}
-					{{title}}
-					{{category}}
-					{{description}}
+					{{>searchtopic}}
 				{{/each}}
 			</ul>
 		</div>
 	</div>
 		<!-- End of the news feed -->
 </template>
-
+<template name="searchtopic">
+	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
+	<p><b>Category: </b>{{category}}</p>
+	<p><b>User: </b>{{getUser createdBy}}</p>
+	<p><b>Created on: </b>{{createdAt}}</p>
+	<p><b>Description:</b></p>
+	<p>{{description}}</p>
+	<hr class="dotted">
+</template>
 
 
 <!-- Now the template for the homepage -->

@@ -16,6 +16,10 @@ Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
 /* This is unsafe, but since it is a prototype website, let's say it's fine for now */
 Meteor.subscribe('allUsers');
+//Meteor.subscribe('search');
+Meteor.subscribe('topics');
+Meteor.subscribe('comments');
+Meteor.subscribe('search');
 
 	/* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
@@ -162,12 +166,19 @@ Template.layout.helpers({
 });
 /* Now the helper for the search template for the searchbar */
 Template.search.helpers({
-		/* First the helper to extract the username and upload it */
 	topics(){
-	  var regexp = new RegExp(Session.get('search/keyword'), 'i');
-	  return Topics.find({title: regexp});
-	  return Topics.find({category: regexp});
-	  return Topics.find({description: regexp});
+		  var regexp = new RegExp(Session.get('search/keyword'), 'i');
+		  //var titlesearch = Topics.find({title: regexp});
+		  //var categorysearch = Topics.find({category: regexp});
+		  //var descriptionsearch = Topics.find({description: regexp});
+		  return Topics.find({title: regexp}); //, limit:Session.get("topicLimit")}
+		  return Topics.find({category: regexp}); //, limit:Session.get("topicLimit")}
+		  return Topics.find({description: regexp}); //, limit:Session.get("topicLimit")
+	}
+});
+Template.searchtopic.helpers({
+	topics(){
+		  return Topics.find();
 	}
 });
 Template.layout.events({
@@ -210,6 +221,19 @@ Template.commentfeed.helpers({
     comments() {
 	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
 	},
+});
+	/* Here is the helper for the comment template */
+Template.searchtopic.helpers({
+		/* First the helper to extract the username and upload it */
+	getUser:function(user_id){
+	  var user = Meteor.users.findOne({_id:user_id});
+	  if (user){
+		return user.username;
+	  }
+	  else {
+		return "anonymous";
+	  }
+	}
 });
 	/* Now the helper to extract the username and upload it in the topic template*/
 Template.topic.helpers({
