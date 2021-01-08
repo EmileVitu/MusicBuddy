@@ -90,28 +90,21 @@
 <template name="search">
 		<!-- Now the template for the latest changes done to the database -->
 	<div name="content" class="container">
-		<div class="updatedTopics">
+		<div class="searchPage">
 		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<h1>Test!</h1>
-			<h1>Test!</h1>
+			<h1>Here are your search results!</h1>
+		<!-- A separator to separate the homepage to the newsfeed (check css too) -->
+			<hr class="solid">
 			<ul>
 				{{#each topics}}
-					{{>searchtopic}}
+					{{>topic}}
 				{{/each}}
 			</ul>
 		</div>
 	</div>
 		<!-- End of the news feed -->
 </template>
-<template name="searchtopic">
-	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
-	<p><b>Category: </b>{{category}}</p>
-	<p><b>User: </b>{{getUser createdBy}}</p>
-	<p><b>Created on: </b>{{createdAt}}</p>
-	<p><b>Description:</b></p>
-	<p>{{description}}</p>
-	<hr class="dotted">
-</template>
+<!-- End of the search template -->
 
 
 <!-- Now the template for the homepage -->

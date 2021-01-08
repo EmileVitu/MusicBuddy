@@ -1,3 +1,5 @@
+/* Here starts the server code for MusicBuddy */
+
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
@@ -51,94 +53,11 @@ Meteor.publish('topics', function() {
 Meteor.publish('comments', function() {
   return Comments.find({});
 })
-		/* We need to publish the search function */
-Meteor.publish('searchTopic', function(){
-return Meteor.users.find();
-return Topics.find({});
-});
-
-
-	/* The search method */
 
 
 
-/*
-Template.search.helpers({
-	topics(){
-	  var regexp = new RegExp(Session.get('search/keyword'), 'i');
-	  //var titlesearch = Topics.find({title: regexp});
-	  //var categorysearch = Topics.find({category: regexp});
-	  //var descriptionsearch = Topics.find({description: regexp});
-	  return Topics.find({title: regexp}); //, limit:Session.get("topicLimit")}
-	  return Topics.find({category: regexp}); //, limit:Session.get("topicLimit")}
-	  return Topics.find({description: regexp}); //, limit:Session.get("topicLimit")}
-	}
-});
-Template.layout.events({
-	'keyup #search': function(event){
-		Session.set('search/keyword', event.target.value);
-	}
-});
-*/
+	/* The methods... */
 
 
 
-
-
-
-
-	/* Now we must create and subscribe to the indexes in the comments and the topics......... */
-	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-/*Topics.createIndex({
-  'title': 'text',
-  'description': 'text',
-  'category': 'text',
-  'createdBy': 'text',
-  //'createdAt': 'date' (doesn"t work yet ..., not a text kind)
-});*/
-
-/*Meteor.methods({
-  // method to add a new document
-  getSearch:function(){
-	  var createTextIndex = function(db, callback) {
-  // Get the documents collection
-  var topics = db.topics('users');
-  // Create the index
-  Topics.createIndex(
-    { title : "text" }, 
-	{ description : "text" }, 
-	{ category : "text" }, 
-	function(err, result) {
-		console.log(result);
-		callback(result);
-    });
-  };
-	}
-});
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Here ends the server code for MusicBuddy */

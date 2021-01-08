@@ -135,6 +135,11 @@ hr.dotted {
 
 	/* Now the styles for the 5 other main pages */
 		/* First we want to have the topics list to be scrolled down in another entity like in the home page but with more length */
+.searchPage{
+	padding-top: 45px;
+	text-align: center;
+}
+
 .updatedTopics2{
 	height: 67vh;
 	margin-top: 0vh;

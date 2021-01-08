@@ -1,7 +1,7 @@
 /* Javascript file for MusicBuddy */
 
-	/* First the general code for the whole website */
-/* First to link the documents between themselves */
+			/* First the general code for the whole website */
+		/* First to link the documents between themselves */
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
@@ -11,7 +11,7 @@ import './main.html';
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
-	/* Now to subscribe to the collections and publications */
+		/* Now to subscribe to the collections and publications */
 Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
 /* This is unsafe, but since it is a prototype website, let's say it's fine for now */
@@ -73,20 +73,18 @@ Router.route('/:category/:_id', {
     }
 });
 
-
 	
-	/* Now the code for the routed pages */
+				/* Now the code for the routed pages */
 
-/* Code for the layout template */
+		/* Code for the layout template */
 	/* The navbar */
 		/* Now about the login buttons, to add a username to the sign in form */
 Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
-
 	/* The sidebar */
 /* This should have worked, I'll have to repair it later */
 /*Template.layout.event({
 	"click.js-open-btn":function(event){alert('Hello!')
-		/*document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("mySidenav").style.width = "250px";
 		document.getElementById("main").style.marginLeft = "250px";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
@@ -109,18 +107,9 @@ function closeNav() {
 }
 
 
-
-/* Now the code for the search tool (client side!) */
-/* !!!!!!!!!!!!!!!!!!!!!!!!! */
-
-
-
-
-
-
-
-		/* Here is the infinite scroll */
-	/* For the topics lists */	
+			/* Here is the infinite scroll code */
+		
+		/* For the topics lists */	
 Session.set("topicLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -136,7 +125,7 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
   lastScrollTop = scrollTop;
   }
 })
-	/* For the comments lists */
+		/* For the comments lists */
 Session.set("commentLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -168,26 +157,20 @@ Template.layout.helpers({
 Template.search.helpers({
 	topics(){
 		  var regexp = new RegExp(Session.get('search/keyword'), 'i');
-		  //var titlesearch = Topics.find({title: regexp});
-		  //var categorysearch = Topics.find({category: regexp});
-		  //var descriptionsearch = Topics.find({description: regexp});
-		  return Topics.find({title: regexp}); //, limit:Session.get("topicLimit")}
-		  return Topics.find({category: regexp}); //, limit:Session.get("topicLimit")}
-		  return Topics.find({description: regexp}); //, limit:Session.get("topicLimit")
+		  return Topics.find({title: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		  return Topics.find({category: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		  return Topics.find({description: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	},
+	getUser:function(user_id){
+	var user = Meteor.users.findOne({_id:user_id});
+	if (user){
+		return user.username;
+	}
+	else {
+		return "anonymous";
+	  }
 	}
 });
-Template.searchtopic.helpers({
-	topics(){
-		  return Topics.find();
-	}
-});
-Template.layout.events({
-	'keyup #search': function(event){
-		Session.set('search/keyword', event.target.value);
-	}
-});
-
-
 	/* Then for the mainpage and all the 4 secondary pages */
 /* !!!!!!! Here we still need to sort with the category !!!!!!!!*/
 Template.newsfeed.helpers({
@@ -222,19 +205,6 @@ Template.commentfeed.helpers({
 	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
 	},
 });
-	/* Here is the helper for the comment template */
-Template.searchtopic.helpers({
-		/* First the helper to extract the username and upload it */
-	getUser:function(user_id){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
-	}
-});
 	/* Now the helper to extract the username and upload it in the topic template*/
 Template.topic.helpers({
 	getUser:function(user_id){
@@ -249,7 +219,6 @@ Template.topic.helpers({
 });
 	/* Here is the helper for the comment template */
 Template.comment.helpers({
-		/* First the helper to extract the username and upload it */
 	getUser:function(user_id){
 	  var user = Meteor.users.findOne({_id:user_id});
 	  if (user){
@@ -263,8 +232,14 @@ Template.comment.helpers({
 
 
 
-	/* Here are the events for the templates */
-		/* The event for adding data in the topics collection */
+		/* Here are the events for the templates */
+	/* First the template for the searchbar event */
+Template.layout.events({
+	'keyup #search': function(event){
+		Session.set('search/keyword', event.target.value);
+	}
+});
+	/* Now the event for adding data in the topics collection */
 Template.newTopic.events({
 		/* This event is for new-topic class given to the button */
     'submit.new-topic'(event) {
@@ -303,7 +278,6 @@ Template.newTopic.events({
 		});
     }
 });
-
 	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
 		// This event is for new-topic class given to the button
@@ -356,55 +330,6 @@ Template.singleTopic.events({
 
 /* Here ends the code for MusicBuddy */
 
-/* Test... 
-console.log(
-	Comments.find().count()
-);
-
-'keyup form input': _.debounce(function(event, template) {
-  event.preventDefault();
-  Session.set('searchQuery', template.find('form input').value);
-}, 300)
-
-var searchQuery = Meteor.subscribe('searchTopics', Session.get('searchQuery'));
-
-if (Session.get('searchQuery')) {
-  return Topics.find({}, { sort: [['score', 'desc']] });
-}
-return Topics.find();
-
-/* Now to add an event for the create new topic fo users to be logged in */
-/* Doesn't work for now, will have to do it later
-
-Template.layout.events({
-	"click-js-add-topic": function(event){
-		event.preventDefault();
-		if(!Meteor.user()){
-		alert("You need to login first!");}
-		else{
-
-})*/
-/*
-Meteor.methods({
-	addTopic: function(){
-		var topic;
-		if(!this.userId){return;}
-		else{topic = {owner: this.userId,createdOn: new Date(),title: "mynewtopic"};
-				Topics.insert(topic);}
-}) */
 
 
-/*
-	Session.set("topicLimit", 8);
-	lastScrollTop = 0;
-	$(window).scroll(function(event){
-		if($(window).scrollTop() + $(window).height() > $(document).height() - 100){
-			// where are we in the page 
-			var scrollTop = $(this).scrollTop();
-			// test if we are going down 
-			if(scrollTop>lastScrollTop){
-			// yes we are going down 
-				Session.set("topicLimit",Session.get("topicLimit") + 4};
-		lastSrollTop=ScrollTop;
-		}
-	})*/
+
