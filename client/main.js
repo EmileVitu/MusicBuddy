@@ -161,6 +161,15 @@ Template.search.helpers({
 		  return Topics.find({category: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 		  return Topics.find({description: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	},
+	searchCount:function(topics){
+		var resultCount = Topics.find().count();
+		if (resultCount>0){
+			return resultCount;
+		}
+		else {
+			return 'no';
+		}
+	},
 	getUser:function(user_id){
 	var user = Meteor.users.findOne({_id:user_id});
 	if (user){
@@ -233,6 +242,7 @@ Template.comment.helpers({
 
 
 		/* Here are the events for the templates */
+		
 	/* First the template for the searchbar event */
 Template.layout.events({
 	'keyup #search': function(event){
