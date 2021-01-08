@@ -160,16 +160,24 @@ Template.search.helpers({
 		  return Topics.find({title: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 		  return Topics.find({category: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 		  return Topics.find({description: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		  var resultNumber = Topics.find().count();
+		  return resultNumber;
 	},
-	searchCount:function(topics){
-		var resultCount = Topics.find().count();
+	/*searchCount:function(topics){
+		var resultCount = Topics.find({}).count();
 		if (resultCount>0){
 			return resultCount;
 		}
 		else {
 			return 'no';
 		}
-	},
+	},*/
+	/*resultNumber: function() {
+    Meteor.call("resultNumber", function(err, res){
+     if(!err){Session.set("resultNumber", res)};
+    });
+    return Session.get("resultNumber");
+    },*/
 	getUser:function(user_id){
 	var user = Meteor.users.findOne({_id:user_id});
 	if (user){

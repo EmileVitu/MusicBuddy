@@ -57,7 +57,11 @@ Meteor.publish('comments', function() {
 
 
 	/* The methods... */
-
+Meteor.methods({
+  resultNumber: function () {
+        return Topics.find().count();
+    }
+});
 
 
 /* Here ends the server code for MusicBuddy */
