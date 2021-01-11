@@ -48,8 +48,11 @@
 			</form>
 	  </div>
 	</nav>
+	{{> yield}}
+</template>
 			<!-- End of the main navbar-->
 			<!-- Now to implement the sidebar -->
+<template name="sidenav">
 	<div id="mySidenav" class="sidenav">
 				<!-- First the close button, that will appear when mySidenav is active -->
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><p>&times; close</p></a>
@@ -66,7 +69,6 @@
 		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776; Latest topics</span>
 	</div> <!-- class="js-open-btn"-->
 		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
-	{{> yield}}
 </template>
 <!-- End of the layout template -->
 

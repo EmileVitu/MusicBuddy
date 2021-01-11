@@ -33,8 +33,8 @@ Router.route('/', {
 });
 		/* The route for the "general" discussions */
 Router.route('/General', {
-  name: 'general',
-  template: 'general'
+	name: 'general',
+	template: 'general'
 });
 		/* The route for the "instruments" discussion */
 Router.route('/Instruments', {
