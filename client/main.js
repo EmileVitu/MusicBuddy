@@ -268,7 +268,7 @@ Template.newTopic.events({
 		const title = target.title.value;
 		const description = target.description.value;
 		const category = target.category.value;
-			/* Insert a task into the collection only if the user is logged in */
+			/* Insert a topic into the collection only if the user is logged in */
 		if(Meteor.user()){Topics.insert({
 							title,
 							category,
