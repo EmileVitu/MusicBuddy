@@ -51,6 +51,7 @@
 	{{> yield}}
 </template>
 			<!-- End of the main navbar-->
+
 			<!-- Now to implement the sidebar -->
 <template name="sidenav">
 	<div id="mySidenav" class="sidenav">
@@ -192,6 +193,7 @@
 
 <!-- Now to create the "general discussion" template! -->
 <template name="general">
+	{{>sidenav}}
 	<div id="main" class="mainpage">
 		<h1>General</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
@@ -221,6 +223,7 @@
 
 <!-- Now to create the "instruments discussion" template! -->
 <template name="instruments">
+	{{>sidenav}}
 	<div id="main" class="mainpage">
 		<h1>Instruments</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
@@ -247,6 +250,7 @@
 
 <!-- Now to create the "music theory" discussion template! -->
 <template name="theory">
+	{{>sidenav}}
 	<div id="main" class="mainpage">
 		<h1>Theory</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
@@ -273,6 +277,7 @@
 
 <!-- Now to create the "buddy bands" discussion template! -->
 <template name="buddybands">
+	{{>sidenav}}
 	<div id="main" class="mainpage">
 		<h1>BuddyBands</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
@@ -364,6 +369,7 @@
 
 <!-- Beginning of the singleTopic template that will be the same for every template created -->
 <template name="singleTopic">
+	{{>sidenav}}
 	<div id="main">
 		<h1>{{title}}</h1>
 		<hr class="solid">

@@ -148,7 +148,7 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 		/* And now the helpers of the webpage */
 		
 	/*The first one for the layout, to have the infinite scroll in the sidenav */
-Template.layout.helpers({
+Template.sidenav.helpers({
     topics(){
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")});
 	}
@@ -219,7 +219,7 @@ Template.buddybands.helpers({
 /* Here we still need to sort only the comments of this very topic */
 Template.commentfeed.helpers({
     comments() {
-	return Comments.find({}, {sort:{createdAt: -1}, limit:Session.get("commentLimit")}); 
+	return Comments.find({}, {sort:{createdAt: -1, topic: this.topic}, limit:Session.get("commentLimit")}); 
 	},
 });
 	/* Now the helper to extract the username and upload it in the topic template*/
