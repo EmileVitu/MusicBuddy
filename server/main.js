@@ -55,12 +55,27 @@ Meteor.publish('comments', function() {
 })
 
 
-
 	/* The methods... */
 Meteor.methods({
   resultNumber: function () {
         return Topics.find().count();
-    }
+    },
+	addComment: function (topicId, commentary) {
+		//check(topicId, String);
+		//check(commentary, String);
+
+		if (!this.userId) {
+			throw new Meteor.Error(403, 'not-authorized');
+			alert('You must login first!');
+		}
+	Comments.insert({
+		commentary: commentary,
+		createdAt: new Date(),
+		owner: this.userId,
+		username: Meteor.user().username,
+		topicId: topicId
+  });
+}
 });
 
 
