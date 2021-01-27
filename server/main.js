@@ -1,4 +1,4 @@
-/* Here starts the server code for MusicBuddy */
+/* Javascript file for MusicBuddy Server side */
 
 import { Meteor } from 'meteor/meteor';
 
@@ -57,7 +57,7 @@ Meteor.publish('comments', function() {
 
 	/* The methods */
 Meteor.methods({
-  resultNumber: function () {
+    resultNumber: function () {
         return Topics.find().count();
     },
 	addComment: function (topicId, commentary) {

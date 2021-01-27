@@ -1,4 +1,4 @@
-/* Javascript file for MusicBuddy */
+/* Javascript file for MusicBuddy Client side */
 
 			/* First the general code for the whole website */
 		/* First to link the documents between themselves */
@@ -7,9 +7,11 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
 
+
 /* Creating the topics and comments databases (mongo collection) */
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
+
 
 		/* Now to subscribe to the collections and publications */
 Meteor.subscribe('topics-recent');
@@ -20,6 +22,7 @@ Meteor.subscribe('allUsers');
 Meteor.subscribe('topics');
 Meteor.subscribe('comments');
 Meteor.subscribe('search');
+
 
 	/* Now the routing for all the tabs of my navbar */
 		/* The route for the "layout" template */
@@ -189,13 +192,13 @@ Template.search.helpers({
 	  }
 	}
 });
-	/* Then for the mainpage and all the 4 secondary pages */
-/* !!!!!!! Here we still need to sort with the category !!!!!!!!*/
+	/* This helper is for the newsfeed template in the home page */
 Template.newsfeed.helpers({
     topics(){
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
+	/* These helpers are to return the category selected topics for each main category page */
 Template.general.helpers({
     topics(){
 	return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
@@ -216,6 +219,9 @@ Template.buddybands.helpers({
 	return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
+
+
+
 /*
 		Router.go('/Search', {
 			template: 'search',
@@ -233,7 +239,7 @@ Template.commentfeed.helpers({
 	  selector = {topicId: this._id};
 	  options = {sort: {createdAt: -1}};
 	  return Comments.find(selector, options);
-	}
+	},
 });
 	/* Now the helper to extract the username and upload it in the topic template*/
 Template.topic.helpers({
@@ -288,7 +294,8 @@ Template.newTopic.events({
 							createdBy: Meteor.user()._id,
 							createdAt: new Date(),
 							description,
-		});}
+			});
+		}
 		else{alert('You must log in to create a topic!');
 		return false
 		};
@@ -298,25 +305,15 @@ Template.newTopic.events({
 		alert('Your topic has been created!');
 			/* Now we need to send the user to his new topic page using routes */
 /* Still missing the correct adress but it is going better */
-		Router.go('/:category/:_id', {
-			template: 'singleTopic',
-			data: function(){
-				var currentList = this.params._id;
-				return Topics.findOne({ _id: currentList });
-				var currentCategory = this.params.category;
-				return Topics.findOne({ category: currentCategory });
-			}
-		});
-    }
+
 });
 
 
-
-
-
+/*
+qdzdefzazqfd
+*/
 	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
-		// This event is for new-topic class given to the button
 	submit: function (event) {
 	  event.preventDefault();
 	  const target = event.target;
@@ -329,14 +326,14 @@ Template.singleTopic.events({
     //}
 });
 
-
+/*
 Template.sidenav.events({
 	onclick: function (event) {
 		
 	}
 });
 
-
+*/
 
 
 
