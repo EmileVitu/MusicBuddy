@@ -57,6 +57,7 @@ Router.route('/NewTopic', {
 	template: 'newTopic'
 });
 		/* The route for the "search engine" page */
+/* Here should be the onkeyup */
 Router.route('/Search', {
 	name: 'search',
 	template: 'search'
@@ -215,12 +216,24 @@ Template.buddybands.helpers({
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
-
+/*
+		Router.go('/Search', {
+			template: 'search',
+			data: function(){
+				var currentList = this.params._id;
+				return Topics.findOne({ _id: currentList });
+				var currentCategory = this.params.category;
+				return Topics.findOne({ category: currentCategory });
+			}
+		});
+*/
 /* Here we still need to sort only the comments of this very topic */
 Template.commentfeed.helpers({
-    comments() {
-	return Comments.find({}, {sort:{createdAt: -1, topic: this.topic}, limit:Session.get("commentLimit")}); 
-	},
+	comments: function () {
+	  selector = {topicId: this._id};
+	  options = {sort: {createdAt: -1}};
+	  return Comments.find(selector, options);
+	}
 });
 	/* Now the helper to extract the username and upload it in the topic template*/
 Template.topic.helpers({
@@ -296,26 +309,24 @@ Template.newTopic.events({
 		});
     }
 });
+
+
+
+
+
 	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
 		// This event is for new-topic class given to the button
-    'submit.new-comment'(event) {
-			// Prevent default browser form submit
-		event.preventDefault();
-			// Get value from form element
-		const target = event.target;
-		const commentary = target.commentary.value;
-			// Insert a task into the collection
-		Comments.insert({
-			commentary,
-			createdBy: Meteor.user()._id,
-			createdAt: new Date(),
-			topic: this.topic
-		});
+	submit: function (event) {
+	  event.preventDefault();
+	  const target = event.target;
+	  var commentary = event.target.commentary.value;
+	  Meteor.call('addComment', this._id, commentary);
+	  target.commentary.value = '';
+	},
 			// Clear form
-		target.commentary.value = '';
-		alert('Your comment has been added!');
-    }
+	////alert('Your comment has been added!');
+    //}
 });
 
 
