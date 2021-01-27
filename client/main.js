@@ -197,36 +197,26 @@ Template.newsfeed.helpers({
 	}
 });
 Template.general.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	topics(){
+		return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.instruments.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'Instruments'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.theory.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'Theory'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.buddybands.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
-/*
-		Router.go('/Search', {
-			template: 'search',
-			data: function(){
-				var currentList = this.params._id;
-				return Topics.findOne({ _id: currentList });
-				var currentCategory = this.params.category;
-				return Topics.findOne({ category: currentCategory });
-			}
-		});
-*/
+
 /* Here we still need to sort only the comments of this very topic */
 Template.commentfeed.helpers({
 	comments: function () {
@@ -260,7 +250,9 @@ Template.comment.helpers({
 	}
 });
 
+/*
 
+*/
 
 		/* Here are the events for the templates */
 		
