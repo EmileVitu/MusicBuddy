@@ -198,22 +198,22 @@ Template.newsfeed.helpers({
 });
 Template.general.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.instruments.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'Instruments'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.theory.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'Theory'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.buddybands.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+	return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 /*
@@ -330,7 +330,11 @@ Template.singleTopic.events({
 });
 
 
-
+Template.sidenav.events({
+	onclick: function (event) {
+		
+	}
+});
 
 
 
