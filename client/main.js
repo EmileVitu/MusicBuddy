@@ -57,6 +57,7 @@ Router.route('/NewTopic', {
 	template: 'newTopic'
 });
 		/* The route for the "search engine" page */
+/* Here should be the onkeyup */
 Router.route('/Search', {
 	name: 'search',
 	template: 'search'
@@ -215,7 +216,17 @@ Template.buddybands.helpers({
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
-
+/*
+		Router.go('/Search', {
+			template: 'search',
+			data: function(){
+				var currentList = this.params._id;
+				return Topics.findOne({ _id: currentList });
+				var currentCategory = this.params.category;
+				return Topics.findOne({ category: currentCategory });
+			}
+		});
+*/
 /* Here we still need to sort only the comments of this very topic */
 Template.commentfeed.helpers({
 	comments: function () {
@@ -308,8 +319,10 @@ Template.singleTopic.events({
 		// This event is for new-topic class given to the button
 	submit: function (event) {
 	  event.preventDefault();
+	  const target = event.target;
 	  var commentary = event.target.commentary.value;
 	  Meteor.call('addComment', this._id, commentary);
+	  target.commentary.value = '';
 	},
 			// Clear form
 	////alert('Your comment has been added!');

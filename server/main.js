@@ -55,7 +55,7 @@ Meteor.publish('comments', function() {
 })
 
 
-	/* The methods... */
+	/* The methods */
 Meteor.methods({
   resultNumber: function () {
         return Topics.find().count();
@@ -65,8 +65,8 @@ Meteor.methods({
 		//check(commentary, String);
 
 		if (!this.userId) {
-			throw new Meteor.Error(403, 'not-authorized');
 			alert('You must login first!');
+			throw new Meteor.Error(403, 'not-authorized');
 		}
 	Comments.insert({
 		commentary: commentary,
