@@ -15,6 +15,7 @@
 
 	<!-- First the layout template which will be used on all the pages -->
 <template name="layout">
+<div id="main">
 				<!-- The navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
@@ -47,32 +48,33 @@
 	  </div>
 	</nav>
 	{{> yield}}
+</div>
 </template>
 			<!-- End of the main navbar-->
 
-			<!-- Now to implement the sidebar -->
-<template name="sidenav">
-	<div id="mySidenav" class="sidenav">
-				<!-- First the close button, that will appear when mySidenav is active -->
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><p>&times; close</p></a>
+			<!-- Now to implement the sideNav -->
+<template name="sideNav">
+	<div id="mySideNav" class="sideNav">
+				<!-- First the close button, that will appear when mySideNav is active -->
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; close</a>
 				<!-- Now all the links for all the latest topics and modifications added by users -->
 				{{#each topics}}
-					<p>{{> sidenavTopic}}</p>
+					<p>{{> sideNavTopic}}</p>
 				{{/each}}
 <!-- Manque le infinite scroll plus la liste infinie !!!!! -->
 	</div>
-				<!-- End of the sidebar -->
+				<!-- End of the sideNav -->
 
 				<!-- now the span tag to open the navbar -->
 	<div>
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776; Latest topics</span>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776;</span>
 	</div> <!-- class="js-open-btn"-->
 		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
 </template>
 <!-- End of the layout template -->
 
 		<!-- The sindenav topic template -->
-<template name="sidenavTopic">
+<template name="sideNavTopic">
 	<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
 		<p><b>Title: </b>{{title}}</p>
 	</a>
@@ -91,7 +93,8 @@
 <template name="search">
 		<!-- Now the template for the latest changes done to the database -->
 	<div name="content" class="container">
-		<div class="searchPage main">
+<!--!!!!!!! Two classes ? !!!!!!!-->
+		<div class="searchPage mainPage">
 		<!-- Now to iterate every topics of the database by calling the topic template -->
 			<h1>Here are your search results!</h1>
 			<p>You have {{resultNumber}} results!</p>
@@ -112,7 +115,7 @@
 <!-- Now the template for the homepage -->
 <template name="home">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it and an Id for JS -->
-	<div id="main" class="mainpage">
+	<div class="mainPage">
 					<!-- First the Title -->
 			<h1>Welcome, Music Buddy!</h1>
 					<!-- Now some text -->
@@ -153,7 +156,7 @@
 		<hr class="solid">
 			<!-- and another title for the newsfeed below -->
 		<h1>Latest updated topics</h1>
-		<!-- And to end the div with the whole page (id=main) -->
+		<!-- And to end the div with the whole page -->
 	</div>
 				<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
 		{{> newsfeed}}
@@ -191,8 +194,8 @@
 
 <!-- Now to create the "general discussion" template! -->
 <template name="general">
-	{{>sidenav}}
-	<div id="main" class="mainpage">
+	{{>sideNav}}
+	<div class="mainPage">
 		<h1>General</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -221,8 +224,8 @@
 
 <!-- Now to create the "instruments discussion" template! -->
 <template name="instruments">
-	{{>sidenav}}
-	<div id="main" class="mainpage">
+	{{>sideNav}}
+	<div class="mainPage">
 		<h1>Instruments</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -248,8 +251,8 @@
 
 <!-- Now to create the "music theory" discussion template! -->
 <template name="theory">
-	{{>sidenav}}
-	<div id="main" class="mainpage">
+	{{>sideNav}}
+	<div class="mainPage">
 		<h1>Theory</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -275,8 +278,8 @@
 
 <!-- Now to create the "buddy bands" discussion template! -->
 <template name="buddybands">
-	{{>sidenav}}
-	<div id="main" class="mainpage">
+	{{>sideNav}}
+	<div class="mainPage">
 		<h1>BuddyBands</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -302,7 +305,8 @@
 
 <!-- Now to create the "new topic" template! -->
 <template name="newTopic">
-	<div id="main">
+<!-- !!!!!!! Do we really need two divs here ? !!!!!!! -->
+	<div class="mainPage">
 		<div class="createNewTopic">
 			<h1> Here you can create your new topic !</h1>
 		<!-- Here is the form to update the database linked to the JS client file -->
@@ -367,26 +371,28 @@
 
 <!-- Beginning of the singleTopic template that will be the same for every template created -->
 <template name="singleTopic">
-	{{>sidenav}}
-	<div id="main">
-		<h1>{{title}}</h1>
-		<hr class="solid">
-		<h3>{{category}}</h3>
-		<hr class="dashed">
+	{{>sideNav}}
+	<div class="mainPage">
+		<div>
+			<h1>{{title}}</h1>
+			<hr class="solid">
+			<h3>{{category}}</h3>
+			<hr class="dashed">
 <!-- This I think we'll be able to get out of here -->
-		{{> topic}}
-	</div>
+			{{> topic}}
+		</div>
 <!-- Here we will need each comment for this topic -->
 <!-- First of all the comment form -->
-	<form>
-		<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
-		<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
-		<button class="new-comment btn btn-info">Send!</button>
-	</form>
-	{{> commentfeed}}
+		<form>
+			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
+			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
+			<button class="new-comment btn btn-info">Send!</button>
+		</form>
+		{{> commentFeed}}
+	</div>
 </template>
 	<!-- Then the comment list -->
-<template name="commentfeed">
+<template name="commentFeed">
 	<div name="content" class="container">
 		<div class="updatedComments">
 		<!-- Now to iterate every topics of the database by calling the topic template -->

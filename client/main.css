@@ -3,122 +3,126 @@
 
 /* First for the layout template (the one that is for every page of the website) */
 		/* The navbar */
-	.welcomeUserItem{
-		text-align: center;
-	}
+.welcomeUserItem{
+	text-align: center;
+}
 /* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
-	.plus{
-	}
+.plus{
+}
 		/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
-	.accounts-dialog {
-		margin-top: 36px;
-		background: lavender;
-	}
+.accounts-dialog {
+	margin-top: 36px;
+	background: lavender;
+}
 		/* The side navigation menu attributes */
-	.sidenav {
-	  height: 100%; /* 100% Full-height */
-	  width: 0; /* 0 width - change this with JavaScript */
-	  position: fixed; /* Stay in place */
-	  z-index: 1; /* Stay on top */
-	  top: 0; /* Stay at the top */
-	  left: 0;
-	  background-color: #111; /* Black*/
-	  overflow-x: hidden; /* Disable horizontal scroll */
-	  padding-top: 60px; /* (hen sidebar open)Place content 60px from the top */
-	  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-	}
+.sideNav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* (hen sideNav open)Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sideNav */
+}
 		/* The navigation menu links */
-	.sidenav a {
-	  padding: 8px 8px 8px 32px;
-	  text-decoration: none;
-	  font-size: 25px;
-	  color: #818181;
-	  display: block;
-	  transition: 0.3s;
-	}
+.sideNav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
 		/* The links hovering attributes */
-	.sidenav a:hover {
-	  color: #f1f1f1;
-	}
-		/* The text of the sidenav attributes */
-	.sidenav p {
-	  padding: 2px 2px 2px 6px;
-	  text-decoration: none;
-	  font-size: 16px;
-	  color: #818181;
-	  display: block;
-	}
+.sideNav a:hover {
+  color: #f1f1f1;
+}
+		/* The text of the sideNav attributes */
+.sideNav p {
+  padding: 2px 2px 2px 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+}
 		/* Position and style of the close button (top right corner) */
-	.sidenav .closebtn {
-	  position: absolute;
-	  padding-top: 40px;
-	  right: 25px;
-	  font-size: 36px;
-	  margin-left: 50px;
-	  z-index: 3;
-	}
+.sideNav .closebtn {
+  position: absolute;
+  padding-top: 40px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  z-index: 3;
+}
 		/* The styles for the open button */
-	.openbtn{
-		padding-top: 50px; /* This is to avoid an overlap with the navbar */
-		position: fixed; /* This is for the button to stay even while scrolling down */
-		z-index: 2;
-	}
+.openbtn{
+	padding-top: 50px; /* This is to avoid an overlap with the navbar */
+	position: fixed; /* This is for the button to stay even while scrolling down */
+	z-index: 2;
+	height: 100%;
+	background-color: #222;
+	border-color: #080808;
+	color: white;
+}
 
 
 /* Now the class attributes for the main page (home route) */
 		/* This is for all the banners of the main pages */
-	#main {
-		transition: margin-left .5s;
-		text-align: center;
-		padding-top: 45px;
-		position: float;
-		height: 100%;
-		z-index: 1;
-	}
+.mainPage {
+	transition: margin-left .5s;
+	text-align: center;
+	padding-top: 45px;
+	position: float;
+	height: 100%;
+	z-index: 1;
+}
 
 	
 /* Now the styles for the home page */
 		/* Styles for the Home fixed  banner */
-	.column {
-	  float: left;
-	}
+.column {
+  float: left;
+}
 		/* Styles for the containers */
-	.grid-container {
-		/* first to add the margin the size of the sidebar */
-	  margin-left: 0px;
-		/* then the general settings */
-	  display: grid;
-	  grid-column-gap: 100px;
-		/* now to put the number of columns */
-	  grid-template-columns: auto auto auto auto;
-	  /* background-color: #2196F3; */
-	  /* padding: 10px; */
-	}
+.grid-container {
+	/* first to add the margin the size of the sideNav */
+  margin-left: 0px;
+	/* then the general settings */
+  display: grid;
+  grid-column-gap: 100px;
+	/* now to put the number of columns */
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196F3; */
+  /* padding: 10px; */
+}
 		/* Styles for the items */
-	.grid-item {
-	  /*background-color: rgba(255, 255, 255, 0.8);
-	  border: 1px solid rgba(0, 0, 0, 0.8);
-	  padding: 20px; */
-	  font-size: 20px;
-	  text-align: center;
-	}
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px; */
+  font-size: 20px;
+  text-align: center;
+}
 	/* Now we need to style the newsfeed scrolling bottom of the home route */
 		/* Now styles for the newsfeed */
-	.newsfeed{
-		font-size: 15px;
-		color: #2106F3;
-	}
+.newsfeed{
+	font-size: 15px;
+	color: #2106F3;
+}
 		/* Now we want to have the topics list to be scrolled down in another entity */
-	.updatedTopics{
-		height: 67vh;
-		margin-top: 0vh;
-		text-align: center;
-	}
+.updatedTopics{
+	height: 67vh;
+	margin-top: 0vh;
+	text-align: center;
+}
 		/* Now we need to format the unordered list separately from the title */
-	ul {
-		text-align: left;
-		list-style-position: center-left;
-	}
+ul {
+	text-align: left;
+	list-style-position: center-left;
+}
 	/* Now the styles for the separators */
 		/* First the one separating the home text from the choice columns */
 hr.dashed {
@@ -160,7 +164,11 @@ hr.dotted {
 	text-align: center;
 }
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
-	@media screen and (max-height: 450px) {
-		.sidenav {padding-top: 15px;}
-		.sidenav a {font-size: 18px;}
-	}
+@media screen and (max-height: 450px) {
+	.sideNav {
+		padding-top: 15px;
+		}
+	.sideNav a {
+		font-size: 18px;
+		}
+}

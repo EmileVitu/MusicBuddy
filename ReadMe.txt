@@ -41,7 +41,7 @@ This site features :
 - the user chooses a title for the topic, a description of what the topic is about, and the user must choose a category to assign his new topic
 - below, a quick reminder of all the 4 main categories and what their subject is about
 - when clicking the create button, if the user is not authenticated, an alert message pops up, saying the user must login to contribute
-- if logged in, when clicking the create button, the single topic page is rendered with his new topic
+- if logged in, when clicking the create button, the topic is inserted in the database the single topic page is rendered with his new topic
 
 ## SingleTopic
 - this route is associated with any topic title a user clicks

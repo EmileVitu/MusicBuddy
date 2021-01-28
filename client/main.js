@@ -24,49 +24,48 @@ Meteor.subscribe('comments');
 Meteor.subscribe('search');
 
 
-	/* Now the routing for all the tabs of my navbar */
-		/* The route for the "layout" template */
+		/* Now the routing for all the tabs of my navbar */
+	/* The route for the "layout" template */
 Router.configure({
   layoutTemplate: 'layout'
 });
-		/* The route for the "homepage" */
+	/* The route for the "homepage" */
 Router.route('/', {
   name: 'home',
   template: 'home'
 });
-		/* The route for the "general" discussions */
+	/* The route for the "general" discussions */
 Router.route('/General', {
 	name: 'general',
 	template: 'general'
 });
-		/* The route for the "instruments" discussion */
+	/* The route for the "instruments" discussion */
 Router.route('/Instruments', {
   name: 'instruments',
   template: 'instruments'
 });
-		/* The route for the "music theory" discussions */
+	/* The route for the "music theory" discussions */
 Router.route('/Theory', {
   name: 'theory',
   template: 'theory'
 });
-		/* The route for the "Buddy bands" meetup */
+	/* The route for the "Buddy bands" meetup */
 Router.route('/BuddyBands', {
   name: 'buddybands',
   template: 'buddybands'
 });
-		/* The route for the "New topic!" page */
+	/* The route for the "New topic!" page */
 Router.route('/NewTopic', {
 	name: 'newTopic',
 	template: 'newTopic'
 });
-		/* The route for the "search engine" page */
+	/* The route for the "search engine" page */
 /* Here should be the onkeyup */
 Router.route('/Search', {
 	name: 'search',
 	template: 'search'
 });
-		/* This is the route that will be rendered for each topic link that a user clicks */
-	/* Still missing the category to assign instead of the 'topic' like '/category/:_id */
+	/* This is the route that will be rendered for each topic link that a user clicks */
 Router.route('/:category/:_id', {
 	name: 'singleTopic',
 	template: 'singleTopic',
@@ -78,42 +77,41 @@ Router.route('/:category/:_id', {
     }
 });
 
-				/* Now the code for the routed pages */
+			/* Now the code for the routed pages */
 
 		/* Code for the layout template */
-	/* The navbar */
-		/* Now about the login buttons, to add a username to the sign in form */
+		/* The navbar */
+	/* Now about the login buttons, to add a username to the sign in form */
 Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
-	/* The sidebar */
-/* This should have worked, I'll have to repair it later */
-/*Template.layout.event({
-	"click.js-open-btn":function(event){alert('Hello!')
-		document.getElementById("mySidenav").style.width = "250px";
+
+		/* The sideNav */
+/* This should have worked, I'll have to repair it later 
+Template.sideNav.events({
+	"click.openNav":function(event){
+		alert('Hello!')
+		document.getElementById("mySideNav").style.width = "250px";
 		document.getElementById("main").style.marginLeft = "250px";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 }); */
-	/*First to rename the function names */
+	/* First to rename the function names */
 window.openNav = openNav;
 window.closeNav = closeNav;
-	/* Now the openNav function */ 
+	/* Now the openNav function */
 function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-	document.getElementById("main").style.marginLeft = "250px";
-	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-
+	document.getElementById('mySideNav').style.width = '250px';
+	document.getElementById('main').style.marginLeft = '250px';
+	document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
 }
- 	/*Now the closeNav Function */
+ 	/* Now the closeNav Function */
 function closeNav() {
-	document.getElementById("mySidenav").style.width = "0px";
-	document.getElementById("main").style.marginLeft = "0px";
-	document.body.style.backgroundColor = "white";
+	document.getElementById('mySideNav').style.width = '0px';
+	document.getElementById('main').style.marginLeft = '0px';
+	document.body.style.backgroundColor = 'white';
 }
 
-
-			/* Here is the infinite scroll code */
-		
-		/* For the topics lists */	
+		/* Here is the infinite scroll code */
+	/* For the topics lists */	
 Session.set("topicLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -129,7 +127,7 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
   lastScrollTop = scrollTop;
   }
 })
-		/* For the comments lists */
+	/* For the comments lists */
 Session.set("commentLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -147,12 +145,12 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 })
 
 
-
+//document.querySelector(".uiScrollableAreaWrap").scrollTop=100;
 
 		/* And now the helpers of the webpage */
 		
-	/*The first one for the layout, to have the infinite scroll in the sidenav */
-Template.sidenav.helpers({
+	/*The first one for the layout, to have the infinite scroll in the sideNav */
+Template.sideNav.helpers({
     topics(){
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")});
 	}
@@ -220,21 +218,8 @@ Template.buddybands.helpers({
 	}
 });
 
-
-
-/*
-		Router.go('/Search', {
-			template: 'search',
-			data: function(){
-				var currentList = this.params._id;
-				return Topics.findOne({ _id: currentList });
-				var currentCategory = this.params.category;
-				return Topics.findOne({ category: currentCategory });
-			}
-		});
-*/
-/* Here we still need to sort only the comments of this very topic */
-Template.commentfeed.helpers({
+	/* The helper for the commentFeed template */
+Template.commentFeed.helpers({
 	comments: function () {
 	  selector = {topicId: this._id};
 	  options = {sort: {createdAt: -1}};
@@ -276,53 +261,7 @@ Template.layout.events({
 		Session.set('search/keyword', event.target.value);
 	}
 });
-	/* Now the event for adding data in the topics collection 
-Template.newTopic.events({
-		/* This event is for new-topic class given to the button 
-    'submit.new-topic'(event) {
-			/* Prevent default browser form submit 
-		event.preventDefault();
-			/* Get value from form element 
-		const target = event.target;
-		const title = target.title.value;
-		const description = target.description.value;
-		const category = target.category.value;
-			/* Insert a topic into the collection only if the user is logged in 
-		if(Meteor.user()){
-			Topics.insert({
-							title,
-							category,
-							createdBy: Meteor.user()._id,
-							createdAt: new Date(),
-							description,
-			});
-		}
-		else{alert('You must log in to create a topic!');
-		return false
-		};
-			/* Clear form if topic created 
-		target.title.value = '';
-		target.description.value = '';
-		alert('Your topic has been created!');
-		Router.go('/:category/:_id');
-	}
-});
 
-
-
-
-
-/*
-Router.route('/:category/:_id', {
-	template: 'singleTopic',
-	data: function(){
-		var currentList = this.params._id;
-		return Topics.findOne({ _id: currentList });
-		var currentCategory = this.params.category;
-		return Topics.findOne({ category: currentCategory });
-    }
-});
-*/
 	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
 	submit: function (event) {
@@ -336,17 +275,6 @@ Template.singleTopic.events({
 	////alert('Your comment has been added!');
     //}
 });
-
-/*
-Template.sidenav.events({
-	onclick: function (event) {
-		
-	}
-});
-
-*/
-
-
 
 Template.newTopic.events({
 	submit: function (event) {
@@ -367,13 +295,17 @@ Template.newTopic.events({
 
 
 
+
+
+
+
+
+
 /*
-Template.commentfeed.helpers({
-	comments: function () {
-	  selector = {topicId: this._id};
-	  options = {sort: {createdAt: -1}};
-	  return Comments.find(selector, options);
-	},
+Template.sideNav.events({
+	onclick: function (event) {
+		
+	}
 });
 
 */
@@ -392,9 +324,4 @@ Template.commentfeed.helpers({
 
 
 
-
 /* Here ends the code for MusicBuddy */
-
-
-
-
