@@ -75,11 +75,16 @@
 	transition: margin-left .5s;
 	text-align: center;
 	padding-top: 45px;
-	position: float;
-	height: 100%;
+	margin-bottom: 45%;
+	position: fixed;
 	z-index: 1;
 }
-
+.scrollingPart {
+padding-top: 55vh;
+z-index: -1;
+}
+.updatedTopics{
+}
 	
 /* Now the styles for the home page */
 		/* Styles for the Home fixed  banner */
@@ -113,11 +118,7 @@
 	color: #2106F3;
 }
 		/* Now we want to have the topics list to be scrolled down in another entity */
-.updatedTopics{
-	height: 67vh;
-	margin-top: 0vh;
-	text-align: center;
-}
+
 		/* Now we need to format the unordered list separately from the title */
 ul {
 	text-align: left;

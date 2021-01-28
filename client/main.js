@@ -111,7 +111,7 @@ function closeNav() {
 }
 
 		/* Here is the infinite scroll code */
-	/* For the topics lists */	
+	/* For the topics lists *
 Session.set("topicLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -127,7 +127,7 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
   lastScrollTop = scrollTop;
   }
 })
-	/* For the comments lists */
+	/* For the comments lists 
 Session.set("commentLimit", 8);
 lastScrollTop = 0; 
 $(window).scroll(function(event){
@@ -143,6 +143,28 @@ if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
   lastScrollTop = scrollTop;
   }
 })
+*/
+
+document.addEventListener("scroll", function (event) {
+    feedTopics();
+});
+Session.set("topicLimit", 8);
+var feedTopics = function () {
+    var lastDivOffset = document.getElementsByClassName('.scrollingPart').scrollTop=100;;
+    var pageOffset = window.pageYOffset + window.innerHeight;
+
+    if (pageOffset > lastDivOffset - 10) {
+		Session.set("topicLimit", Session.get("topicLimit") + 4);
+	}
+}
+feedTopics();
+
+
+
+
+
+
+
 
 
 //document.querySelector(".uiScrollableAreaWrap").scrollTop=100;

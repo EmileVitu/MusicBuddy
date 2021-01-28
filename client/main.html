@@ -159,7 +159,9 @@
 		<!-- And to end the div with the whole page -->
 	</div>
 				<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
+	<div class="scrollingPart">
 		{{> newsfeed}}
+	</div>
 </template>
 <!-- End of the "home" template -->
 
@@ -167,11 +169,11 @@
 <template name="newsfeed">
 		<!-- Now the template for the latest changes done to the database -->
 	<div name="content" class="container">
-		<div id="newsfeedscroll" class="updatedTopics">
+		<div class="updatedTopics">
 		<!-- Now to iterate every topics of the database by calling the topic template -->
 			<ul>
 				{{#each topics}}
-					{{> topic}}
+				<div>{{> topic}}</div>
 				{{/each}}
 			</ul>
 		</div>
