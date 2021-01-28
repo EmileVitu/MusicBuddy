@@ -65,18 +65,73 @@ Meteor.methods({
 		//check(commentary, String);
 
 		if (!this.userId) {
-			alert('You must login first!');
+			//alert('You must login first!');
 			throw new Meteor.Error(403, 'not-authorized');
 		}
-	Comments.insert({
-		commentary: commentary,
-		createdAt: new Date(),
-		owner: this.userId,
-		username: Meteor.user().username,
-		topicId: topicId
-  });
-}
+		Comments.insert({
+			commentary: commentary,
+			createdAt: new Date(),
+			createdBy: this.userId,
+			createdBy: Meteor.user().username,
+			topicId: topicId
+		});
+	},
+	addTopic: function (topicId, title, description, category) {
+		//check(topicId, String);
+		//check(commentary, String);
+
+		if (!this.userId) {
+			throw new Meteor.Error(403, 'not-authorized');
+		}
+		var newId = Topics.insert({
+					title: title,
+					category: category,
+					description: description,
+					createdAt: new Date(),
+					createdBy: this.userId,
+					username: Meteor.user().username,
+					topicId: topicId
+		});
+		return newId;
+	}
 });
+
+
+
+/*
+check meteor.user().username or .-id
+			Topics.insert({
+							title,
+							category,
+							createdBy: Meteor.user()._id,
+							createdAt: new Date(),
+							description,
+			});
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Here ends the server code for MusicBuddy */

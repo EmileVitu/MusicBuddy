@@ -68,16 +68,16 @@ Router.route('/Search', {
 		/* This is the route that will be rendered for each topic link that a user clicks */
 	/* Still missing the category to assign instead of the 'topic' like '/category/:_id */
 Router.route('/:category/:_id', {
+	name: 'singleTopic',
 	template: 'singleTopic',
 	data: function(){
-		var currentList = this.params._id;
-		return Topics.findOne({ _id: currentList });
+		var currentTopic = this.params._id;
+		return Topics.findOne({ _id: currentTopic });
 		var currentCategory = this.params.category;
 		return Topics.findOne({ category: currentCategory });
     }
 });
 
-	
 				/* Now the code for the routed pages */
 
 		/* Code for the layout template */
@@ -276,19 +276,20 @@ Template.layout.events({
 		Session.set('search/keyword', event.target.value);
 	}
 });
-	/* Now the event for adding data in the topics collection */
+	/* Now the event for adding data in the topics collection 
 Template.newTopic.events({
-		/* This event is for new-topic class given to the button */
+		/* This event is for new-topic class given to the button 
     'submit.new-topic'(event) {
-			/* Prevent default browser form submit */
+			/* Prevent default browser form submit 
 		event.preventDefault();
-			/* Get value from form element */
+			/* Get value from form element 
 		const target = event.target;
 		const title = target.title.value;
 		const description = target.description.value;
 		const category = target.category.value;
-			/* Insert a topic into the collection only if the user is logged in */
-		if(Meteor.user()){Topics.insert({
+			/* Insert a topic into the collection only if the user is logged in 
+		if(Meteor.user()){
+			Topics.insert({
 							title,
 							category,
 							createdBy: Meteor.user()._id,
@@ -299,18 +300,28 @@ Template.newTopic.events({
 		else{alert('You must log in to create a topic!');
 		return false
 		};
-			/* Clear form if topic created */
+			/* Clear form if topic created 
 		target.title.value = '';
 		target.description.value = '';
 		alert('Your topic has been created!');
-			/* Now we need to send the user to his new topic page using routes */
-/* Still missing the correct adress but it is going better */
-
+		Router.go('/:category/:_id');
+	}
 });
 
 
+
+
+
 /*
-qdzdefzazqfd
+Router.route('/:category/:_id', {
+	template: 'singleTopic',
+	data: function(){
+		var currentList = this.params._id;
+		return Topics.findOne({ _id: currentList });
+		var currentCategory = this.params.category;
+		return Topics.findOne({ category: currentCategory });
+    }
+});
 */
 	/* And the event to add data in the comments collection */
 Template.singleTopic.events({
@@ -337,11 +348,35 @@ Template.sidenav.events({
 
 
 
+Template.newTopic.events({
+	submit: function (event) {
+		event.preventDefault();
+			const target = event.target;
+			const title = event.target.title.value;
+			const description = event.target.description.value;
+			const category = event.target.category.value;
+		Meteor.call('addTopic', this._id, title, description, category, function(error, result){
+			var idResult = Topics.findOne({ _id: result });
+					alert('Your topic has been created!');
+			Router.go('singleTopic', {category: idResult.category, _id: idResult._id});
+			});
+		target.title.value = '';
+		target.description.value = '';
+	}
+});
 
 
 
+/*
+Template.commentfeed.helpers({
+	comments: function () {
+	  selector = {topicId: this._id};
+	  options = {sort: {createdAt: -1}};
+	  return Comments.find(selector, options);
+	},
+});
 
-
+*/
 
 
 
