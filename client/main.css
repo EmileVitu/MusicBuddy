@@ -47,68 +47,33 @@
 
 
 
-.scrollingPartSearchPage {
-	z-index: -1;
-	overflow-y:scroll;
-	position: fixed;
-	height: 83vh;
-	width: 80%;
-	margin-top: 17vh;
-	margin-left: 10%;
-}
-
-.mainSearchPage {
-	transition: margin-left .5s;
-	text-align: center;
-	padding-top: 45px;
-	margin-bottom: 90vh;
-	z-index: 1;
-	position: fixed;
-	width: 100%;
-}
-/* Now the styles for the grid */
-.column {
-  float: left;
-}
-	/* Styles for the containers */
-.grid-container {
-	/* first to add the margin the size of the sideNav */
-  margin-left: 0px;
-	/* then the general settings */
-  display: grid;
-  grid-column-gap: 100px;
-	/* now to put the number of columns */
-  grid-template-columns: auto auto auto auto;
-  /* background-color: #2196F3; */
-  /* padding: 10px; */
+		/* Now the styles for the grids */
+	/* Styles for the general grids */
+.gridContainer {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	column-gap: 1%;
+/* must put a certain height to add to the others and fit 100% */
 }
 	/* Styles for the items */
-.grid-item {
+.gridItem {
   /*background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px; */
+  border: 1px solid rgba(0, 0, 0, 0.8); */
   font-size: 20px;
-  text-align: center;
 }
 
 
 
-
-		/* Now we need to format the unordered list separately from the title */
-ul {
-	text-align: left;
-	list-style-position: center-left;
-}
-	/* Now the styles for the separators */
-		/* First the one separating the home text from the choice columns */
+		/* Now the styles for the separators */
+	/* First the one separating the home text from the choice columns */
 hr.dashed {
   border-top: 3px dashed #bbb;
 }
-		/* Then the one separating "main" and "newsfeed" */
+	/* Then the one separating "main" and "newsfeed" */
 hr.solid {
   border-top: 3px solid #bbb;
 }
-		/* Finally the one to separate each topic entry in the newsfeed */
+	/* Finally the one to separate each topic entry in the newsfeed */
 hr.dotted {
   border-top: 3px dotted #bbb;
 }
@@ -183,6 +148,13 @@ hr.dotted {
 	border-color: #080808;
 	color: white;
 }
+
+
+
+
+
+
+
 
 
 

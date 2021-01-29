@@ -41,7 +41,7 @@ This site features :
 - the user chooses a title for the topic, a description of what the topic is about, and the user must choose a category to assign his new topic
 - below, a quick reminder of all the 4 main categories and what their subject is about
 - when clicking the create button, if the user is not authenticated, an alert message pops up, saying the user must login to contribute
-- if logged in, when clicking the create button, the topic is inserted in the database the single topic page is rendered with his new topic
+- if logged in, when clicking the create button, the topic is inserted in the database and the single topic page is rendered with his new topic with a callback function assigning the new server database Id
 
 ## SingleTopic
 - this route is associated with any topic title a user clicks
@@ -58,7 +58,18 @@ This site features :
 
 
 
+# Styles
 
+## Main layout
+Tha main layout consists only of the navbar, and probably soon the background fixed image
+It also fits all the content of the rendered routes in a div with a 'main' id to ensure that the openNav and closeNav functions work, whenever the sidenav is displayed in the window
+
+## Main routes : 
+Each main route has the main layout, and two main divs :
+- one top div with the class 'fixedPart' that consists of a fixed header describing what happens on the page
+- one bottom div with the class 'scrollingPart' that consists of the list of topics or comments found on that page
+- each bottom div also has a subclass (there is four of them) that defines the height and the top margin of the scrollable part
+Only the 'newTopic' route doesn't have a scrollable part.  
 
 
 
