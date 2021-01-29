@@ -168,47 +168,30 @@ function closeNav() {
 
 
 
-		/* And now the helpers of the webpage */
-		
-	/*The first one for the layout, to have the infinite scroll in the sideNav */
-Template.sideNav.helpers({
-    topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")});
-	}
-});
-/* Now the helper for the search template for the searchbar */
+		/* And now the helpers of the routed templates */
+	/* Now the helper for the search template for the searchbar */
 Template.search.helpers({
 	topics(){
-		  var regexp = new RegExp(Session.get('search/keyword'), 'i');
-		  return Topics.find({title: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-		  return Topics.find({category: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-		  return Topics.find({description: regexp}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
-		  var resultNumber = Topics.find().count();
-		  return resultNumber;
+		var regexp = new RegExp(Session.get('search/keyword'), 'i');
+		var result = Topics.find({$or: [{title: regexp}, {category: regexp}, {description: regexp}]}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return result;
 	},
-	/*searchCount:function(topics){
-		var resultCount = Topics.find({}).count();
+	resultCount: function(topics){
+		var regexp = new RegExp(Session.get('search/keyword'), 'i');
+		var resultCount = Topics.find({$or: [{title: regexp}, {category: regexp}, {description: regexp}]}, {sort:{createdAt: -1}}).count(); 
 		if (resultCount>0){
 			return resultCount;
 		}
 		else {
 			return 'no';
 		}
-	},*/
-	/*resultNumber: function() {
-    Meteor.call("resultNumber", function(err, res){
-     if(!err){Session.set("resultNumber", res)};
-    });
-    return Session.get("resultNumber");
-    },*/
-	getUser:function(user_id){
-	var user = Meteor.users.findOne({_id:user_id});
-	if (user){
-		return user.username;
-	}
-	else {
-		return "anonymous";
-	  }
+		console.log(resultCount);
+	},
+});		
+	/*The first one for the layout, to have the infinite scroll in the sideNav */
+Template.sideNav.helpers({
+    topics(){
+	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')});
 	}
 });
 	/* This helper is for the newsfeed template in the home page */
@@ -238,7 +221,6 @@ Template.buddybands.helpers({
 	return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
-
 	/* The helper for the commentFeed template */
 Template.commentFeed.helpers({
 	comments: function () {
@@ -276,27 +258,13 @@ Template.comment.helpers({
 
 		/* Here are the events for the templates */
 		
-	/* First the template for the searchbar event */
+	/* First the keyup responsive event for the searchTool */
 Template.layout.events({
 	'keyup #search': function(event){
 		Session.set('search/keyword', event.target.value);
 	}
 });
-
-	/* And the event to add data in the comments collection */
-Template.singleTopic.events({
-	submit: function (event) {
-	  event.preventDefault();
-	  const target = event.target;
-	  var commentary = event.target.commentary.value;
-	  Meteor.call('addComment', this._id, commentary);
-	  target.commentary.value = '';
-	},
-			// Clear form
-	////alert('Your comment has been added!');
-    //}
-});
-
+	/* And the event to add data in the topics collection also using a meteor method for security */
 Template.newTopic.events({
 	submit: function (event) {
 		event.preventDefault();
@@ -313,6 +281,24 @@ Template.newTopic.events({
 		target.description.value = '';
 	}
 });
+	/* Now the event to add data in the comments collection using a meteor method for security */
+Template.singleTopic.events({
+	submit: function (event) {
+	  event.preventDefault();
+	  const target = event.target;
+	  var commentary = event.target.commentary.value;
+	  Meteor.call('addComment', this._id, commentary);
+	  target.commentary.value = '';
+	},
+			// Clear form
+	////alert('Your comment has been added!');
+    //}
+});
+
+
+
+
+
 
 
 
