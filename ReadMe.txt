@@ -55,7 +55,11 @@ This site features :
 
 # Features
 
-
+## Infinite scroll
+In order to avoid querying the whole collections each time I render a page, using Session.set, I have set the topic limit and the comment limit to 8 while the helpers go and make their find') query on the server. 
+Then, I created two function that changes the topic limit and comment limit every time the scroll bar reaches the bottom, adding 4 to the current session number of items. 
+Finally, in order to reset the topic limit and comment limit on each route, I applied these function to their respective template helpers using Template.templateName.onRendered(). 
+Indeed, if a user scrolled to the bottom and loaded every database item on a route, when switching to another route, the session.set topic limit or comment limit would stay the same, so I needed to reset on every rendered route, making the website faster and more responsive. 
 
 
 # Styles
