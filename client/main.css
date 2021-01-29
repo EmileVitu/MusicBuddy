@@ -1,19 +1,135 @@
-/* Here we have all the css attributes for MusicBuddy */
+/* CSS styles for MusicBuddy */
 
 
-/* First for the layout template (the one that is for every page of the website) */
-		/* The navbar */
-.welcomeUserItem{
+
+			/* Now the class attributes for the global routes */
+		/* First the two main classes in each route template */
+	/* The fixed div : header */
+/* !!!!!!! must put everything in % or in vh !!!! This is for all the banners of the main pages */
+.fixedPart {
+	transition: margin-left .5s;
 	text-align: center;
+	padding-top: 2%;
+	position: fixed;
+	width: 100%;
 }
-/* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
-.plus{
+	/* The scrolling div : topic or comment list */
+.scrollingPart {
+/* ! Overflow works with height ! */
+	overflow-y:scroll;
+	position: fixed;
+	width: 80%;
+	margin-left: 10%;
 }
-		/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
+
+		/* Now the sub-classes for each srolling div */
+	/* For the home template */
+.homeScroll {
+	height: 45vh;
+	margin-top: 55vh;	
+}
+	/* For the 4 main category templates */
+.tabScroll {
+	height: 70%;
+	margin-top: 30vh;
+}
+	/* For the singleTopic template */
+.singleTopicScroll {
+	height: 37%;
+	margin-top: 63vh;
+}
+	/* For the searh template */
+.searchScroll {
+	height: 83%;
+	margin-top: 17vh;
+}
+		/* End of the global templates styles */
+
+
+
+.scrollingPartSearchPage {
+	z-index: -1;
+	overflow-y:scroll;
+	position: fixed;
+	height: 83vh;
+	width: 80%;
+	margin-top: 17vh;
+	margin-left: 10%;
+}
+
+.mainSearchPage {
+	transition: margin-left .5s;
+	text-align: center;
+	padding-top: 45px;
+	margin-bottom: 90vh;
+	z-index: 1;
+	position: fixed;
+	width: 100%;
+}
+/* Now the styles for the grid */
+.column {
+  float: left;
+}
+	/* Styles for the containers */
+.grid-container {
+	/* first to add the margin the size of the sideNav */
+  margin-left: 0px;
+	/* then the general settings */
+  display: grid;
+  grid-column-gap: 100px;
+	/* now to put the number of columns */
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196F3; */
+  /* padding: 10px; */
+}
+	/* Styles for the items */
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px; */
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
+
+		/* Now we need to format the unordered list separately from the title */
+ul {
+	text-align: left;
+	list-style-position: center-left;
+}
+	/* Now the styles for the separators */
+		/* First the one separating the home text from the choice columns */
+hr.dashed {
+  border-top: 3px dashed #bbb;
+}
+		/* Then the one separating "main" and "newsfeed" */
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+		/* Finally the one to separate each topic entry in the newsfeed */
+hr.dotted {
+  border-top: 3px dotted #bbb;
+}
+
+
+
+
+
+
+
+
+	/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
 .accounts-dialog {
 	margin-top: 36px;
 	background: lavender;
 }
+
+
+
+
+
 		/* The side navigation menu attributes */
 .sideNav {
   height: 100%; /* 100% Full-height */
@@ -69,100 +185,20 @@
 }
 
 
-/* Now the class attributes for the main page (home route) */
-		/* This is for all the banners of the main pages */
-.mainPage {
-	transition: margin-left .5s;
-	text-align: center;
-	padding-top: 45px;
-	margin-bottom: 45%;
-	position: fixed;
-	z-index: 1;
-}
-.scrollingPart {
-padding-top: 55vh;
-z-index: -1;
-}
-.updatedTopics{
-}
-	
-/* Now the styles for the home page */
-		/* Styles for the Home fixed  banner */
-.column {
-  float: left;
-}
-		/* Styles for the containers */
-.grid-container {
-	/* first to add the margin the size of the sideNav */
-  margin-left: 0px;
-	/* then the general settings */
-  display: grid;
-  grid-column-gap: 100px;
-	/* now to put the number of columns */
-  grid-template-columns: auto auto auto auto;
-  /* background-color: #2196F3; */
-  /* padding: 10px; */
-}
-		/* Styles for the items */
-.grid-item {
-  /*background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px; */
-  font-size: 20px;
-  text-align: center;
-}
-	/* Now we need to style the newsfeed scrolling bottom of the home route */
-		/* Now styles for the newsfeed */
-.newsfeed{
-	font-size: 15px;
-	color: #2106F3;
-}
-		/* Now we want to have the topics list to be scrolled down in another entity */
 
-		/* Now we need to format the unordered list separately from the title */
-ul {
-	text-align: left;
-	list-style-position: center-left;
-}
-	/* Now the styles for the separators */
-		/* First the one separating the home text from the choice columns */
-hr.dashed {
-  border-top: 3px dashed #bbb;
-}
-		/* Then the one separating "main" and "newsfeed" */
-hr.solid {
-  border-top: 3px solid #bbb;
-}
-		/* Finally the one to separate each topic entry in the newsfeed */
-hr.dotted {
-  border-top: 3px dotted #bbb;
-}
 
-	/* Now the styles for the 5 other main pages */
-		/* First we want to have the topics list to be scrolled down in another entity like in the home page but with more length */
-.searchPage{
-	padding-top: 45px;
-	text-align: center;
-}
 
-.updatedTopics2{
-	height: 67vh;
-	margin-top: 0vh;
-	text-align: center;
-}
 
-.updateComments{
-	height: 67vh;
-	margin-top: 0vh;
-	text-align: center;
-}
 
-/* Now the styles for the New Topic page */
-.createNewTopic{
-	margin-top: 50px;
+
+/*!!!!!!!!!!!!!!!!!!*/
+/* Here we have all this to go through */
+/*!!!!!!!!!!!!!!!!!!*/
+		/* The navbar */
+.welcomeUserItem{
 }
-.topic-content{
-	text-align: center;
+/* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
+.plus{
 }
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 @media screen and (max-height: 450px) {
@@ -173,3 +209,10 @@ hr.dotted {
 		font-size: 18px;
 		}
 }
+
+
+
+
+
+
+/* End of the CSS styles for MusicBuddy */

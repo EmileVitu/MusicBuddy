@@ -23,7 +23,7 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
 			</div>
-				<!-- Now the links for the five main music-related discussion pages-->
+				<!-- Now the links for the four category routes pages-->
 			<ul class="nav navbar-nav">
 				<li><a href="/General">General</a></li>
 				<li><a href="/Instruments">Instruments</a></li>
@@ -50,7 +50,7 @@
 	{{> yield}}
 </div>
 </template>
-			<!-- End of the main navbar-->
+			<!-- End of the navbar-->
 
 			<!-- Now to implement the sideNav -->
 <template name="sideNav">
@@ -92,20 +92,20 @@
 <!-- Now to create the template for the search engine --> 
 <template name="search">
 		<!-- Now the template for the latest changes done to the database -->
-	<div name="content" class="container">
 <!--!!!!!!! Two classes ? !!!!!!!-->
-		<div class="searchPage mainPage">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<h1>Here are your search results!</h1>
-			<p>You have {{resultNumber}} results!</p>
-		<!-- A separator to separate the homepage to the newsfeed (check css too) -->
-			<hr class="solid">
-			<ul>
-				{{#each topics}}
-					{{>topic}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="fixedPart">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<h1>Here are your search results!</h1>
+		<p>You have {{resultNumber}} results!</p>
+	<!-- A separator to separate the homepage to the newsfeed (check css too) -->
+		<hr class="solid">
+	</div>
+	<div class="scrollingPart searchScroll">
+		<ul>
+			{{#each topics}}
+				{{>topic}}
+			{{/each}}
+		</ul>
 	</div>
 		<!-- End of the news feed -->
 </template>
@@ -115,7 +115,7 @@
 <!-- Now the template for the homepage -->
 <template name="home">
 				<!-- In a first thing I will put everything in one div in order to assign a class to style it and an Id for JS -->
-	<div class="mainPage">
+	<div class="fixedPart">
 					<!-- First the Title -->
 			<h1>Welcome, Music Buddy!</h1>
 					<!-- Now some text -->
@@ -158,8 +158,9 @@
 		<h1>Latest updated topics</h1>
 		<!-- And to end the div with the whole page -->
 	</div>
+
 				<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
-	<div class="scrollingPart">
+	<div class="scrollingPart homeScroll">
 		{{> newsfeed}}
 	</div>
 </template>
@@ -167,18 +168,14 @@
 
 <!-- Now to create the template for the newsfeed of the homepage --> 
 <template name="newsfeed">
-		<!-- Now the template for the latest changes done to the database -->
-	<div name="content" class="container">
-		<div class="updatedTopics">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each topics}}
-				<div>{{> topic}}</div>
-				{{/each}}
-			</ul>
-		</div>
-	</div>
-		<!-- End of the news feed -->
+	<!-- Now the template for the latest changes done to the database -->
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+			<div>{{> topic}}</div>
+			{{/each}}
+		</ul>
+	<!-- End of the news feed -->
 </template>
 		<!-- Finally the topic template -->
 <template name="topic">
@@ -197,7 +194,7 @@
 <!-- Now to create the "general discussion" template! -->
 <template name="general">
 	{{>sideNav}}
-	<div class="mainPage">
+	<div class="fixedPart">
 		<h1>General</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -206,16 +203,15 @@
 		<p>This section is for you! Enjoy! :)</p>
 		<hr class="dashed">
 	</div>
-	<div name="content" class="container">
-		<div class="updatedTopics2">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each topics}}
-					{{> topic}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="scrollingPart tabScroll">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+				{{> topic}}
+			{{/each}}
+		</ul>
 	</div>
+<!-- !!!!!!! Something to do here too !!!!!!! -->
 	{{#if noMoreItem}}
 	<span>No more topics to show!</span>
 	{{/if}}
@@ -227,7 +223,7 @@
 <!-- Now to create the "instruments discussion" template! -->
 <template name="instruments">
 	{{>sideNav}}
-	<div class="mainPage">
+	<div class="fixedPart">
 		<h1>Instruments</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -236,15 +232,13 @@
 		<p>This section is for you! Enjoy! :)</p>
 		<hr class="dashed">
 	</div>
-	<div name="content" class="container">
-		<div class="updatedTopics2">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each topics}}
-					{{> topic}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="scrollingPart tabScroll">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+				{{> topic}}
+			{{/each}}
+		</ul>
 	</div>
 </template>
 <!-- End of the "instruments" discussion template -->
@@ -254,7 +248,7 @@
 <!-- Now to create the "music theory" discussion template! -->
 <template name="theory">
 	{{>sideNav}}
-	<div class="mainPage">
+	<div class="fixedPart">
 		<h1>Theory</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -263,15 +257,13 @@
 		<p>This section is for you! Enjoy! :)</p>
 		<hr class="dashed">
 	</div>
-	<div name="content" class="container">
-		<div class="updatedTopics2">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each topics}}
-					{{> topic}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="scrollingPart tabScroll">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+				{{> topic}}
+			{{/each}}
+		</ul>
 	</div>
 </template>
 <!-- End of the "music theory" discussion template -->
@@ -281,7 +273,7 @@
 <!-- Now to create the "buddy bands" discussion template! -->
 <template name="buddybands">
 	{{>sideNav}}
-	<div class="mainPage">
+	<div class="fixedPart">
 		<h1>BuddyBands</h1>
 		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
 		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
@@ -290,15 +282,13 @@
 		<p>This section is for you! Enjoy! :)</p>
 		<hr class="dashed">
 	</div>
-	<div name="content" class="container">
-		<div class="updatedTopics2">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each topics}}
-					{{> topic}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="scrollingPart tabScroll">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+		<ul>
+			{{#each topics}}
+				{{> topic}}
+			{{/each}}
+		</ul>
 	</div>
 </template>
 <!-- End of the "buddy bands" discussion template -->
@@ -308,8 +298,7 @@
 <!-- Now to create the "new topic" template! -->
 <template name="newTopic">
 <!-- !!!!!!! Do we really need two divs here ? !!!!!!! -->
-	<div class="mainPage">
-		<div class="createNewTopic">
+	<div class="fixedPart">
 			<h1> Here you can create your new topic !</h1>
 		<!-- Here is the form to update the database linked to the JS client file -->
 			<br>
@@ -340,32 +329,31 @@
 			<p>Not sure what category you want to assign your topic to? No worries!</p>
 			<p>Here is a brief reminder of them:</p>
 			<p>And if you are not sure yet, just choose "general" ;-)</p> 
-		</div>
+<!-- We'll have to remove these -->
 		<br>
 		<br>
-		<div class="grid-container">
 			<!-- Here we can add the 4 columns to help the user if he is unsure bout the category -->
-					<div class="grid-item">
-						<a href="/General">General</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="grid-item">
-						<a href="/Instruments">Instruments</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="grid-item">
-						<a href="/Theory">Theory</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="grid-item">
-						<a href="/BuddyBands">Buddy Bands</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-				<!-- Ending the container of the grid -->
+		<div class="grid-container">
+			<div class="grid-item">
+				<a href="/General">General</a>
+				<p>Description of what happens here blablablabla</p>
+				<p>Maybe a nice image as well</p>
+			</div>
+			<div class="grid-item">
+				<a href="/Instruments">Instruments</a>
+				<p>Description of what happens here blablablabla</p>
+				<p>Maybe a nice image as well</p>
+			</div>
+			<div class="grid-item">
+				<a href="/Theory">Theory</a>
+				<p>Description of what happens here blablablabla</p>
+				<p>Maybe a nice image as well</p>
+			</div>
+			<div class="grid-item">
+				<a href="/BuddyBands">Buddy Bands</a>
+				<p>Description of what happens here blablablabla</p>
+				<p>Maybe a nice image as well</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -374,7 +362,7 @@
 <!-- Beginning of the singleTopic template that will be the same for every template created -->
 <template name="singleTopic">
 	{{>sideNav}}
-	<div class="mainPage">
+	<div class="fixedPart">
 		<div>
 			<h1>{{title}}</h1>
 			<hr class="solid">
@@ -390,23 +378,24 @@
 			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
 			<button class="new-comment btn btn-info">Send!</button>
 		</form>
-		{{> commentFeed}}
 	</div>
-</template>
-	<!-- Then the comment list -->
-<template name="commentFeed">
-	<div name="content" class="container">
-		<div class="updatedComments">
-		<!-- Now to iterate every topics of the database by calling the topic template -->
-			<ul>
-				{{#each comments}}
-					{{> comment}}
-				{{/each}}
-			</ul>
-		</div>
+	<div class="scrollingPart singleTopicScroll">
+	{{> commentFeed}}
 	</div>
 </template>
 <!-- End of the singleTopic template -->
+
+	<!-- Then the comment list -->
+<template name="commentFeed">
+	<!-- Now to iterate every topics of the database by calling the topic template -->
+	<ul>
+		{{#each comments}}
+			{{> comment}}
+		{{/each}}
+	</ul>
+</template>
+
+
 <!-- Now the comment template for the comment list above -->
 <template name="comment">
 	<p><b>User: </b>{{getUser createdBy}}</p>

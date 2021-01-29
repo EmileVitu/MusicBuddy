@@ -150,10 +150,10 @@ document.addEventListener("scroll", function (event) {
 });
 Session.set("topicLimit", 8);
 var feedTopics = function () {
-    var lastDivOffset = document.getElementsByClassName('.scrollingPart').scrollTop=100;;
-    var pageOffset = window.pageYOffset + window.innerHeight;
+	var lastDivOffset = document.getElementsByClassName('.scrollingPart').scrollTop=10;;
+	var pageOffset = window.pageYOffset + window.innerHeight;
 
-    if (pageOffset > lastDivOffset - 10) {
+	if (pageOffset > lastDivOffset - 10) {
 		Session.set("topicLimit", Session.get("topicLimit") + 4);
 	}
 }
@@ -218,7 +218,7 @@ Template.newsfeed.helpers({
 	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
-	/* These helpers are to return the category selected topics for each main category page */
+	/* These helpers are to return the category selected topics for each mainTab page */
 Template.general.helpers({
     topics(){
 	return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
