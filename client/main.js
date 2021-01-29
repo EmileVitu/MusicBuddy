@@ -1,5 +1,7 @@
 /* Javascript file for MusicBuddy Client side */
 
+
+
 			/* First the general code for the whole website */
 		/* First to link the documents between themselves */
 import { Template } from 'meteor/templating';
@@ -8,9 +10,11 @@ import { Mongo } from 'meteor/mongo';
 import './main.html';
 
 
+
 /* Creating the topics and comments databases (mongo collection) */
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
+
 
 
 		/* Now to subscribe to the collections and publications */
@@ -24,15 +28,17 @@ Meteor.subscribe('comments');
 Meteor.subscribe('search');
 
 
-		/* Now the routing for all the tabs of my navbar */
+
+		/* Now the routing */
+		
 	/* The route for the "layout" template */
 Router.configure({
-  layoutTemplate: 'layout'
+	layoutTemplate: 'layout',
 });
 	/* The route for the "homepage" */
 Router.route('/', {
-  name: 'home',
-  template: 'home'
+	name: 'home',
+	template: 'home'
 });
 	/* The route for the "general" discussions */
 Router.route('/General', {
@@ -41,18 +47,18 @@ Router.route('/General', {
 });
 	/* The route for the "instruments" discussion */
 Router.route('/Instruments', {
-  name: 'instruments',
-  template: 'instruments'
+	name: 'instruments',
+	template: 'instruments'
 });
 	/* The route for the "music theory" discussions */
 Router.route('/Theory', {
-  name: 'theory',
-  template: 'theory'
+	name: 'theory',
+	template: 'theory'
 });
 	/* The route for the "Buddy bands" meetup */
 Router.route('/BuddyBands', {
-  name: 'buddybands',
-  template: 'buddybands'
+	name: 'buddybands',
+	template: 'buddybands'
 });
 	/* The route for the "New topic!" page */
 Router.route('/NewTopic', {
@@ -60,7 +66,7 @@ Router.route('/NewTopic', {
 	template: 'newTopic'
 });
 	/* The route for the "search engine" page */
-/* Here should be the onkeyup */
+/* !!!!!!!!!!!!!!!!!!! Here we should be the onkeyup */
 Router.route('/Search', {
 	name: 'search',
 	template: 'search'
@@ -76,6 +82,50 @@ Router.route('/:category/:_id', {
 		return Topics.findOne({ category: currentCategory });
     }
 });
+
+
+
+		/* Here are the infinite scrolls */
+	/* The one for the topics feeds */
+scrollTopics = function(){
+	Session.set('topicLimit', 8);	
+	var scrollingElement = document.querySelector('.scrollingPart');	
+	scrollingElement.addEventListener('scroll', function() {
+		if (scrollingElement.scrollTop + scrollingElement.clientHeight >= scrollingElement.scrollHeight) {
+			Session.set('topicLimit', Session.get('topicLimit') + 4);
+		}
+	});
+}
+	/* And the one for the comments feed */
+scrollComments = function(){
+	Session.set('commentLimit', 8);	
+	var scrollingElement = document.querySelector('.scrollingPart');	
+	scrollingElement.addEventListener('scroll', function() {
+		if (scrollingElement.scrollTop + scrollingElement.clientHeight >= scrollingElement.scrollHeight) {
+			Session.set('commentLimit', Session.get('commentLimit') + 4);
+		}
+	});
+}
+		/* Now we can launch these two function on template rendering coupled with the find() function in their helpers */
+/* Still need to make closenav better on rendering and a clear form for the search form ? */
+	/* First the templates querying the Topics collection */
+Template.home.onRendered(scrollTopics);
+Template.general.onRendered(scrollTopics);
+Template.instruments.onRendered(scrollTopics);
+Template.theory.onRendered(scrollTopics);
+Template.buddybands.onRendered(scrollTopics);
+Template.search.onRendered(scrollTopics);
+	/* And the template querying the Comments collection */
+Template.singleTopic.onRendered(scrollComments);
+
+
+
+/* Must sort out the sidenav... */
+Template.sideNav.onRendered(scrollTopics);
+
+
+
+
 
 			/* Now the code for the routed pages */
 
@@ -110,54 +160,6 @@ function closeNav() {
 	document.body.style.backgroundColor = 'white';
 }
 
-		/* Here is the infinite scroll code */
-	/* For the topics lists *
-Session.set("topicLimit", 8);
-lastScrollTop = 0; 
-$(window).scroll(function(event){
-// test if we are near the bottom of the window
-if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-  // where are we in the page? 
-  var scrollTop = $(this).scrollTop();
-  // test if we are going down
-  if (scrollTop > lastScrollTop){
-    // yes we are heading down...
-   Session.set("topicLimit", Session.get("topicLimit") + 4);
-   }
-  lastScrollTop = scrollTop;
-  }
-})
-	/* For the comments lists 
-Session.set("commentLimit", 8);
-lastScrollTop = 0; 
-$(window).scroll(function(event){
-// test if we are near the bottom of the window
-if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-  // where are we in the page? 
-  var scrollTop = $(this).scrollTop();
-  // test if we are going down
-  if (scrollTop > lastScrollTop){
-    // yes we are heading down...
-   Session.set("commentLimit", Session.get("commentLimit") + 4);
-   }
-  lastScrollTop = scrollTop;
-  }
-})
-*/
-
-document.addEventListener("scroll", function (event) {
-    feedTopics();
-});
-Session.set("topicLimit", 8);
-var feedTopics = function () {
-	var lastDivOffset = document.getElementsByClassName('.scrollingPart').scrollTop=10;;
-	var pageOffset = window.pageYOffset + window.innerHeight;
-
-	if (pageOffset > lastDivOffset - 10) {
-		Session.set("topicLimit", Session.get("topicLimit") + 4);
-	}
-}
-feedTopics();
 
 
 
@@ -165,9 +167,6 @@ feedTopics();
 
 
 
-
-
-//document.querySelector(".uiScrollableAreaWrap").scrollTop=100;
 
 		/* And now the helpers of the webpage */
 		
@@ -244,7 +243,7 @@ Template.buddybands.helpers({
 Template.commentFeed.helpers({
 	comments: function () {
 	  selector = {topicId: this._id};
-	  options = {sort: {createdAt: -1}};
+	  options = {sort: {createdAt: -1}, limit: Session.get('commentLimit')};
 	  return Comments.find(selector, options);
 	},
 });
