@@ -33,8 +33,8 @@ This site features :
 - each route has a title, a quick description and a newsfeed as well with the latest updated topicsof this particular category
 
 ## Search
-- when keyup on this form, the search tool renders all the topics containing the text that has been typed
-- also the search tools displays the number of topics that the search engine has found
+- when keyup on this form, the search tool reactively renders all the topics containing the text that has been typed either in the title, and/or in the category and /or in the description.
+- also the search tools displays the number of topics that the search engine has found in a phrase with an if statement, if X>0, returns "You have X results", else returns "You have no results"
 
 ## New Topic +
 - this route renders to a form in which an authenticated user may create a new topic
