@@ -162,12 +162,6 @@ function closeNav() {
 
 
 
-
-
-
-
-
-
 		/* And now the helpers of the routed templates */
 	/* Now the helper for the search template for the searchbar */
 Template.search.helpers({
