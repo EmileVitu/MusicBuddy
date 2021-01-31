@@ -195,10 +195,23 @@
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Description:</b></p>
 	<p>{{description}}</p>
+	<p>	
+		<ul>
+			{{#each comments}}
+				{{> lastComment}}
+			{{/each}}
+		</ul>
+	</p>
 	<hr class="dotted">
 </template>
 	<!-- Here is the end of the newsfeed for the homepage -->
 
+<template name="lastComment">
+	<p><b>Latest comment:</b></p>
+	<p>{{commentary}}</p>
+	<p><b>User: </b>{{createdBy}}</p>
+	<p><b>Created on: </b>{{createdAt}}</p>
+</template>
 
 
 	<!-- Now to create the "general discussion" template! -->
@@ -376,13 +389,15 @@
 		<div>
 			<h1>{{title}}</h1>
 			<hr class="solid">
-			<h3>{{category}}</h3>
+			<h4>Category: {{category}}</h4>
+			<p>Date of creation: {{createdAt}}</p>
+			<p>Created by: {{getUser createdBy}}</p>
+			<p>Description: {{description}}</p>
 			<hr class="dashed">
-<!-- This I think we'll be able to get out of here -->
-			{{> topic}}
 		</div>
 <!-- Here we will need each comment for this topic -->
 <!-- First of all the comment form -->
+		<h3>Comments:</h3>
 		<form>
 			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
 			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
@@ -405,16 +420,28 @@
 	</ul>
 </template>
 
-
 	<!-- Now the comment template for the comment list above -->
 <template name="comment">
-	<p><b>User: </b>{{getUser createdBy}}</p>
+	<p><b>User: </b>{{createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Comment:</b></p>
 	<p>{{commentary}}</p>
 	<hr class="dotted">
 </template>
 	<!-- End of the comment template -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -188,67 +188,70 @@ Template.search.helpers({
 	/*The first one for the layout, to have the infinite scroll in the sideNav */
 Template.sideNav.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')});
+		return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')});
 	}
 });
 	/* This helper is for the newsfeed template in the home page */
 Template.newsfeed.helpers({
     topics(){
-	return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 	/* These helpers are to return the category selected topics for each mainTab page */
 Template.general.helpers({
     topics(){
-	return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return Topics.find({category: 'General'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.instruments.helpers({
     topics(){
-	return Topics.find({category: 'Instruments'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return Topics.find({category: 'Instruments'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.theory.helpers({
     topics(){
-	return Topics.find({category: 'Theory'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return Topics.find({category: 'Theory'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 Template.buddybands.helpers({
     topics(){
-	return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
+		return Topics.find({category: 'BuddyBands'}, {sort:{createdAt: -1}, limit:Session.get("topicLimit")}); 
 	}
 });
 	/* The helper for the commentFeed template */
 Template.commentFeed.helpers({
-	comments: function () {
-	  selector = {topicId: this._id};
-	  options = {sort: {createdAt: -1}, limit: Session.get('commentLimit')};
-	  return Comments.find(selector, options);
-	},
+	comments: function (){
+		selector = {topicId: this._id};
+		options = {sort: {createdAt: -1}, limit: Session.get('commentLimit')};
+		return Comments.find(selector, options);
+	}
 });
-	/* Now the helper to extract the username and upload it in the topic template*/
+	/* Now the helper to extract the username and find the latest comment for each Topic */
 Template.topic.helpers({
-	getUser:function(user_id){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
+	getUser: function(user_id){
+		var user = Meteor.users.findOne({_id:user_id});
+		if (user){
+			return user.username;
+		}
+		else {
+			return "Anonymous user";
+		}
+	},
+	comments(){
+		return Comments.find({topicId: this._id}, {sort:{createdAt: -1}, limit: 1});
 	}
 });
-	/* Here is the helper for the comment template */
-Template.comment.helpers({
-	getUser:function(user_id){
-	  var user = Meteor.users.findOne({_id:user_id});
-	  if (user){
-		return user.username;
-	  }
-	  else {
-		return "anonymous";
-	  }
-	}
+	/* The helper for the singleTopic route */
+Template.singleTopic.helpers({
+	getUser: function(user_id){
+		var user = Meteor.users.findOne({_id:user_id});
+		if (user){
+			return user.username;
+		}
+		else {
+			return "Anonymous user";
+		}
+	},
 });
 
 
@@ -286,7 +289,8 @@ Template.singleTopic.events({
 	  var commentary = event.target.commentary.value;
 	  Meteor.call('addComment', this._id, commentary);
 	  target.commentary.value = '';
-	},
+	}
+
 			// Clear form
 	////alert('Your comment has been added!');
     //}
