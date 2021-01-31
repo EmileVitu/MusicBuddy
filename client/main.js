@@ -86,6 +86,7 @@ Router.route('/:category/:_id', {
 
 
 		/* Here are the infinite scrolls */
+
 	/* The one for the topics feeds */
 scrollTopics = function(){
 	Session.set('topicLimit', 8);	
@@ -96,6 +97,7 @@ scrollTopics = function(){
 		}
 	});
 }
+/* We probably will have to put querySelectorAll if we add a second scrolling part in the sideNav...  */
 	/* And the one for the comments feed */
 scrollComments = function(){
 	Session.set('commentLimit', 8);	
@@ -120,7 +122,7 @@ Template.singleTopic.onRendered(scrollComments);
 
 
 
-/* Must sort out the sidenav... */
+/* !!!!!!! Must sort out the sidenav... !!!!!!!  */
 Template.sideNav.onRendered(scrollTopics);
 
 
@@ -163,6 +165,7 @@ function closeNav() {
 
 
 		/* And now the helpers of the routed templates */
+		
 	/* Now the helper for the search template for the searchbar */
 Template.search.helpers({
 	topics(){
@@ -300,7 +303,7 @@ Template.singleTopic.events({
 
 
 
-
+/* !!!!!!!!!!!!!!!!!! All the rest we must sort out !!!!!!!!!!!!!!!!!!! */
 
 /*
 Template.sideNav.events({
