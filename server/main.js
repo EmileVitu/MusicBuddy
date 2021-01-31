@@ -98,6 +98,30 @@ Meteor.methods({
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* !!!!!!!!!!!!! Must sort all this out as well !!!!!!!!!!!!! */
+
+
+
+
+
+
+
+
+
 /*
 check meteor.user().username or .-id
 			Topics.insert({
@@ -109,23 +133,6 @@ check meteor.user().username or .-id
 			});
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

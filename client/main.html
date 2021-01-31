@@ -13,46 +13,51 @@
 	<!-- There is no body since we are using iron router, only templates !!!! -->
 
 
-	<!-- First the layout template which will be used on all the pages -->
+	<!-- First the layout template which will be rendered on all the routes -->
 <template name="layout">
-<div id="main">
-				<!-- The navbar -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container-fluid">
-				<!-- Here is the Header, title of the website and home page link-->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
-			</div>
-				<!-- Now the links for the four category routes pages-->
-			<ul class="nav navbar-nav">
-				<li><a href="/General">General</a></li>
-				<li><a href="/Instruments">Instruments</a></li>
-				<li><a href="/Theory">Theory</a></li>
-				<li><a href="/BuddyBands">BuddyBands</a></li>
-				<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus"></span></a></li>
-			</ul>
-				<!-- Now the sign-in form for users who want to be able to participate-->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- We want it to the full right so it must be read in first !!!! -->
-				<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
-			</ul>		
-				<!-- Now the search tool to find directly a keyword-related topic-->
-			<form class="navbar-form navbar-right" action="/action_page.php">
-			  <div class="input-group">
-				<a href="/Search"><input id="search" type="text" class="form-control" placeholder="Search..."></a>
-				<div class="input-group-btn">
-				  <a href="/Search"></a>
+	<div id="main">
+					<!-- The navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container-fluid">
+					<!-- Here is the Header, title of the website and home page link-->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
 				</div>
-			  </div>
-			</form>
-	  </div>
-	</nav>
-	{{> yield}}
-</div>
+					<!-- Now the links for the five mainTabs-->
+				<ul class="nav navbar-nav">
+					<li><a href="/General">General</a></li>
+					<li><a href="/Instruments">Instruments</a></li>
+					<li><a href="/Theory">Theory</a></li>
+					<li><a href="/BuddyBands">BuddyBands</a></li>
+					<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus"></span></a></li>
+				</ul>
+					<!-- Now the sign-in form for users who want to be able to contribute -->
+				<ul class="nav navbar-nav navbar-right">
+					<!-- We want it to the full right so it must be read before the search tool -->
+					<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
+				</ul>		
+					<!-- Now the searchTool to find directly a keyword-related topic -->
+				<form class="navbar-form navbar-right" action="/action_page.php">
+				  <div class="input-group">
+					<a href="/Search"><input id="search" type="text" class="form-control" placeholder="Search..."></a>
+					<div class="input-group-btn">
+					  <a href="/Search"></a>
+					</div>
+				  </div>
+				</form>
+					<!-- End of the searchTool -->
+		  </div>
+					<!-- End of the navBar -->
+		</nav>
+					<!-- Now to yield the homepage layout -->
+		{{> yield}}
+	</div>
 </template>
-			<!-- End of the navbar-->
+	<!-- End of the Layout template -->
 
-			<!-- Now to implement the sideNav -->
+
+
+	<!-- Now the sideNav template that is not rendered on every route -->
 <template name="sideNav">
 	<div id="mySideNav" class="sideNav">
 				<!-- First the close button, that will appear when mySideNav is active -->
@@ -71,9 +76,9 @@
 	</div> <!-- class="js-open-btn"-->
 		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
 </template>
-<!-- End of the layout template -->
+	<!-- End of sideNav template -->
 
-		<!-- The sindenav topic template -->
+	<!-- The sindenav topic template -->
 <template name="sideNavTopic">
 	<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
 		<p><b>Title: </b>{{title}}</p>
@@ -87,9 +92,11 @@
 	
 	<hr class="dotted">
 </template>
-<!-- Here is the end of the newsfeed for the homepage -->
+	<!-- End of the sideNav topic template -->
 
-<!-- Now to create the template for the search engine --> 
+
+
+	<!-- Now the searchTool route --> 
 <template name="search">
 		<!-- Now the template for the latest changes done to the database -->
 <!--!!!!!!! Two classes ? !!!!!!!-->
@@ -109,12 +116,14 @@
 	</div>
 		<!-- End of the news feed -->
 </template>
-<!-- End of the search template -->
+	<!-- End of the searchTool route -->
 
 
-<!-- Now the template for the homepage -->
+		<!-- Here are the main routes -->
+		
+	<!-- First the route for the homePage -->
 <template name="home">
-				<!-- In a first thing I will put everything in one div in order to assign a class to style it and an Id for JS -->
+		<!-- Here is the fixed part -->
 	<div class="fixedPart">
 					<!-- First the Title -->
 			<h1>Welcome, Music Buddy!</h1>
@@ -159,14 +168,14 @@
 		<!-- And to end the div with the whole page -->
 	</div>
 
-				<!-- Now to load the newsfeed template at the bottom of the 'home' page -->
+		<!-- Here is the scrolling part -->
 	<div class="scrollingPart homeScroll">
 		{{> newsfeed}}
 	</div>
 </template>
-<!-- End of the "home" template -->
+	<!-- End of the "home" template -->
 
-<!-- Now to create the template for the newsfeed of the homepage --> 
+	<!-- Now to create the template for the newsfeed homepage --> 
 <template name="newsfeed">
 	<!-- Now the template for the latest changes done to the database -->
 	<!-- Now to iterate every topics of the database by calling the topic template -->
@@ -175,9 +184,10 @@
 			<div>{{> topic}}</div>
 			{{/each}}
 		</ul>
-	<!-- End of the news feed -->
 </template>
-		<!-- Finally the topic template -->
+	<!-- End of the news feed -->
+	
+	<!-- Finally the topic template for each topic in the newsfeed-->
 <template name="topic">
 	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
 	<p><b>Category: </b>{{category}}</p>
@@ -185,13 +195,26 @@
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Description:</b></p>
 	<p>{{description}}</p>
+	<p>	
+		<ul>
+			{{#each comments}}
+				{{> lastComment}}
+			{{/each}}
+		</ul>
+	</p>
 	<hr class="dotted">
 </template>
-<!-- Here is the end of the newsfeed for the homepage -->
+	<!-- Here is the end of the newsfeed for the homepage -->
+
+<template name="lastComment">
+	<p><b>Latest comment:</b></p>
+	<p>{{commentary}}</p>
+	<p><b>User: </b>{{createdBy}}</p>
+	<p><b>Created on: </b>{{createdAt}}</p>
+</template>
 
 
-
-<!-- Now to create the "general discussion" template! -->
+	<!-- Now to create the "general discussion" template! -->
 <template name="general">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -216,11 +239,11 @@
 	<span>No more topics to show!</span>
 	{{/if}}
 </template>
-<!-- End of the "general discussion" template -->
+	<!-- End of the "general discussion" template -->
 
 
 
-<!-- Now to create the "instruments discussion" template! -->
+	<!-- Now to create the "instruments discussion" template! -->
 <template name="instruments">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -241,11 +264,11 @@
 		</ul>
 	</div>
 </template>
-<!-- End of the "instruments" discussion template -->
+	<!-- End of the "instruments" discussion template -->
 
 
 
-<!-- Now to create the "music theory" discussion template! -->
+	<!-- Now to create the "music theory" discussion template! -->
 <template name="theory">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -266,11 +289,11 @@
 		</ul>
 	</div>
 </template>
-<!-- End of the "music theory" discussion template -->
+	<!-- End of the "music theory" discussion template -->
 
 
 
-<!-- Now to create the "buddy bands" discussion template! -->
+	<!-- Now to create the "buddy bands" discussion template! -->
 <template name="buddybands">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -291,11 +314,11 @@
 		</ul>
 	</div>
 </template>
-<!-- End of the "buddy bands" discussion template -->
+	<!-- End of the "buddy bands" discussion template -->
 
 
 
-<!-- Now to create the "new topic" template! -->
+	<!-- Now to create the "new topic" template! -->
 <template name="newTopic">
 <!-- !!!!!!! Do we really need two divs here ? !!!!!!! -->
 	<div class="fixedPart">
@@ -357,22 +380,24 @@
 		</div>
 	</div>
 </template>
-<!-- End of the "new topic" discussion template -->
+	<!-- End of the "new topic" discussion template -->
 
-<!-- Beginning of the singleTopic template that will be the same for every template created -->
+	<!-- Beginning of the singleTopic template that will be the same for every template created -->
 <template name="singleTopic">
 	{{>sideNav}}
 	<div class="fixedPart">
 		<div>
 			<h1>{{title}}</h1>
 			<hr class="solid">
-			<h3>{{category}}</h3>
+			<h4>Category: {{category}}</h4>
+			<p>Date of creation: {{createdAt}}</p>
+			<p>Created by: {{getUser createdBy}}</p>
+			<p>Description: {{description}}</p>
 			<hr class="dashed">
-<!-- This I think we'll be able to get out of here -->
-			{{> topic}}
 		</div>
 <!-- Here we will need each comment for this topic -->
 <!-- First of all the comment form -->
+		<h3>Comments:</h3>
 		<form>
 			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
 			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
@@ -383,7 +408,7 @@
 	{{> commentFeed}}
 	</div>
 </template>
-<!-- End of the singleTopic template -->
+	<!-- End of the singleTopic template -->
 
 	<!-- Then the comment list -->
 <template name="commentFeed">
@@ -395,16 +420,28 @@
 	</ul>
 </template>
 
-
-<!-- Now the comment template for the comment list above -->
+	<!-- Now the comment template for the comment list above -->
 <template name="comment">
-	<p><b>User: </b>{{getUser createdBy}}</p>
+	<p><b>User: </b>{{createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Comment:</b></p>
 	<p>{{commentary}}</p>
 	<hr class="dotted">
 </template>
-<!-- End of the comment template -->
+	<!-- End of the comment template -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

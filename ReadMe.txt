@@ -21,7 +21,8 @@ This site features :
 - this template is rendered inside the layout configuration
 - inside the home layout is the welcome title and the welcome text that explains what a user can do if he is new to the website
 - 4 columns explain the main titles for the 4 main groups of topics by genre with links that renders these routes as well
-- finally in another div beneath, the newsfeed is rendered listing all the topics by latest changes, each of those can be accessed with a link that redirects to the singleTopic route
+- finally in a scrollable div beneath, the newsfeed is rendered listing all the topics by latest changes, each of those can be accessed with a link that redirects to the singleTopic route
+- each of these topics also have the latest comment associated to them, if they have any, along with the comment's username and date
 
 ## Sidenav
 - this template is rendered on all the pages except the home page, the search page and the newTopic page
