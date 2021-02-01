@@ -61,39 +61,45 @@
 
 		<!-- This is the sideNav part, with it's latest updated topic list -->
 
-	<!-- Now the sideNav template that is not rendered on every route -->
+	<!-- Now the sideNav template with all the latests topics and latest comment associated if any -->
 <template name="sideNav">
-
-				<!-- First the close button, that will appear when mySideNav is active -->
 	<span class="closeNav">&times;</span>
-				<!-- Now all the links for all the latest topics and modifications added by users -->
 	<div id="mySideNav" class="sideNav">
-				{{#each topics}}
-					<p>{{> sideNavTopic}}</p>
-				{{/each}}
+		{{#each topics}}
+			{{> sideNavTopic}}
+		{{/each}}
 	</div>
-	
 	<span style="font-size:30px;cursor:pointer" class="openNav">&#9776;</span>
 </template>
 	<!-- End of sideNav template -->
 
-	<!-- The sindenav topic template -->
+	<!-- The sideNavTopic template -->
 <template name="sideNavTopic">
 	<div class="scrollingPartSideNav">
-		<a href="/{{category}}/{{_id}}">
+		<div class="sideNavTopics">
+			<a class="sideNavLinks" href="/{{category}}/{{_id}}">
 			<p><b>Title: </b>{{title}}</p>
-		</a>
-			<p><b>Created on: </b>{{createdAt}}</p>
+			<p><b>Created on: </b>{{createdAt}}</p> <!-- getDate --> 
 			<p><b>Description: </b>{{description}}</p>
-			<p><b>Category: </b>{{category}}</p>
+			<p><b>Category: </b>{{category}}</p></a>
+		</div>
 <!-- Here an if statement for the comments or not or new topic banner -->
 			{{#each comments}}
-				{{>lastComment}}
+				{{>sideNavLastComment}}
 			{{/each}}
 	</div>
 	<hr class="dotted">
 </template>
-	<!-- End of the sideNav topic template -->
+	<!-- End of the sideNavTopic template -->
+
+	<!-- The sideNavLastComment template to complete the sideNavTopic template -->
+<template name="sideNavLastComment">
+	<div class="sideNavComments">
+		<p><b>Latest comment: </b>{{commentary}}</p>
+		<p><b>From: </b>{{createdBy}}</p>
+	</div>
+</template>
+	<!-- End of the sideNavLastComment template -->
 
 
 

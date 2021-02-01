@@ -16,7 +16,6 @@
 }
 	/* The scrolling div : topic or comment list */
 .scrollingPart {
-/* ! Overflow works with height ! */
 	overflow-y:scroll;
 	position: fixed;
 	width: 80%;
@@ -65,6 +64,14 @@
 	background-color: #333;
 	overflow-x: hidden;
 	transition: 0.7s;
+	font-size: 12px;
+}
+.sideNavLinks {
+	color: white;
+	transition: 0.7s;
+}
+.sideNavLinks:hover {
+	color: #000000;
 }
 	/* The styles for the open button */
 .openNav {
@@ -96,25 +103,29 @@
 	color: #333;
 	cursor: pointer;
 }
-	/* The styles for the sideNav's content */
-
-
-
-	/* The text in the sideNav content */
-.sideNav a {
-	transition: 0.3s;
-	color: #818181;
+		/* The styles for the sideNav's content */
+	/* The latest topics */
+.sideNavTopics {
+	margin-left: 1vh;
+	margin-right: 1vh;
+	margin-bottom: 1vh;
+	color: white;
+	background-color: #606060;
+    border: 2px solid #141414;
+    box-shadow: 0 0 5px 5px #141414;
+	border-radius: 1vh;
 }
-.sideNav:hover {
-	text-decoration: none;
-	color: white;	
+	/* The latest comment for each topic if any */
+.sideNavComments {
+	margin-left: 5vh;
+	margin-right: 1vh;
+	padding: 1vh;
+	color: white;
+	background-color: #909090;
+    border: 2px solid #141414;
+    box-shadow: 0 0 5px 5px #141414;
+	border-radius: 1vh;
 }
-.sideNav p {
-	padding: 2px 2px 2px 6px;
-	font-size: 12px;
-	color: #818181;
-}
-
 
 
 

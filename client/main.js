@@ -255,10 +255,17 @@ Template.sideNav.events({
 	'click .openNav': function(event){
 		document.querySelector('.openNav').style.display = 'none';
 		document.querySelector('.closeNav').style.display = 'block';
+/*		document.querySelector('.sideNav').style.fontSize = '13px';		*/
 		document.getElementById('mySideNav').style.width = '250px';
 		document.getElementById('main').style.marginLeft = '250px';
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-/* Must set the transition for the topics list */
+	},
+	'click .sideNavLinks': function(event){
+		document.querySelector('.closeNav').style.display = 'none';
+		document.querySelector('.openNav').style.display = 'block';
+		document.getElementById('mySideNav').style.width = '0px';
+		document.getElementById('main').style.marginLeft = '0px';
+		document.body.style.backgroundColor = 'white';		
 	},
 	'click .closeNav': function(event){
 		document.querySelector('.closeNav').style.display = 'none';
@@ -266,7 +273,6 @@ Template.sideNav.events({
 		document.getElementById('mySideNav').style.width = '0px';
 		document.getElementById('main').style.marginLeft = '0px';
 		document.body.style.backgroundColor = 'white';
-/* Must set the transition for the topics list */
 	}
 }); 
 	/* And the event to add data in the topics collection using a meteor method for security */
