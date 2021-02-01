@@ -59,30 +59,28 @@
 
 
 
+		<!-- This is the sideNav part, with it's latest updated topic list -->
+
 	<!-- Now the sideNav template that is not rendered on every route -->
 <template name="sideNav">
 	<div id="mySideNav" class="sideNav">
 				<!-- First the close button, that will appear when mySideNav is active -->
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; close</a>
+		<span class="closeNav">&times; close</span>
 				<!-- Now all the links for all the latest topics and modifications added by users -->
 				{{#each topics}}
 					<p>{{> sideNavTopic}}</p>
 				{{/each}}
-<!-- Manque le infinite scroll plus la liste infinie !!!!! -->
 	</div>
-				<!-- End of the sideNav -->
-
-				<!-- now the span tag to open the navbar -->
+				<!-- Now the open button -->
 	<div>
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776;</span>
-	</div> <!-- class="js-open-btn"-->
-		<!-- Now to load the path of '/', the 'home' page (see .js file) -->	
+		<span style="font-size:30px;cursor:pointer" class="openNav">&#9776;</span>
+	</div>
 </template>
 	<!-- End of sideNav template -->
 
 	<!-- The sindenav topic template -->
 <template name="sideNavTopic">
-	<div class="scrollinPartSideNav">
+	<div class="scrollingPartSideNav">
 		<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
 			<p><b>Title: </b>{{title}}</p>
 		</a>
@@ -90,8 +88,9 @@
 			<p><b>Description: </b>{{description}}</p>
 			<p><b>Category: </b>{{category}}</p>
 <!-- Here an if statement for the comments or not or new topic banner -->
-			<p><b>Last comment: </b>{{comment}}</p>
-			<p><b>Posted by: </b>{{createdBy}}</p>
+			{{#each comments}}
+				{{>lastComment}}
+			{{/each}}
 	</div>
 	<hr class="dotted">
 </template>
@@ -107,7 +106,7 @@
 	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<h1>Here are your search results!</h1>
 		<p>You have {{resultCount}} results!</p>
-	<!-- A separator to separate the homepage to the newsfeed (check css too) -->
+	<!-- A separator to separate the homepage to the newsFeed (check css too) -->
 		<hr class="solid">
 	</div>
 	<div class="scrollingPart searchScroll">
@@ -117,9 +116,9 @@
 			{{/each}}
 		</ul>
 	</div>
-		<!-- End of the news feed -->
 </template>
 	<!-- End of the searchTool route -->
+
 
 
 		<!-- Here are the main routes -->
@@ -128,20 +127,16 @@
 <template name="home">
 		<!-- Here is the fixed part -->
 	<div class="fixedPart">
-					<!-- First the Title -->
 			<h1>Welcome, Music Buddy!</h1>
-					<!-- Now some text -->
 			<p>Tout d'abord le texte de bienvenue</p>
 			<p>Feel free to go through the existing conversations and topics!</p>
 			<p>But remember you must login if you want to contribute to any topic or create a new one!</p>
 			<p>What can you do now ? 4 choices, or sign in if your new !</p>
 			<p>Don't worry, it's free :)</p>
-			<!-- A separator to separate the homepage to the newsfeed (check css too) -->
-		<hr class="dashed">			
-						<!-- Now to create the 5 columns on what to do -->
+			<hr class="dashed">			
+						<!-- Now to create the grid indicating the users possibilities -->
 			<div class="gridContainer">
-					<!-- The container is created and it has also a css class to manage it -->
-						<!-- Now to create the 5 columns with a css class for them too -->
+						<!-- Now to create the 4 columns with a css class for them too -->
 					<div class="gridItem">
 						<a href="/General">General</a>
 						<p>Description of what happens here blablablabla</p>
@@ -164,25 +159,22 @@
 					</div>
 				<!-- Ending the container of the grid -->
 			</div>
-			<!-- A separator to separate the homepage to the newsfeed (check css too) -->
 		<hr class="solid">
-			<!-- and another title for the newsfeed below -->
+			<!-- The title for the newsFeed below -->
 		<h1>Latest updated topics</h1>
-		<!-- And to end the div with the whole page -->
+		<!-- End of the fixedPart div for the homePage -->
 	</div>
-
-		<!-- Here is the scrolling part -->
+		<!-- Here is the scrolling part containing the newsFeed -->
 	<div class="scrollingPart homeScroll">
-		{{> newsfeed}}
+		{{> newsFeed}}
 	</div>
 </template>
 	<!-- End of the "home" template -->
 
-	<!-- Now to create the template for the newsfeed homepage --> 
-<template name="newsfeed">
-	<!-- Now the template for the latest changes done to the database -->
-	<!-- Now to iterate every topics of the database by calling the topic template -->
+	<!-- Now to create the template for the newsFeed for the homePage --> 
+<template name="newsFeed">
 		<ul>
+<!-- For styling, must pu different colors for every ninth child etc. -->
 			{{#each topics}}
 			<div>{{> topic}}</div>
 			{{/each}}
@@ -190,7 +182,7 @@
 </template>
 	<!-- End of the news feed -->
 	
-	<!-- Finally the topic template for each topic in the newsfeed-->
+	<!-- Finally the topic template for each topic in the newsFeed-->
 <template name="topic">
 	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
 	<p><b>Category: </b>{{category}}</p>
@@ -207,16 +199,21 @@
 	</p>
 	<hr class="dotted">
 </template>
-	<!-- Here is the end of the newsfeed for the homepage -->
+	<!-- Here is the end of the newsFeed for the homepage -->
 
+	<!-- The lastComment template to complete the topic template and the newsFeed -->
 <template name="lastComment">
 	<p><b>Latest comment: </b>{{commentary}}</p>
 	<p><b>User: </b>{{createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
 </template>
+	<!-- End of the lastComment template -->
 
 
-	<!-- Now to create the "general discussion" template! -->
+
+		<!-- Now we have the main routes templates -->
+		
+	<!-- Now to create the general discussions template! -->
 <template name="general">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -229,7 +226,6 @@
 		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<ul>
 			{{#each topics}}
 				{{> topic}}
@@ -241,11 +237,11 @@
 	<span>No more topics to show!</span>
 	{{/if}} -->
 </template>
-	<!-- End of the "general discussion" template -->
+	<!-- End of the general discussions template -->
 
 
 
-	<!-- Now to create the "instruments discussion" template! -->
+	<!-- Now to the instruments discussions template! -->
 <template name="instruments">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -258,7 +254,6 @@
 		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<ul>
 			{{#each topics}}
 				{{> topic}}
@@ -266,11 +261,11 @@
 		</ul>
 	</div>
 </template>
-	<!-- End of the "instruments" discussion template -->
+	<!-- End of the instruments discussions template -->
 
 
 
-	<!-- Now to create the "music theory" discussion template! -->
+	<!-- Now to create the music theory discussions template! -->
 <template name="theory">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -283,7 +278,6 @@
 		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<ul>
 			{{#each topics}}
 				{{> topic}}
@@ -291,11 +285,11 @@
 		</ul>
 	</div>
 </template>
-	<!-- End of the "music theory" discussion template -->
+	<!-- End of the music theory discussions template -->
 
 
 
-	<!-- Now to create the "buddy bands" discussion template! -->
+	<!-- Now to create the buddy bands discussions template! -->
 <template name="buddybands">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -308,7 +302,6 @@
 		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<ul>
 			{{#each topics}}
 				{{> topic}}
@@ -316,16 +309,15 @@
 		</ul>
 	</div>
 </template>
-	<!-- End of the "buddy bands" discussion template -->
+	<!-- End of the buddy bands discussions template -->
 
 
 
-	<!-- Now to create the "new topic" template! -->
+	<!-- Now to create the new topic template! -->
 <template name="newTopic">
-<!-- !!!!!!! Do we really need two divs here ? !!!!!!! -->
 	<div class="fixedPart">
 			<h1> Here you can create your new topic !</h1>
-		<!-- Here is the form to update the database linked to the JS client file -->
+		<!-- Here is the form to update the topics database with new topics -->
 			<br>
 			<form>
 				<label for="topic-title">Please enter a title for you new Music Buddy topic: </label>
@@ -346,7 +338,7 @@
 				<br>
 				<br>
 				<button class="new-topic btn btn-info">Create!</button>
-<!-- We still need to go to the route for the topic when clicking on this button after the alert -->
+<!-- We still need the alert -->
 			</form>
 			<br>
 			<br>
@@ -354,10 +346,10 @@
 			<p>Not sure what category you want to assign your topic to? No worries!</p>
 			<p>Here is a brief reminder of them:</p>
 			<p>And if you are not sure yet, just choose "general" ;-)</p> 
-<!-- We'll have to remove these -->
+<!-- We'll have to remove these br -->
 		<br>
 		<br>
-			<!-- Here we can add the 4 columns to help the user if he is unsure bout the category -->
+			<!-- Here we have 4 columns to help the user if he is unsure bout the category -->
 		<div class="gridContainer">
 			<div class="gridItem">
 				<a href="/General">General</a>
@@ -390,17 +382,18 @@
 <template name="singleTopic">
 	{{>sideNav}}
 	<div class="fixedPart">
+			<!-- First a quick sum up of the single topic selected -->
 		<div>
 			<h1>{{title}}</h1>
 			<hr class="solid">
 			<h4>Category: {{category}}</h4>
 			<p>Date of creation: {{createdAt}}</p>
 			<p>Created by: {{getUser createdBy}}</p>
+<!-- We need an if statement for the owner to be able to change the description (collection update) -->
 			<p>Description: {{description}}</p>
 			<hr class="dashed">
 		</div>
-<!-- Here we will need each comment for this topic -->
-<!-- First of all the comment form -->
+			<!-- In second the comment form -->
 		<h3>Comments:</h3>
 		<form>
 			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
@@ -408,6 +401,7 @@
 			<button class="new-comment btn btn-info">Send!</button>
 		</form>
 	</div>
+			<!-- Finally all the comments for this single topic -->
 	<div class="scrollingPart singleTopicScroll">
 	{{> commentFeed}}
 	</div>
@@ -432,7 +426,7 @@
 	<p>{{commentary}}</p>
 	<hr class="dotted">
 </template>
-	<!-- End of the comment template -->
+	<!-- End of the comment template and of the single topic group of templates -->
 
 
 

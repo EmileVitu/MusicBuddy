@@ -26,8 +26,8 @@ This site features :
 
 ## Sidenav
 - this template is rendered on all the pages except the home page, the search page and the newTopic page
-- it has an effect when opening or closing
-- it lists all the latests updated topics by date with links to quickly access them from anywhere
+- it is a sidenavbar that has an effect when opening or closing
+- it lists all the latests updated topics by date with links to quickly access them from anywhere on the website
 
 ## General, Theory, Instruments, MusicBuddy
 - each of these routes renders a different page with all the topics related to this category
@@ -62,6 +62,9 @@ Then, I created two function that changes the topic limit and comment limit ever
 Finally, in order to reset the topic limit and comment limit on each route, I applied these function to their respective template helpers using Template.templateName.onRendered(). 
 Indeed, if a user scrolled to the bottom and loaded every database item on a route, when switching to another route, the session.set topic limit or comment limit would stay the same, so I needed to reset on every rendered route, making the website faster and more responsive. 
 
+I also created an infinite scroll wirh its own function inside the sidenavbar, with a template helper to find the latests topics and latest commet for each topic if any. 
+The sidenavbar can be opened and closed with an effect triggered on click thanks to an event. 
+
 
 # Styles
 
@@ -74,7 +77,9 @@ Each main route has the main layout, and two main divs :
 - one top div with the class 'fixedPart' that consists of a fixed header describing what happens on the page
 - one bottom div with the class 'scrollingPart' that consists of the list of topics or comments found on that page
 - each bottom div also has a subclass (there is four of them) that defines the height and the top margin of the scrollable part
-Only the 'newTopic' route doesn't have a scrollable part.  
+Only the 'newTopic' route doesn't have a scrollable part.
+Each main route also has access to the sidenavbar to always have the latests topics with their latest coment if any at reach. Only the search page, the homepage and the newtopic page do not have access to the sidenav template. 
+
 
 
 
