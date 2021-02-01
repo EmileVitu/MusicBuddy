@@ -107,7 +107,7 @@ scrollComments = function(){
 	/* For the sideNav */
 scrollSideNav = function(){
 	Session.set('topicLimit', 8);	
-	var scrollingElement = document.querySelector('.scrollingPartSideNav');	
+	var scrollingElement = document.querySelector('.sideNav');	
 	scrollingElement.addEventListener('scroll', function() {
 		if (scrollingElement.scrollTop + scrollingElement.clientHeight >= scrollingElement.scrollHeight) {
 			Session.set('topicLimit', Session.get('topicLimit') + 4);
@@ -200,8 +200,8 @@ Template.sideNav.helpers({
 		return Comments.find({topicId: this._id}, {sort:{createdAt: -1}, limit: 1});
 	}
 });
-	/* This helper is for the newsfeed template in the home page */
-Template.newsfeed.helpers({
+	/* This helper is for the newsFeed template in the home page */
+Template.newsFeed.helpers({
     topics(){
 		return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')}); 
 	}
