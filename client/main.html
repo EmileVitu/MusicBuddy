@@ -65,7 +65,7 @@
 <template name="sideNav">
 	<div id="mySideNav" class="sideNav">
 				<!-- First the close button, that will appear when mySideNav is active -->
-		<span class="closeNav">&times; close</span>
+		<span class="closeNav">&times;</span>
 				<!-- Now all the links for all the latest topics and modifications added by users -->
 				{{#each topics}}
 					<p>{{> sideNavTopic}}</p>
@@ -81,7 +81,7 @@
 	<!-- The sindenav topic template -->
 <template name="sideNavTopic">
 	<div class="scrollingPartSideNav">
-		<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
+		<a href="/{{category}}/{{_id}}">
 			<p><b>Title: </b>{{title}}</p>
 		</a>
 			<p><b>Created on: </b>{{createdAt}}</p>
