@@ -1,4 +1,8 @@
 	<!-- Welcome to the MusicBuddy website -->
+
+
+
+	<!-- Head of MusicBuddy -->
 <head>
 		<!-- Creating the Title of the page -->
   <title>MusicBuddy</title>
@@ -6,11 +10,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<!-- End of the head -->
 </head>
+	<!-- End of the head -->
 
-
-	<!-- There is no body since we are using iron router, only templates !!!! -->
 
 
 	<!-- First the layout template which will be rendered on all the routes -->
@@ -80,16 +82,17 @@
 
 	<!-- The sindenav topic template -->
 <template name="sideNavTopic">
-	<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
-		<p><b>Title: </b>{{title}}</p>
-	</a>
-		<p><b>Category: </b>{{category}}</p>
-<!--We will be needing the last comment here ! 
-		<b>User: </b>
-		<p><b>Created on: </b>{{createdAt}}</p>
-		<p><b>Description:</b></p>
-		<p>{{description}}</p> -->
-	
+	<div class="scrollinPartSideNav">
+		<a href="/{{category}}/{{_id}}"> <!-- !!!!!!!! effect on screen blur !!!!!!!!! -->
+			<p><b>Title: </b>{{title}}</p>
+		</a>
+			<p><b>Created on: </b>{{createdAt}}</p>
+			<p><b>Description: </b>{{description}}</p>
+			<p><b>Category: </b>{{category}}</p>
+<!-- Here an if statement for the comments or not or new topic banner -->
+			<p><b>Last comment: </b>{{comment}}</p>
+			<p><b>Posted by: </b>{{createdBy}}</p>
+	</div>
 	<hr class="dotted">
 </template>
 	<!-- End of the sideNav topic template -->
@@ -207,8 +210,7 @@
 	<!-- Here is the end of the newsfeed for the homepage -->
 
 <template name="lastComment">
-	<p><b>Latest comment:</b></p>
-	<p>{{commentary}}</p>
+	<p><b>Latest comment: </b>{{commentary}}</p>
 	<p><b>User: </b>{{createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
 </template>
@@ -234,10 +236,10 @@
 			{{/each}}
 		</ul>
 	</div>
-<!-- !!!!!!! Something to do here too !!!!!!! -->
-	{{#if noMoreItem}}
+<!-- !!!!!!! Something to do here too !!!!!!!
+	{{#if noMoreItem}} and back to top !
 	<span>No more topics to show!</span>
-	{{/if}}
+	{{/if}} -->
 </template>
 	<!-- End of the "general discussion" template -->
 
@@ -380,9 +382,11 @@
 		</div>
 	</div>
 </template>
-	<!-- End of the "new topic" discussion template -->
+	<!-- End of the newTopic template -->
 
-	<!-- Beginning of the singleTopic template that will be the same for every template created -->
+
+
+	<!-- Beginning of the singleTopic template that will be the same for every topic created -->
 <template name="singleTopic">
 	{{>sideNav}}
 	<div class="fixedPart">

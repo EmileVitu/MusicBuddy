@@ -21,7 +21,13 @@
 	width: 80%;
 	margin-left: 10%;
 }
-
+	/* Now the scrolling part for the sideNav */
+.scrollingPartSideNav {
+/* ! Overflow works with height ! */
+	overflow-y:scroll;
+	position: fixed;
+	height: 100vh;
+}
 		/* Now the sub-classes for each srolling div */
 	/* For the home template */
 .homeScroll {

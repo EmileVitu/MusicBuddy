@@ -34,29 +34,30 @@ Comments.allow({
 	/* The next code is to publish the mongo collections */
 		/* First the Topics collection */
 Meteor.publish('topics-recent', function publishfunction() {
-  return Topics.find({});
+	return Topics.find({});
 })
 		/* Now the Comments collection */
 Meteor.publish('comments-recent', function publishfunction() {
-  return Comments.find({});
+	return Comments.find({});
 })
 		/* This is to allow the getUser function to fetch the username data from the collections */
 Meteor.publish('allUsers', function(){
-return Meteor.users.find();
+	return Meteor.users.find();
 });
 /* This is unsafe, because anyone can see the users so..... */
 		/* First the Topics collection */
 Meteor.publish('topics', function() {
-  return Topics.find({});
+	return Topics.find({});
 })
 		/* Now the Comments collection */
 Meteor.publish('comments', function() {
-  return Comments.find({});
+	return Comments.find({});
 })
 
 
 	/* The methods */
 Meteor.methods({
+/* Do I really need the count() method ? */
     resultNumber: function () {
         return Topics.find().count();
     },

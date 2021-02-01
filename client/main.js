@@ -3,26 +3,22 @@
 
 
 			/* First the general code for the whole website */
-		/* First to link the documents between themselves */
+
+		/* To link the documents between themselves */
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
 
-
-
 /* Creating the topics and comments databases (mongo collection) */
 Topics = new Mongo.Collection('topics');
 Comments = new Mongo.Collection('comments');
 
-
-
-		/* Now to subscribe to the collections and publications */
+	/* Now to subscribe to the collections and publications */
 Meteor.subscribe('topics-recent');
 Meteor.subscribe('comments-recent');
 /* This is unsafe, but since it is a prototype website, let's say it's fine for now */
 Meteor.subscribe('allUsers');
-//Meteor.subscribe('search');
 Meteor.subscribe('topics');
 Meteor.subscribe('comments');
 Meteor.subscribe('search');
@@ -108,6 +104,16 @@ scrollComments = function(){
 		}
 	});
 }
+	/* For the sideNav */
+scrollSideNav = function(){
+	Session.set('topicLimit', 8);	
+	var scrollingElement = document.querySelector('.scrollingPartSideNav');	
+	scrollingElement.addEventListener('scroll', function() {
+		if (scrollingElement.scrollTop + scrollingElement.clientHeight >= scrollingElement.scrollHeight) {
+			Session.set('topicLimit', Session.get('topicLimit') + 4);
+		}
+	});
+}
 		/* Now we can launch these two function on template rendering coupled with the find() function in their helpers */
 /* Still need to make closenav better on rendering and a clear form for the search form ? */
 	/* First the templates querying the Topics collection */
@@ -123,7 +129,7 @@ Template.singleTopic.onRendered(scrollComments);
 
 
 /* !!!!!!! Must sort out the sidenav... !!!!!!!  */
-Template.sideNav.onRendered(scrollTopics);
+Template.sideNav.onRendered(scrollSideNav);
 
 
 
@@ -151,8 +157,8 @@ window.openNav = openNav;
 window.closeNav = closeNav;
 	/* Now the openNav function */
 function openNav() {
-	document.getElementById('mySideNav').style.width = '250px';
-	document.getElementById('main').style.marginLeft = '250px';
+	document.getElementById('mySideNav').style.width = '350px';
+	document.getElementById('main').style.marginLeft = '350px';
 	document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
 }
  	/* Now the closeNav Function */
@@ -189,6 +195,9 @@ Template.search.helpers({
 Template.sideNav.helpers({
     topics(){
 		return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')});
+	},
+	comments(){
+		return Comments.find({topicId: this._id}, {sort:{createdAt: -1}, limit: 1});
 	}
 });
 	/* This helper is for the newsfeed template in the home page */
@@ -264,7 +273,7 @@ Template.layout.events({
 		Session.set('search/keyword', event.target.value);
 	}
 });
-	/* And the event to add data in the topics collection also using a meteor method for security */
+	/* And the event to add data in the topics collection using a meteor method for security */
 Template.newTopic.events({
 	submit: function (event) {
 		event.preventDefault();
@@ -290,9 +299,10 @@ Template.singleTopic.events({
 		Meteor.call('addComment', this._id, commentary);
 		target.commentary.value = '';
 	}
-			// Clear form
-	////alert('Your comment has been added!');
-    //}
+// Clear form
+////alert('Your comment has been added!');
+//}
+//}
 });
 
 
