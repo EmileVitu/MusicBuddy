@@ -3,19 +3,19 @@
 
 
 			/* Now the class attributes for the global routes */
+
 		/* First the two main classes in each route template */
 	/* The fixed div : header */
-/* !!!!!!! must put everything in % or in vh !!!! This is for all the banners of the main pages */
+/* !!!!!!! must put everything in % or in vh !!!! */
 .fixedPart {
 	transition: margin-left .5s;
 	text-align: center;
-	padding-top: 2%;
+	padding-top: 4vh;
 	position: fixed;
 	width: 100%;
 }
 	/* The scrolling div : topic or comment list */
 .scrollingPart {
-/* ! Overflow works with height ! */
 	overflow-y:scroll;
 	position: fixed;
 	width: 80%;
@@ -42,7 +42,99 @@
 	height: 83%;
 	margin-top: 17vh;
 }
+	/* Finally the login form */
+.accounts-dialog {
+	margin-top: 4vh;
+	background: lavender;
+}
 		/* End of the global templates styles */
+
+
+
+		/* The sideNav attributes */
+	/* The sideNav's general layout for the open/close event */
+.sideNav {
+	height: 95vh;
+	padding-top: 4vh;
+	width: 0;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: #333;
+	overflow-x: hidden;
+	transition: 0.7s;
+	font-size: 12px;
+}
+.sideNavLinks {
+	color: white;
+	transition: 0.7s;
+}
+.sideNavLinks:hover {
+	color: #000000;
+}
+	/* The styles for the open button */
+.openNav {
+	padding-top: 6vh;
+	position: fixed;
+	z-index: 1;
+	height: 100vh;
+	background-color: #222;
+	color: #818181;
+	transition: 0.3s;
+}
+.openNav:hover {
+	color: white;
+}
+	/* Style for the close button */
+.closeNav {
+	padding-left: 27vh;
+	padding-top: 4vh;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+	width: 4vh;
+	font-size: 6vh;
+	color: white;
+	display: none;
+	transition: 0.3s;
+}
+.closeNav:hover {
+	color: #333;
+	cursor: pointer;
+}
+		/* The styles for the sideNav's content */
+	/* The latest topics */
+.sideNavTopics {
+	margin-left: 1vh;
+	margin-right: 1vh;
+	margin-bottom: 1vh;
+	color: white;
+	background-color: #606060;
+    border: 2px solid #141414;
+    box-shadow: 0 0 5px 5px #141414;
+	border-radius: 1vh;
+}
+	/* The latest comment for each topic if any */
+.sideNavComments {
+	margin-left: 5vh;
+	margin-right: 1vh;
+	padding: 1vh;
+	color: white;
+	background-color: #909090;
+    border: 2px solid #141414;
+    box-shadow: 0 0 5px 5px #141414;
+	border-radius: 1vh;
+}
+
+
+
+/* !!!!!!!!!!!! */
+/* hover effect on the main navbar as well on the a tags */
+/* !!!!!!!!!!!! */
+
+
+
 
 
 
@@ -87,69 +179,13 @@ hr.dotted {
 
 
 
-	/* Now to put a top margin to the account dialog box when it is opened (not finished !!!) */
-.accounts-dialog {
-	margin-top: 36px;
-	background: lavender;
-}
 
 
 
 
 
-		/* The side navigation menu attributes */
-.sideNav {
-  height: 100%; /* 100% Full-height */
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s;
-}
-		/* The navigation menu links */
-.sideNav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-		/* The links hovering attributes */
-.sideNav a:hover {
-  color: #f1f1f1;
-}
-		/* The text of the sideNav attributes */
-.sideNav p {
-  padding: 2px 2px 2px 6px;
-  text-decoration: none;
-  font-size: 16px;
-  color: #818181;
-  display: block;
-}
-		/* Position and style of the close button (top right corner) */
-.closeNav {
-  position: absolute;
-  padding-top: 40px;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  z-index: 3;
-}
-		/* The styles for the open button */
-.openNav{
-	padding-top: 50px; /* This is to avoid an overlap with the navbar */
-	position: fixed; /* This is for the button to stay even while scrolling down */
-	z-index: 2;
-	height: 100%;
-	background-color: #222;
-	border-color: #080808;
-	color: white;
-}
+
+
 
 
 
@@ -176,12 +212,6 @@ hr.dotted {
 }
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 @media screen and (max-height: 450px) {
-	.sideNav {
-		padding-top: 15px;
-		}
-	.sideNav a {
-		font-size: 18px;
-		}
 }
 
 
