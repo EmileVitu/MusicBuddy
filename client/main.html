@@ -63,18 +63,17 @@
 
 	<!-- Now the sideNav template that is not rendered on every route -->
 <template name="sideNav">
-	<div id="mySideNav" class="sideNav">
+
 				<!-- First the close button, that will appear when mySideNav is active -->
-		<span class="closeNav">&times;</span>
+	<span class="closeNav">&times;</span>
 				<!-- Now all the links for all the latest topics and modifications added by users -->
+	<div id="mySideNav" class="sideNav">
 				{{#each topics}}
 					<p>{{> sideNavTopic}}</p>
 				{{/each}}
 	</div>
-				<!-- Now the open button -->
-	<div>
-		<span style="font-size:30px;cursor:pointer" class="openNav">&#9776;</span>
-	</div>
+	
+	<span style="font-size:30px;cursor:pointer" class="openNav">&#9776;</span>
 </template>
 	<!-- End of sideNav template -->
 

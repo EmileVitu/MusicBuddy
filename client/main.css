@@ -53,7 +53,7 @@
 
 
 		/* The sideNav attributes */
-	/* The general styles */
+	/* The sideNav's general layout for the open/close event */
 .sideNav {
 	height: 95vh;
 	padding-top: 4vh;
@@ -66,48 +66,61 @@
 	overflow-x: hidden;
 	transition: 0.7s;
 }
-	/* The navigation menu links */
-.sideNav span {
-  padding: 2px 2px 2px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-	/* The links hovering attributes */
-.sideNav span:hover {
-  color: #f1f1f1;
-}
-	/* The text of the sideNav attributes */
-.sideNav p {
-  padding: 2px 2px 2px 6px;
-  font-size: 12px;
-  color: #818181;
-}
 	/* The styles for the open button */
 .openNav {
 	padding-top: 6vh;
 	position: fixed;
 	z-index: 1;
-	height: 100%;
+	height: 100vh;
 	background-color: #222;
+	color: #818181;
+	transition: 0.3s;
+}
+.openNav:hover {
 	color: white;
 }
 	/* Style for the close button */
 .closeNav {
-  position: absolute;
-  padding-top: 40px;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  z-index: 3;
+	padding-left: 27vh;
+	padding-top: 4vh;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+	width: 4vh;
+	font-size: 6vh;
+	color: white;
+	display: none;
+	transition: 0.3s;
+}
+.closeNav:hover {
+	color: #333;
+	cursor: pointer;
+}
+	/* The styles for the sideNav's content */
+
+
+
+	/* The text in the sideNav content */
+.sideNav a {
+	transition: 0.3s;
+	color: #818181;
+}
+.sideNav:hover {
+	text-decoration: none;
+	color: white;	
+}
+.sideNav p {
+	padding: 2px 2px 2px 6px;
+	font-size: 12px;
+	color: #818181;
 }
 
 
 
 
-
+/* !!!!!!!!!!!! */
+/* hover effect on the main navbar as well on the a tags */
+/* !!!!!!!!!!!! */
 
 
 
@@ -188,12 +201,6 @@ hr.dotted {
 }
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 @media screen and (max-height: 450px) {
-	.sideNav {
-		padding-top: 15px;
-		}
-	.sideNav a {
-		font-size: 18px;
-		}
 }
 
 
