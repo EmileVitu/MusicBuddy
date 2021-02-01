@@ -65,7 +65,7 @@
 <template name="sideNav">
 	<div id="mySideNav" class="sideNav">
 				<!-- First the close button, that will appear when mySideNav is active -->
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; close</a>
+		<span class="closeNav">&times; close</span>
 				<!-- Now all the links for all the latest topics and modifications added by users -->
 				{{#each topics}}
 					<p>{{> sideNavTopic}}</p>
@@ -73,7 +73,7 @@
 	</div>
 				<!-- Now the open button -->
 	<div>
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="openbtn">&#9776;</span>
+		<span style="font-size:30px;cursor:pointer" class="openNav">&#9776;</span>
 	</div>
 </template>
 	<!-- End of sideNav template -->
@@ -88,8 +88,9 @@
 			<p><b>Description: </b>{{description}}</p>
 			<p><b>Category: </b>{{category}}</p>
 <!-- Here an if statement for the comments or not or new topic banner -->
-			<p><b>Last comment: </b>{{comment}}</p>
-			<p><b>Posted by: </b>{{createdBy}}</p>
+			{{#each comments}}
+				{{>lastComment}}
+			{{/each}}
 	</div>
 	<hr class="dotted">
 </template>

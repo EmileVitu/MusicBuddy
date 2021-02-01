@@ -142,31 +142,6 @@ Template.sideNav.onRendered(scrollSideNav);
 	/* Now about the login buttons, to add a username to the sign in form */
 Accounts.ui.config({passwordSignupFields: "USERNAME_AND_EMAIL"});
 
-		/* The sideNav */
-/* This should have worked, I'll have to repair it later 
-Template.sideNav.events({
-	"click.openNav":function(event){
-		alert('Hello!')
-		document.getElementById("mySideNav").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-	}
-}); */
-	/* First to rename the function names */
-window.openNav = openNav;
-window.closeNav = closeNav;
-	/* Now the openNav function */
-function openNav() {
-	document.getElementById('mySideNav').style.width = '350px';
-	document.getElementById('main').style.marginLeft = '350px';
-	document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
-}
- 	/* Now the closeNav Function */
-function closeNav() {
-	document.getElementById('mySideNav').style.width = '0px';
-	document.getElementById('main').style.marginLeft = '0px';
-	document.body.style.backgroundColor = 'white';
-}
 
 
 
@@ -191,14 +166,16 @@ Template.search.helpers({
 		console.log(resultCount);
 	},
 });		
-	/*The first one for the layout, to have the infinite scroll in the sideNav */
+	/* Now the sideNav to have the topics newsfeed with latest comment if any in the sideNav */
 Template.sideNav.helpers({
     topics(){
 		return Topics.find({}, {sort:{createdAt: -1}, limit:Session.get('topicLimit')});
-	},
+	}
+});
+Template.sideNavTopic.helpers({
 	comments(){
 		return Comments.find({topicId: this._id}, {sort:{createdAt: -1}, limit: 1});
-	}
+	}	
 });
 	/* This helper is for the newsFeed template in the home page */
 Template.newsFeed.helpers({
@@ -273,6 +250,23 @@ Template.layout.events({
 		Session.set('search/keyword', event.target.value);
 	}
 });
+	/* The sideNav openNav and closeNav events */
+Template.sideNav.events({
+	'click .openNav': function(event){
+		document.querySelector('.openNav').style.display = 'none';
+		document.getElementById('mySideNav').style.width = '250px';
+		document.getElementById('main').style.marginLeft = '250px';
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+/* Must set the transition for the topics list */
+	},
+	'click .closeNav': function(event){
+		document.querySelector('.openNav').style.display = 'block';
+		document.getElementById('mySideNav').style.width = '0px';
+		document.getElementById('main').style.marginLeft = '0px';
+		document.body.style.backgroundColor = 'white';
+/* Must set the transition for the topics list */
+	}
+}); 
 	/* And the event to add data in the topics collection using a meteor method for security */
 Template.newTopic.events({
 	submit: function (event) {
@@ -304,9 +298,6 @@ Template.singleTopic.events({
 //}
 //}
 });
-
-
-
 
 
 

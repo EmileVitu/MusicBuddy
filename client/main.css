@@ -129,7 +129,7 @@ hr.dotted {
   display: block;
 }
 		/* Position and style of the close button (top right corner) */
-.sideNav .closebtn {
+.closeNav {
   position: absolute;
   padding-top: 40px;
   right: 25px;
@@ -138,7 +138,7 @@ hr.dotted {
   z-index: 3;
 }
 		/* The styles for the open button */
-.openbtn{
+.openNav{
 	padding-top: 50px; /* This is to avoid an overlap with the navbar */
 	position: fixed; /* This is for the button to stay even while scrolling down */
 	z-index: 2;
