@@ -8,8 +8,7 @@
 
 
 		/* First the two main classes in each route template */
-.leftImage {
-}
+
 	/* The fixed div : header */
 /* !!!!!!! must put everything in % or in vh !!!! */
 .fixedPart {
@@ -21,6 +20,7 @@
 	background-color: #d1eeee;
 	font-size: 1.6vh;
 }
+	/* The fixed part general stylings */
 .fixedPart > h1 {
 	font-size: 12vh;
 	font-family: serif;	
@@ -28,6 +28,23 @@
 .fixedPart > h2 {
 	font-size: 5vh;
 	font-family: serif;	
+}
+	/* The fixed part grid stylings */
+.fixedGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.leftImage {
+	padding-top: 5vh;
+	height: 14vh;
+}
+.rightImage {
+	padding-top: 5vh;
+	height: 15vh;
+}
+.fixedGridTitle {
+	font-size: 12vh;
+	font-family: serif;
 }
 	/* The scrolling div : topic or comment list */
 .scrollingPart {
@@ -44,8 +61,8 @@
 }
 	/* For the 4 main category templates */
 .tabScroll {
-	height: 70%;
-	margin-top: 30vh;
+	height: 78vh;
+	margin-top: 22vh;
 }
 	/* For the singleTopic template */
 .singleTopicScroll {
@@ -111,19 +128,19 @@
 }
 	/* Style for the close button */
 .closeNav {
-	padding-left: 29vh;
+	padding-left: 27vh;
 	padding-top: 4vh;
 	left: 0;
 	position: absolute;
 	z-index: 1;
 	width: 4vh;
 	font-size: 6vh;
-	color: white;
+	color: #555;
 	display: none;
 	transition: 0.3s;
 }
 .closeNav:hover {
-	color: #333;
+	color: #111;
 	cursor: pointer;
 }
 		/* The styles for the sideNav's content */
