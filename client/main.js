@@ -248,33 +248,29 @@ Template.singleTopic.helpers({
 Template.layout.events({
 	'keyup #search': function(event){
 		Session.set('search/keyword', event.target.value);
-	}
-});
-	/* The sideNav openNav and closeNav events */
-Template.sideNav.events({
+	},
 	'click .openNav': function(event){
 		document.querySelector('.openNav').style.display = 'none';
 		document.querySelector('.closeNav').style.display = 'block';
-/*		document.querySelector('.sideNav').style.fontSize = '13px';		*/
 		document.getElementById('mySideNav').style.width = '250px';
 		document.getElementById('main').style.marginLeft = '250px';
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
 	},
 	'click .sideNavLinks': function(event){
 		document.querySelector('.closeNav').style.display = 'none';
 		document.querySelector('.openNav').style.display = 'block';
 		document.getElementById('mySideNav').style.width = '0px';
 		document.getElementById('main').style.marginLeft = '0px';
-		document.body.style.backgroundColor = 'white';		
+		document.body.style.backgroundColor = 'LightGray';		
 	},
 	'click .closeNav': function(event){
 		document.querySelector('.closeNav').style.display = 'none';
 		document.querySelector('.openNav').style.display = 'block';
 		document.getElementById('mySideNav').style.width = '0px';
 		document.getElementById('main').style.marginLeft = '0px';
-		document.body.style.backgroundColor = 'white';
+		document.body.style.backgroundColor = 'LightGray';
 	}
-}); 
+});
 	/* And the event to add data in the topics collection using a meteor method for security */
 Template.newTopic.events({
 	submit: function (event) {

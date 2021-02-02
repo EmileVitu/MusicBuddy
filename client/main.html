@@ -117,7 +117,9 @@
 	<div class="scrollingPart searchScroll">
 		<ul>
 			{{#each topics}}
-				{{>topic}}
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 	</div>
@@ -130,46 +132,40 @@
 		
 	<!-- First the route for the homePage -->
 <template name="home">
-		<!-- Here is the fixed part -->
 	<div class="fixedPart">
-			<h1>Welcome, Music Buddy!</h1>
-			<p>Tout d'abord le texte de bienvenue</p>
-			<p>Feel free to go through the existing conversations and topics!</p>
-			<p>But remember you must login if you want to contribute to any topic or create a new one!</p>
-			<p>What can you do now ? 4 choices, or sign in if your new !</p>
-			<p>Don't worry, it's free :)</p>
-			<hr class="dashed">			
-						<!-- Now to create the grid indicating the users possibilities -->
+			<h1>Welcome Music Buddy!</h1>
+			<p>	Please feel free to browse our main categories with plenty of interesting topics! <br>
+				If you are here about a specific subject, you can also search it in the top right corner of the page. <br> 
+				You can create your own topic as well, if so do not forget to login first! Enjoy your visit!
+			</p>	
 			<div class="gridContainer">
-						<!-- Now to create the 4 columns with a css class for them too -->
-					<div class="gridItem">
-						<a href="/General">General</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="gridItem">
-						<a href="/Instruments">Instruments</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="gridItem">
-						<a href="/Theory">Theory</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-					<div class="gridItem">
-						<a href="/BuddyBands">Buddy Bands</a>
-						<p>Description of what happens here blablablabla</p>
-						<p>Maybe a nice image as well</p>
-					</div>
-				<!-- Ending the container of the grid -->
+				<div class="gridItem">
+					<a href="/General">
+						<p>General</p>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Songbook_by_Davide_Restivo.jpg">
+					</a>
+				</div>
+				<div class="gridItem">
+					<a href="/Instruments">
+						<p>Instruments</p>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/AAM.05332b_%281%29_Hummel.jpg">
+					</a>
+				</div>
+				<div class="gridItem">
+					<a href="/Theory">
+						<p>Theory</p>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Beethoven_Ninth_Symphony.png">
+					</a>
+				</div>
+				<div class="gridItem">
+					<a href="/BuddyBands">
+						<p>BuddyBands</p>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Music_band%2C_POWs_at_St.Clement%27s_camp%2C_Fort_Verdala%2C_Cospicua%2C_Malta_%28154%29.jpg">
+					</a>
+				</div>
 			</div>
-		<hr class="solid">
-			<!-- The title for the newsFeed below -->
-		<h1>Latest updated topics</h1>
-		<!-- End of the fixedPart div for the homePage -->
+		<h2>Latest topics</h2>
 	</div>
-		<!-- Here is the scrolling part containing the newsFeed -->
 	<div class="scrollingPart homeScroll">
 		{{> newsFeed}}
 	</div>
@@ -179,9 +175,10 @@
 	<!-- Now to create the template for the newsFeed for the homePage --> 
 <template name="newsFeed">
 		<ul>
-<!-- For styling, must pu different colors for every ninth child etc. -->
 			{{#each topics}}
-			<div>{{> topic}}</div>
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 </template>
@@ -202,7 +199,6 @@
 			{{/each}}
 		</ul>
 	</p>
-	<hr class="dotted">
 </template>
 	<!-- Here is the end of the newsFeed for the homepage -->
 
@@ -228,12 +224,13 @@
 		<p>Missing a drummer in your existing band?</p>
 		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
 		<p>This section is for you! Enjoy! :)</p>
-		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
 			{{#each topics}}
-				{{> topic}}
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 	</div>
@@ -256,12 +253,13 @@
 		<p>Missing a drummer in your existing band?</p>
 		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
 		<p>This section is for you! Enjoy! :)</p>
-		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
 			{{#each topics}}
-				{{> topic}}
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 	</div>
@@ -280,12 +278,13 @@
 		<p>Missing a drummer in your existing band?</p>
 		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
 		<p>This section is for you! Enjoy! :)</p>
-		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
 			{{#each topics}}
-				{{> topic}}
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 	</div>
@@ -304,12 +303,13 @@
 		<p>Missing a drummer in your existing band?</p>
 		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
 		<p>This section is for you! Enjoy! :)</p>
-		<hr class="dashed">
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
 			{{#each topics}}
-				{{> topic}}
+				<div class="eachTopic">
+					{{> topic}}
+				</div>
 			{{/each}}
 		</ul>
 	</div>
@@ -442,11 +442,9 @@
 
 
 
-
-
-
-
-
-
+<!-- general : By Davide Restivo - https://www.flickr.com/photos/somemixedstuff/2897763743/, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=5518099 -->
+<!-- instrument photo : By Karl Ragnar Gjertsen KrgThis photo was taken by Karl Ragnar Gjertsen.Please credit this photo Karl Ragnar Gjertsen in the immediate vicinity of the image. - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=85710551-->
+<!-- theory photo : Beethoven, Ludwig van (1770 - 1827), Public domain, via Wikimedia Commons -->
+<!-- buddybands : Unknown authorUnknown author, Public domain, via Wikimedia Commons -->
 
 <!-- End of the MusicBuddy HTML code -->
