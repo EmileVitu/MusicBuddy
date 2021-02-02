@@ -175,33 +175,25 @@
 
 	<!-- Now to create the template for the newsFeed for the homePage --> 
 <template name="newsFeed">
-		<ul>
-			{{#each topics}}
-				<div class="eachTopic">
-					{{> topic}}
-				</div>
-			{{/each}}
-		</ul>
+	{{#each topics}}
+		<div class="eachTopic">
+			{{> topic}}
+		</div>
+	{{/each}}
 </template>
 	<!-- End of the news feed -->
 	
 	<!-- Finally the topic template for each topic in the newsFeed-->
 <template name="topic">
-	<div>
 	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
 	<p><b>Category: </b>{{category}}</p>
 	<p><b>User: </b>{{getUser createdBy}}</p>
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Description:</b></p>
 	<p>{{description}}</p>
-	<p>	
-		<ul>
-			{{#each comments}}
-				{{> lastComment}}
-			{{/each}}
-		</ul>
-	</p>
-	</div>
+	{{#each comments}}
+		{{> lastComment}}
+	{{/each}}
 </template>
 	<!-- Here is the end of the newsFeed for the homepage -->
 
