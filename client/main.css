@@ -27,6 +27,11 @@
 }
 .fixedPart > h2 {
 	font-size: 5vh;
+	font-family: serif;
+}
+.fixedPart > h3 {
+	padding-top: 2vh;
+	font-size: 4vh;
 	font-family: serif;	
 }
 	/* The fixed part grid stylings */
@@ -66,13 +71,13 @@
 }
 	/* For the singleTopic template */
 .singleTopicScroll {
-	height: 45%;
+	height: 45vh;
 	margin-top: 55vh;
 }
 	/* For the searh template */
 .searchScroll {
-	height: 83%;
-	margin-top: 17vh;
+	height: 88vh;
+	margin-top: 12vh;
 }
 
 
