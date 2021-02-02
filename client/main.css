@@ -8,20 +8,25 @@
 
 
 		/* First the two main classes in each route template */
-
+.leftImage {
+}
 	/* The fixed div : header */
 /* !!!!!!! must put everything in % or in vh !!!! */
 .fixedPart {
 	transition: margin-left .5s;
 	text-align: center;
-	padding-top: 4vh;
+	padding-top: 3vh;
 	position: fixed;
 	width: 100%;
 	background-color: #d1eeee;
-	font-size: 18px;
+	font-size: 1.6vh;
 }
 .fixedPart > h1 {
 	font-size: 12vh;
+	font-family: serif;	
+}
+.fixedPart > h2 {
+	font-size: 5vh;
 	font-family: serif;	
 }
 	/* The scrolling div : topic or comment list */
@@ -34,8 +39,8 @@
 		/* Now the sub-classes for each srolling div */
 	/* For the home template */
 .homeScroll {
-	height: 44vh;
-	margin-top: 56vh;	
+	height: 43vh;
+	margin-top: 57vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
@@ -53,11 +58,15 @@
 	margin-top: 17vh;
 }
 
+
+
+
 		/* End of the global templates styles */
 .eachTopic{
 	background-color: white;
 	margin-left: 20vh;
 	margin-right: 20vh;
+	margin-top: 1vh;
 	margin-bottom: 3vh;
     border: 0.1vh solid #111;
     box-shadow: 0 0 0.4vh 0.4vh #555;
@@ -144,19 +153,11 @@
 
 
 
-/* !!!!!!!!!!!! */
-/* hover effect on the main navbar as well on the <a> tags */
-/* !!!!!!!!!!!! */
-
-
-
 		/* Now the styles for the grids */
 	/* Styles for the general grids */
 .gridContainer {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
-	column-gap: 2%;
-/* must put a certain height to add to the others and fit 100% */
 }
 	/* Styles for the items */
 .gridItem {
@@ -180,11 +181,9 @@
 
 
 
-
-
-
-
-
+/* !!!!!!!!!!!! */
+/* hover effect on the main navbar as well on the <a> tags */
+/* !!!!!!!!!!!! */
 
 
 

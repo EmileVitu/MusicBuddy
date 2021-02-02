@@ -133,37 +133,38 @@
 	<!-- First the route for the homePage -->
 <template name="home">
 	<div class="fixedPart">
-			<h1>Welcome Music Buddy!</h1>
-			<p>	Please feel free to browse our main categories with plenty of interesting topics! <br>
-				If you are here about a specific subject, you can also search it in the top right corner of the page. <br> 
-				You can create your own topic as well, if so do not forget to login first! Enjoy your visit!
-			</p>	
-			<div class="gridContainer">
-				<div class="gridItem">
-					<a href="/General">
-						<p>General</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Songbook_by_Davide_Restivo.jpg">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/Instruments">
-						<p>Instruments</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/AAM.05332b_%281%29_Hummel.jpg">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/Theory">
-						<p>Theory</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Beethoven_Ninth_Symphony.png">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/BuddyBands">
-						<p>BuddyBands</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Music_band%2C_POWs_at_St.Clement%27s_camp%2C_Fort_Verdala%2C_Cospicua%2C_Malta_%28154%29.jpg">
-					</a>
-				</div>
+		<h1>Welcome Music Buddy!</h1>
+		<p>	
+			Please feel free to browse our main categories with plenty of interesting topics! <br>
+			If you are here about a specific subject, you can also search it in the top right corner of the page. <br> 
+			You can create your own topic as well, if so do not forget to login first! Enjoy your visit!
+		</p>	
+		<div class="gridContainer">
+			<div class="gridItem">
+				<a href="/General">
+					<p>General</p>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Songbook_by_Davide_Restivo.jpg">
+				</a>
 			</div>
+			<div class="gridItem">
+				<a href="/Instruments">
+					<p>Instruments</p>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/AAM.05332b_%281%29_Hummel.jpg">
+				</a>
+			</div>
+			<div class="gridItem">
+				<a href="/Theory">
+					<p>Theory</p>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Beethoven_Ninth_Symphony.png">
+				</a>
+			</div>
+			<div class="gridItem">
+				<a href="/BuddyBands">
+					<p>BuddyBands</p>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Music_band%2C_POWs_at_St.Clement%27s_camp%2C_Fort_Verdala%2C_Cospicua%2C_Malta_%28154%29.jpg">
+				</a>
+			</div>
+		</div>
 		<h2>Latest topics</h2>
 	</div>
 	<div class="scrollingPart homeScroll">
@@ -186,6 +187,7 @@
 	
 	<!-- Finally the topic template for each topic in the newsFeed-->
 <template name="topic">
+	<div>
 	<p><b>Title: </b><a href="/{{category}}/{{_id}}">{{title}}</a></p>
 	<p><b>Category: </b>{{category}}</p>
 	<p><b>User: </b>{{getUser createdBy}}</p>
@@ -199,6 +201,7 @@
 			{{/each}}
 		</ul>
 	</p>
+	</div>
 </template>
 	<!-- Here is the end of the newsFeed for the homepage -->
 
@@ -440,11 +443,16 @@
 
 
 
-
+<!-- 
+	<img class="leftImage" src="https://upload.wikimedia.org/wikipedia/commons/f/ff/GClef.svg">
+	<img class="rightImage" src="https://upload.wikimedia.org/wikipedia/commons/c/c5/FClef.svg"> 
+		-->
 
 <!-- general : By Davide Restivo - https://www.flickr.com/photos/somemixedstuff/2897763743/, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=5518099 -->
 <!-- instrument photo : By Karl Ragnar Gjertsen KrgThis photo was taken by Karl Ragnar Gjertsen.Please credit this photo Karl Ragnar Gjertsen in the immediate vicinity of the image. - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=85710551-->
 <!-- theory photo : Beethoven, Ludwig van (1770 - 1827), Public domain, via Wikimedia Commons -->
 <!-- buddybands : Unknown authorUnknown author, Public domain, via Wikimedia Commons -->
+<!-- G key: っ, Public domain, via Wikimedia Commons -->
+<!-- F key : Par っ — Travail personnel, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=736452 -->
 
 <!-- End of the MusicBuddy HTML code -->
