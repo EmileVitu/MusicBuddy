@@ -1,4 +1,4 @@
-	<!-- Welcome to the MusicBuddy website -->
+<!-- Welcome to the MusicBuddy website -->
 
 
 
@@ -105,14 +105,8 @@
 
 	<!-- Now the searchTool route --> 
 <template name="search">
-		<!-- Now the template for the latest changes done to the database -->
-<!--!!!!!!! Two classes ? !!!!!!!-->
 	<div class="fixedPart">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
-		<h1>Here are your search results!</h1>
-		<p>You have {{resultCount}} results!</p>
-	<!-- A separator to separate the homepage to the newsFeed (check css too) -->
-		<hr class="solid">
+		<h3>You have {{resultCount}} results!</h3>
 	</div>
 	<div class="scrollingPart searchScroll">
 		<ul>
@@ -128,42 +122,42 @@
 
 
 
-		<!-- Here are the main routes -->
+		<!-- Here is the home routes with the homepage template and it's associated sub-templates -->
 		
 	<!-- First the route for the homePage -->
 <template name="home">
 	<div class="fixedPart">
-			<h1>Welcome Music Buddy!</h1>
-			<p>	Please feel free to browse our main categories with plenty of interesting topics! <br>
-				If you are here about a specific subject, you can also search it in the top right corner of the page. <br> 
-				You can create your own topic as well, if so do not forget to login first! Enjoy your visit!
-			</p>	
-			<div class="gridContainer">
-				<div class="gridItem">
-					<a href="/General">
-						<p>General</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Songbook_by_Davide_Restivo.jpg">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/Instruments">
-						<p>Instruments</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/AAM.05332b_%281%29_Hummel.jpg">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/Theory">
-						<p>Theory</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Beethoven_Ninth_Symphony.png">
-					</a>
-				</div>
-				<div class="gridItem">
-					<a href="/BuddyBands">
-						<p>BuddyBands</p>
-						<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Music_band%2C_POWs_at_St.Clement%27s_camp%2C_Fort_Verdala%2C_Cospicua%2C_Malta_%28154%29.jpg">
-					</a>
-				</div>
+		<h1>MusicBuddy!</h1>
+		<div class="gridContainer">
+			<div class="gridItem">
+				<a href="/General">
+					<p class="imgTitle">General</p>
+					<p class="imgText">A selection of general discussions topics</p>
+					<img src="General-phillip-blocker-b9CcBwmq30c-unsplash.jpg">
+				</a>
 			</div>
+			<div class="gridItem">
+				<a href="/Instruments">
+					<p class="imgTitle">Instruments</p>
+					<p class="imgText">Instrument focused topics</p>
+					<img src="Instruments-derick-daily-4m4FR5Utw8w-unsplash.jpg">
+				</a>
+			</div>
+			<div class="gridItem">
+				<a href="/Theory" class="aa">
+					<p class="imgTitle">Theory</p>
+					<p class="imgText">Music theory topics and </p>
+					<img src="Theory-marius-masalar-rPOmLGwai2w-unsplash.jpg">
+				</a>
+			</div>
+			<div class="gridItem">
+				<a href="/BuddyBands">
+					<p class="imgTitle">BuddyBands</p>
+					<p class="imgText">A selection of general discussions topics</p>
+					<img src="BuddyBands-john-matychuk-gUK3lA3K7Yo-unsplash.jpg">
+				</a>
+			</div>
+		</div>
 		<h2>Latest topics</h2>
 	</div>
 	<div class="scrollingPart homeScroll">
@@ -174,13 +168,11 @@
 
 	<!-- Now to create the template for the newsFeed for the homePage --> 
 <template name="newsFeed">
-		<ul>
-			{{#each topics}}
-				<div class="eachTopic">
-					{{> topic}}
-				</div>
-			{{/each}}
-		</ul>
+	{{#each topics}}
+		<div class="eachTopic">
+			{{> topic}}
+		</div>
+	{{/each}}
 </template>
 	<!-- End of the news feed -->
 	
@@ -192,13 +184,9 @@
 	<p><b>Created on: </b>{{createdAt}}</p>
 	<p><b>Description:</b></p>
 	<p>{{description}}</p>
-	<p>	
-		<ul>
-			{{#each comments}}
-				{{> lastComment}}
-			{{/each}}
-		</ul>
-	</p>
+	{{#each comments}}
+		{{> lastComment}}
+	{{/each}}
 </template>
 	<!-- Here is the end of the newsFeed for the homepage -->
 
@@ -212,18 +200,23 @@
 
 
 
-		<!-- Now we have the main routes templates -->
+		<!-- Now we have the mainTab routes templates -->
 		
-	<!-- Now to create the general discussions template! -->
+	<!-- First the general discussions template! -->
 <template name="general">
 	{{>sideNav}}
 	<div class="fixedPart">
-		<h1>General</h1>
-		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
-		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
-		<p>Missing a drummer in your existing band?</p>
-		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
-		<p>This section is for you! Enjoy! :)</p>
+		<div class="fixedGrid">	
+			<div>
+				<img class="leftImage" src="symphony5_1.png">
+			</div>
+			<div>
+				<h1 class="fixedGridTitle">General</h1>
+			</div>
+			<div>
+				<img class="rightImage" src="symphony5_2.png">
+			</div>
+		</div>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -247,12 +240,17 @@
 <template name="instruments">
 	{{>sideNav}}
 	<div class="fixedPart">
-		<h1>Instruments</h1>
-		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
-		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
-		<p>Missing a drummer in your existing band?</p>
-		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
-		<p>This section is for you! Enjoy! :)</p>
+		<div class="fixedGrid">	
+			<div>
+				<img class="leftImage" src="symphony5_1.png">
+			</div>
+			<div>
+				<h1 class="fixedGridTitle">Instruments</h1>
+			</div>
+			<div>
+				<img class="rightImage" src="symphony5_2.png">
+			</div>
+		</div>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -272,12 +270,17 @@
 <template name="theory">
 	{{>sideNav}}
 	<div class="fixedPart">
-		<h1>Theory</h1>
-		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
-		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
-		<p>Missing a drummer in your existing band?</p>
-		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
-		<p>This section is for you! Enjoy! :)</p>
+		<div class="fixedGrid">	
+			<div>
+				<img class="leftImage" src="symphony5_1.png">
+			</div>
+			<div>
+				<h1 class="fixedGridTitle">Theory</h1>
+			</div>
+			<div>
+				<img class="rightImage" src="symphony5_2.png">
+			</div>
+		</div>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -297,12 +300,17 @@
 <template name="buddybands">
 	{{>sideNav}}
 	<div class="fixedPart">
-		<h1>BuddyBands</h1>
-		<p>Here you can team up with other Buddys and create physical or virtual bands together, organise gigs and do all kind of community music!</p>
-		<p>Do you want to create a jazz band and no one in you home town plays jazz?</p>
-		<p>Missing a drummer in your existing band?</p>
-		<p>Or simply wanting to build up a band with other musicians that share your insight of music?</p>
-		<p>This section is for you! Enjoy! :)</p>
+		<div class="fixedGrid">	
+			<div>
+				<img class="leftImage" src="symphony5_1.png">
+			</div>
+			<div>
+				<h1 class="fixedGridTitle">BuddyBands</h1>
+			</div>
+			<div>
+				<img class="rightImage" src="symphony5_2.png">
+			</div>
+		</div>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -320,63 +328,56 @@
 
 	<!-- Now to create the new topic template! -->
 <template name="newTopic">
-	<div class="fixedPart">
-			<h1> Here you can create your new topic !</h1>
-		<!-- Here is the form to update the topics database with new topics -->
-			<br>
-			<form>
-				<label for="topic-title">Please enter a title for you new Music Buddy topic: </label>
-				<input id="topic-title" type="text" name="title" placeholder="Type to add a new topic" size="50"/>
-				<br>
-				<br>
-				<label for="topic-content" style="vertical-align:middle">You can now enter your subject brief description: </label>
-				<textarea id="topic-content" type="text" name="description" placeholder="Please enter your description" rows="10" cols="52"></textarea>
-				<br>
-				<br>
-				  <label for="category">Choose a category for your topic:</label>
-				  <select id="category" name="category">
-					<option value="General" id="1">General</option>
-					<option value="Instruments" id="2">Instruments</option>
-					<option value="Theory" id="3">Theory</option>
-					<option value="BuddyBands" id="4">BuddyBands</option>
-				  </select>
-				<br>
-				<br>
-				<button class="new-topic btn btn-info">Create!</button>
-<!-- We still need the alert -->
-			</form>
-			<br>
-			<br>
-			<br>
-			<p>Not sure what category you want to assign your topic to? No worries!</p>
-			<p>Here is a brief reminder of them:</p>
-			<p>And if you are not sure yet, just choose "general" ;-)</p> 
-<!-- We'll have to remove these br -->
-		<br>
-		<br>
-			<!-- Here we have 4 columns to help the user if he is unsure bout the category -->
+	<div class="fixedPart fixedPartNewTopic">
 		<div class="gridContainer">
 			<div class="gridItem">
-				<a href="/General">General</a>
-				<p>Description of what happens here blablablabla</p>
-				<p>Maybe a nice image as well</p>
+				<a href="/General">
+					<p class="imgTitle">General</p>
+					<p class="imgText">A selection of general discussions topics</p>
+					<img src="General-phillip-blocker-b9CcBwmq30c-unsplash.jpg">
+				</a>
 			</div>
 			<div class="gridItem">
-				<a href="/Instruments">Instruments</a>
-				<p>Description of what happens here blablablabla</p>
-				<p>Maybe a nice image as well</p>
+				<a href="/Instruments">
+					<p class="imgTitle">Instruments</p>
+					<p class="imgText">Instrument focused topics</p>
+					<img src="Instruments-derick-daily-4m4FR5Utw8w-unsplash.jpg">
+				</a>
 			</div>
 			<div class="gridItem">
-				<a href="/Theory">Theory</a>
-				<p>Description of what happens here blablablabla</p>
-				<p>Maybe a nice image as well</p>
+				<a href="/Theory" class="aa">
+					<p class="imgTitle">Theory</p>
+					<p class="imgText">Music theory topics and </p>
+					<img src="Theory-marius-masalar-rPOmLGwai2w-unsplash.jpg">
+				</a>
 			</div>
 			<div class="gridItem">
-				<a href="/BuddyBands">Buddy Bands</a>
-				<p>Description of what happens here blablablabla</p>
-				<p>Maybe a nice image as well</p>
+				<a href="/BuddyBands">
+					<p class="imgTitle">BuddyBands</p>
+					<p class="imgText">A selection of general discussions topics</p>
+					<img src="BuddyBands-john-matychuk-gUK3lA3K7Yo-unsplash.jpg">
+				</a>
 			</div>
 		</div>
+		<h3> New topic !</h3>
+		<form>
+			<div class="form-group">
+				<input id="topic-title" type="form-control" name="title" placeholder="Please enter a topic title" size="47"/>
+			</div>
+			<div class="form-group">
+				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter your topic description" rows="2" cols="50"></textarea>
+			</div>
+			<div class="form-group">
+				<select id="category" name="category" type="form-control">
+					<option value="General">General</option>
+					<option value="Instruments">Instruments</option>
+					<option value="Theory">Theory</option>
+					<option value="BuddyBands">BuddyBands</option>
+				</select>
+			</div>
+			<button class="new-topic btn btn-primary">Create!</button>
+<!-- We still need the alert -->
+		</form>
 	</div>
 </template>
 	<!-- End of the newTopic template -->
@@ -440,11 +441,32 @@
 
 
 
+<!-- 
+https://en.wikipedia.org/wiki/Symphony_No._5_(Beethoven)#cite_ref-47
+https://commons.wikimedia.org/wiki/Category:Symphony_No._5_(Beethoven)
 
+
+<img class="rightImage" src="https://upload.wikimedia.org/wikipedia/commons/c/c5/FClef.svg">
+<img class="leftImage" src="https://upload.wikimedia.org/wikipedia/commons/f/ff/GClef.svg">		
+		-->
 
 <!-- general : By Davide Restivo - https://www.flickr.com/photos/somemixedstuff/2897763743/, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=5518099 -->
 <!-- instrument photo : By Karl Ragnar Gjertsen KrgThis photo was taken by Karl Ragnar Gjertsen.Please credit this photo Karl Ragnar Gjertsen in the immediate vicinity of the image. - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=85710551-->
 <!-- theory photo : Beethoven, Ludwig van (1770 - 1827), Public domain, via Wikimedia Commons -->
 <!-- buddybands : Unknown authorUnknown author, Public domain, via Wikimedia Commons -->
+<!-- G key: っ, Public domain, via Wikimedia Commons -->
+<!-- F key : Par っ — Travail personnel, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=736452 -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- End of the MusicBuddy HTML code -->

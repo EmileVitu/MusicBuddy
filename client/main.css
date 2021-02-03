@@ -1,10 +1,24 @@
 /* CSS styles for MusicBuddy */
 
-	/* Finally the login form */
+
+
+
+
+		/* Here are the general inputs and styles */
+
+	/* Font import */
+@font-face {
+	font-family: coolvetica;
+	src: url(coolvetica.ttf);
+}
+	/* The login form */
 .accounts-dialog {
 	margin-top: 4vh;
 	background: lavender;
 }
+
+
+
 
 
 		/* First the two main classes in each route template */
@@ -14,58 +28,151 @@
 .fixedPart {
 	transition: margin-left .5s;
 	text-align: center;
-	padding-top: 4vh;
+	padding-top: 3vh;
 	position: fixed;
 	width: 100%;
-	background-color: #d1eeee;
-	font-size: 18px;
+	background-color: #F0F8FF;
+	font-size: 1.6vh;
 }
+	/* The fixed part general stylings */
 .fixedPart > h1 {
 	font-size: 12vh;
-	font-family: serif;	
+	font-family: coolvetica;	
 }
-	/* The scrolling div : topic or comment list */
+.fixedPart > h2 {
+	font-size: 5vh;
+	font-family: coolvetica;
+}
+.fixedPart > h3 {
+	padding-top: 2vh;
+	font-size: 4vh;
+	font-family: coolvetica;	
+}
+.fixedPartNewTopic {
+	padding-top: 7vh;
+	height: 100vh
+}
+	/* The fixed part grid stylings */
+.fixedGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.leftImage {
+	padding-top: 5vh;
+	height: 14vh;
+}
+.rightImage {
+	padding-top: 5vh;
+	height: 15vh;
+}
+.fixedGridTitle {
+	font-size: 12vh;
+	font-family: coolvetica;
+}
+
+		/* Now the styling of the scrollingPart */
+
+	/* The scrollingPart div in topics or comments list */
 .scrollingPart {
 	overflow-y:scroll;
 	position: fixed;
 	width: 100%;
-	background-color: #d1eeee;
+	background-color: #F0F8FF;
 }
+
 		/* Now the sub-classes for each srolling div */
+
 	/* For the home template */
 .homeScroll {
-	height: 44vh;
-	margin-top: 56vh;	
+	height: 51vh;
+	margin-top: 60vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
-	height: 70%;
-	margin-top: 30vh;
+	height: 81vh;
+	margin-top: 19vh;
 }
 	/* For the singleTopic template */
 .singleTopicScroll {
-	height: 45%;
+	height: 45vh;
 	margin-top: 55vh;
 }
 	/* For the searh template */
 .searchScroll {
-	height: 83%;
-	margin-top: 17vh;
+	height: 88vh;
+	margin-top: 12vh;
 }
+	/* End of the global templates styles */
 
-		/* End of the global templates styles */
+
+
+
+
+		/* Now the styles for the topics and comments in the infinite lists */
+
+	/* For the topics */
 .eachTopic{
 	background-color: white;
-	margin-left: 20vh;
-	margin-right: 20vh;
+	margin-left: 25vh;
+	margin-right: 25vh;
+	margin-top: 1vh;
 	margin-bottom: 3vh;
-    border: 0.1vh solid #111;
-    box-shadow: 0 0 0.4vh 0.4vh #555;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
+/* Issue here since not aligned on the right with the images */
+}
+	/* And the comments */
+
+
+
+
+
+		/* Now the styles for the grids */
+
+	/* Styles for the general grids */
+.gridContainer {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	column-gap: 2vh;
+	margin-left: 25vh;
+	margin-right: 25vh;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
+}
+	/* Styles for the items */
+.gridItem {
+	font-size: 4vh;
+	font-family: coolvetica;
+}
+.gridItem > a > img {
+	height: 100%;
+	width: 100%;
 	border-radius: 1vh;
 }
+.imgTitle {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	font-size: 4vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.imgText {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	padding-top: 22vh;
+	font-size: 1.8vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
+
+
+
 
 
 		/* The sideNav attributes */
+
 	/* The sideNav's general layout for the open/close event */
 .sideNav {
 	height: 95vh;
@@ -102,19 +209,19 @@
 }
 	/* Style for the close button */
 .closeNav {
-	padding-left: 29vh;
+	padding-left: 27vh;
 	padding-top: 4vh;
 	left: 0;
 	position: absolute;
 	z-index: 1;
 	width: 4vh;
 	font-size: 6vh;
-	color: white;
+	color: #555;
 	display: none;
 	transition: 0.3s;
 }
 .closeNav:hover {
-	color: #333;
+	color: #111;
 	cursor: pointer;
 }
 		/* The styles for the sideNav's content */
@@ -144,47 +251,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* !!!!!!!!!!!! */
 /* hover effect on the main navbar as well on the <a> tags */
 /* !!!!!!!!!!!! */
-
-
-
-		/* Now the styles for the grids */
-	/* Styles for the general grids */
-.gridContainer {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-	column-gap: 2%;
-/* must put a certain height to add to the others and fit 100% */
-}
-	/* Styles for the items */
-.gridItem {
-  font-size: 4vh;
-}
-.gridItem > a > img {
-	height: 15vh;
-}
-.griditem > a {
-	transition: 0.3s;
-}
-.gridItem > a:hover {
-	text-decoration: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
