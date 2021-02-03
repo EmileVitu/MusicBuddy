@@ -81,7 +81,7 @@
 	/* For the home template */
 .homeScroll {
 	height: 51vh;
-	margin-top: 49vh;	
+	margin-top: 60vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
@@ -109,15 +109,55 @@
 	/* For the topics */
 .eachTopic{
 	background-color: white;
-	margin-left: 20vh;
-	margin-right: 20vh;
+	margin-left: 25vh;
+	margin-right: 25vh;
 	margin-top: 1vh;
 	margin-bottom: 3vh;
     border: 0.25vh solid #C0C0C0;
 	border-radius: 0.5vh;
+/* Issue here since not aligned on the right with the images */
 }
 	/* And the comments */
 
+
+
+
+
+		/* Now the styles for the grids */
+
+	/* Styles for the general grids */
+.gridContainer {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	column-gap: 2vh;
+	margin-left: 25vh;
+	margin-right: 25vh;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
+}
+	/* Styles for the items */
+.gridItem {
+	font-size: 4vh;
+	font-family: coolvetica;	
+}
+.gridItem > a > img {
+	height: 100%;
+	width: 100%;
+	border-radius: 1vh;
+}
+.imgTitle {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	font-size: 4vh;
+}
+.imgText {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	padding-top: 22vh;
+	font-size: 1.8vh;
+}
 
 
 
@@ -207,27 +247,6 @@
 
 
 
-		/* Now the styles for the grids */
-
-	/* Styles for the general grids */
-.gridContainer {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-}
-	/* Styles for the items */
-.gridItem {
-	font-size: 4vh;
-	font-family: coolvetica;	
-}
-.gridItem > a > img {
-	height: 15vh;
-}
-.griditem > a {
-	transition: 0.3s;	
-}
-.gridItem > a:hover {
-	text-decoration: none;
-}
 
 
 
