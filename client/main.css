@@ -48,6 +48,12 @@
 	font-size: 4vh;
 	font-family: coolvetica;	
 }
+.fixedPart > h4 {
+	font-size: 2.5vh;
+	font-family: coolvetica;
+	text-align: left;
+	margin-left: 25vh;
+}
 .fixedPartNewTopic {
 	padding-top: 7vh;
 	height: 100vh
@@ -84,8 +90,8 @@
 
 	/* For the home template */
 .homeScroll {
-	height: 51vh;
-	margin-top: 60vh;	
+	height: 46vh;
+	margin-top: 54vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
@@ -164,7 +170,15 @@
 	font-size: 1.8vh;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-
+.formGrid {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	column-gap: 2vh;
+	margin-left: 25vh;
+	margin-right: 25vh;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
+}
 
 
 
