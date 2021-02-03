@@ -328,32 +328,7 @@
 
 	<!-- Now to create the new topic template! -->
 <template name="newTopic">
-	<div class="fixedPart">
-		<h3> New topic !</h3>
-		<form>
-			<div class="form-group">
-				<input id="topic-title" type="form-control" name="title" placeholder="Please enter a topic title" size="47"/>
-			</div>
-			<div class="form-group">
-				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter the topic description" rows="2" cols="50"></textarea>
-			</div>
-			<div class="form-group">
-				<select id="category" name="category" type="form-control">
-					<option value="General">General</option>
-					<option value="Instruments">Instruments</option>
-					<option value="Theory">Theory</option>
-					<option value="BuddyBands">BuddyBands</option>
-				</select>
-			</div>
-			<button class="new-topic btn btn-primary">Create!</button>
-<!-- We still need the alert -->
-		</form>
-		<p>Not sure what category you want to assign your topic to? No worries!</p>
-		<p>Here is a brief reminder of what they are, and if you are not sure yet, just choose "general" ;-)</p> 
-<!-- We'll have to remove these br -->
-		<br>
-		<br>
-			<!-- Here we have 4 columns to help the user if he is unsure bout the category -->
+	<div class="fixedPart fixedPartNewTopic">
 		<div class="gridContainer">
 			<div class="gridItem">
 				<a href="/General">
@@ -384,6 +359,25 @@
 				</a>
 			</div>
 		</div>
+		<h3> New topic !</h3>
+		<form>
+			<div class="form-group">
+				<input id="topic-title" type="form-control" name="title" placeholder="Please enter a topic title" size="47"/>
+			</div>
+			<div class="form-group">
+				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter your topic description" rows="2" cols="50"></textarea>
+			</div>
+			<div class="form-group">
+				<select id="category" name="category" type="form-control">
+					<option value="General">General</option>
+					<option value="Instruments">Instruments</option>
+					<option value="Theory">Theory</option>
+					<option value="BuddyBands">BuddyBands</option>
+				</select>
+			</div>
+			<button class="new-topic btn btn-primary">Create!</button>
+<!-- We still need the alert -->
+		</form>
 	</div>
 </template>
 	<!-- End of the newTopic template -->
