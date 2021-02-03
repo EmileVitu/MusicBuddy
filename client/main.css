@@ -1,10 +1,24 @@
 /* CSS styles for MusicBuddy */
 
-	/* Finally the login form */
+
+
+
+
+		/* Here are the general inputs and styles */
+
+	/* Font import */
+@font-face {
+	font-family: coolvetica;
+	src: url(coolvetica.ttf);
+}
+	/* The login form */
 .accounts-dialog {
 	margin-top: 4vh;
 	background: lavender;
 }
+
+
+
 
 
 		/* First the two main classes in each route template */
@@ -17,22 +31,22 @@
 	padding-top: 3vh;
 	position: fixed;
 	width: 100%;
-	background-color: #d1eeee;
+	background-color: #F0F8FF;
 	font-size: 1.6vh;
 }
 	/* The fixed part general stylings */
 .fixedPart > h1 {
 	font-size: 12vh;
-	font-family: serif;	
+	font-family: coolvetica;	
 }
 .fixedPart > h2 {
 	font-size: 5vh;
-	font-family: serif;
+	font-family: coolvetica;
 }
 .fixedPart > h3 {
 	padding-top: 2vh;
 	font-size: 4vh;
-	font-family: serif;	
+	font-family: coolvetica;	
 }
 	/* The fixed part grid stylings */
 .fixedGrid {
@@ -49,25 +63,30 @@
 }
 .fixedGridTitle {
 	font-size: 12vh;
-	font-family: serif;
+	font-family: coolvetica;
 }
-	/* The scrolling div : topic or comment list */
+
+		/* Now the styling of the scrollingPart */
+
+	/* The scrollingPart div in topics or comments list */
 .scrollingPart {
 	overflow-y:scroll;
 	position: fixed;
 	width: 100%;
-	background-color: #d1eeee;
+	background-color: #F0F8FF;
 }
+
 		/* Now the sub-classes for each srolling div */
+
 	/* For the home template */
 .homeScroll {
-	height: 43vh;
-	margin-top: 57vh;	
+	height: 51vh;
+	margin-top: 49vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
-	height: 78vh;
-	margin-top: 22vh;
+	height: 81vh;
+	margin-top: 19vh;
 }
 	/* For the singleTopic template */
 .singleTopicScroll {
@@ -79,24 +98,35 @@
 	height: 88vh;
 	margin-top: 12vh;
 }
+	/* End of the global templates styles */
 
 
 
 
-		/* End of the global templates styles */
+
+		/* Now the styles for the topics and comments in the infinite lists */
+
+	/* For the topics */
 .eachTopic{
 	background-color: white;
 	margin-left: 20vh;
 	margin-right: 20vh;
 	margin-top: 1vh;
 	margin-bottom: 3vh;
-    border: 0.1vh solid #111;
-    box-shadow: 0 0 0.4vh 0.4vh #555;
-	border-radius: 1vh;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
 }
+	/* And the comments */
+
+
+
+
+
+
 
 
 		/* The sideNav attributes */
+
 	/* The sideNav's general layout for the open/close event */
 .sideNav {
 	height: 95vh;
@@ -175,7 +205,10 @@
 
 
 
+
+
 		/* Now the styles for the grids */
+
 	/* Styles for the general grids */
 .gridContainer {
 	display: grid;
@@ -183,13 +216,14 @@
 }
 	/* Styles for the items */
 .gridItem {
-  font-size: 4vh;
+	font-size: 4vh;
+	font-family: coolvetica;	
 }
 .gridItem > a > img {
 	height: 15vh;
 }
 .griditem > a {
-	transition: 0.3s;
+	transition: 0.3s;	
 }
 .gridItem > a:hover {
 	text-decoration: none;

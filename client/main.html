@@ -105,10 +105,7 @@
 
 	<!-- Now the searchTool route --> 
 <template name="search">
-		<!-- Now the template for the latest changes done to the database -->
-<!--!!!!!!! Two classes ? !!!!!!!-->
 	<div class="fixedPart">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
 		<h3>You have {{resultCount}} results!</h3>
 	</div>
 	<div class="scrollingPart searchScroll">
@@ -125,17 +122,12 @@
 
 
 
-		<!-- Here are the main routes -->
+		<!-- Here is the home routes with the homepage template and it's associated sub-templates -->
 		
 	<!-- First the route for the homePage -->
 <template name="home">
 	<div class="fixedPart">
-		<h1>Music Buddy!</h1>
-		<p>	
-			Please feel free to browse our main categories with plenty of interesting topics! <br>
-			If you are here about a specific subject, you can also search it in the top right corner of the page. <br> 
-			You can create your own topic as well, if so do not forget to login first! Enjoy your visit!
-		</p>	
+		<h1>MusicBuddy!</h1>
 		<div class="gridContainer">
 			<div class="gridItem">
 				<a href="/General">
@@ -204,9 +196,9 @@
 
 
 
-		<!-- Now we have the main routes templates -->
+		<!-- Now we have the mainTab routes templates -->
 		
-	<!-- Now to create the general discussions template! -->
+	<!-- First the general discussions template! -->
 <template name="general">
 	{{>sideNav}}
 	<div class="fixedPart">
@@ -221,7 +213,6 @@
 				<img class="rightImage" src="symphony5_2.png">
 			</div>
 		</div>
-		<p>Here you can find all the general discussions about music, bands and much more! Enjoy your browsing!</p>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -256,7 +247,6 @@
 				<img class="rightImage" src="symphony5_2.png">
 			</div>
 		</div>
-		<p>In this category, you can find topics about various instruments techniques, specificities and more!</p>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -287,7 +277,6 @@
 				<img class="rightImage" src="symphony5_2.png">
 			</div>
 		</div>
-		<p>In this category, you can learn, ask, teach or simply give your opinion about music theory!</p>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -318,7 +307,6 @@
 				<img class="rightImage" src="symphony5_2.png">
 			</div>
 		</div>
-		<p>In this category, you can meet with people sharing the same interests, music styles or bands and organise gigs, rehearsings and much more!</p>
 	</div>
 	<div class="scrollingPart tabScroll">
 		<ul>
@@ -337,36 +325,27 @@
 	<!-- Now to create the new topic template! -->
 <template name="newTopic">
 	<div class="fixedPart">
-			<h1> Here you can create your new topic !</h1>
-		<!-- Here is the form to update the topics database with new topics -->
-			<br>
-			<form>
-				<label for="topic-title">Please enter a title for you new Music Buddy topic: </label>
-				<input id="topic-title" type="text" name="title" placeholder="Type to add a new topic" size="50"/>
-				<br>
-				<br>
-				<label for="topic-content" style="vertical-align:middle">You can now enter your subject brief description: </label>
-				<textarea id="topic-content" type="text" name="description" placeholder="Please enter your description" rows="10" cols="52"></textarea>
-				<br>
-				<br>
-				  <label for="category">Choose a category for your topic:</label>
-				  <select id="category" name="category">
-					<option value="General" id="1">General</option>
-					<option value="Instruments" id="2">Instruments</option>
-					<option value="Theory" id="3">Theory</option>
-					<option value="BuddyBands" id="4">BuddyBands</option>
-				  </select>
-				<br>
-				<br>
-				<button class="new-topic btn btn-info">Create!</button>
+		<h3> New topic !</h3>
+		<form>
+			<div class="form-group">
+				<input id="topic-title" type="form-control" name="title" placeholder="Please enter a topic title" size="47"/>
+			</div>
+			<div class="form-group">
+				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter the topic description" rows="2" cols="50"></textarea>
+			</div>
+			<div class="form-group">
+				<select id="category" name="category" type="form-control">
+					<option value="General">General</option>
+					<option value="Instruments">Instruments</option>
+					<option value="Theory">Theory</option>
+					<option value="BuddyBands">BuddyBands</option>
+				</select>
+			</div>
+			<button class="new-topic btn btn-primary">Create!</button>
 <!-- We still need the alert -->
-			</form>
-			<br>
-			<br>
-			<br>
-			<p>Not sure what category you want to assign your topic to? No worries!</p>
-			<p>Here is a brief reminder of them:</p>
-			<p>And if you are not sure yet, just choose "general" ;-)</p> 
+		</form>
+		<p>Not sure what category you want to assign your topic to? No worries!</p>
+		<p>Here is a brief reminder of what they are, and if you are not sure yet, just choose "general" ;-)</p> 
 <!-- We'll have to remove these br -->
 		<br>
 		<br>
