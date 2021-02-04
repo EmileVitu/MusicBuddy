@@ -191,7 +191,7 @@
 		<p>{{description}}</p>
 	</div>
 	{{#each comments}}
-		<div class="eachComment">
+		<div class="latestComment">
 			{{> lastComment}}
 		</div>
 	{{/each}}
@@ -200,9 +200,15 @@
 
 	<!-- The lastComment template to complete the topic template and the newsFeed -->
 <template name="lastComment">
-	<p><b>Latest comment: </b>{{commentary}}</p>
-	<p><b>User: </b>{{createdBy}}</p>
-	<p><b>Created on: </b>{{createdAt}}</p>
+	<div class="latestCommentary">
+		<p><b>Latest comment: </b><span class="latestCommentaryText">{{commentary}} </span></p>
+	</div>
+	<div class="latestCommentUser">
+		<p>Added by: <b>{{createdBy}}</b>,</p>
+	</div>
+	<div class="latestCommentDate">
+		<p>on: <i>{{createdAt}}</i>.</p>
+	</div>
 </template>
 	<!-- End of the lastComment template -->
 

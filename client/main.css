@@ -154,9 +154,9 @@
 
 
 
-		/* Now the styles for the topics and comments in the infinite lists */
+		/* Now the styles for the topics in the infinite lists */
 
-	/* For the topics */
+	/* General stylings */
 .eachTopic{
 	background-color: white;
 /* Issue here since not aligned on the right with the images */
@@ -167,6 +167,7 @@
     border: 0.25vh solid #C0C0C0;
 	border-radius: 0.5vh;
 }
+	/* Sub-sections stylings */
 .topicUser	{
 	display: inline-block;
 	padding-top: 1vh;
@@ -176,7 +177,6 @@
 	display: inline-block;
 	padding-left: vh;
 }
-
 .topicTitleAndCategory {
 	grid-column: 1/2;
 	font-size: 2.5vh;
@@ -188,26 +188,43 @@
 	font-family: coolvetica;
 	text-decoration: none;
 }
-.topicCategory {	
-	font-size: 2vh;
-}
 .topicDescription{
 	grid-column: 1/4;
 	padding-left: 5vh;
 	padding-right: 5vh;
 	padding-bottom: 2vh;
 	font-size: 2.3vh;
+	font-family: Georgia;
 }
 
 
 
 
 
-	/* And the comments */
-.eachComment {
+		/* Now the styles for the comments in the infinite lists */
+
+	/* The last comment in the topics lists */
+.latestComment {
 	margin-left: 10vh;
+	margin-right: 10vh;
+	font-family: Georgia;
 }
-
+.latestCommentary {
+	font-size: 1.7vh;	
+}
+.latestCommentaryText {
+	font-size: 2.1vh;
+	color: #0B83BD;
+}
+.latestCommentUser {
+	display: inline-block;
+	font-size: 1.4vh;
+}
+.latestCommentDate {
+	display: inline-block;
+	font-size: 1.4vh;
+}
+	/* The comments in the singleTopic routes */
 
 
 
