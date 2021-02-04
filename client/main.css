@@ -227,7 +227,7 @@ h2 > span{
 	font-size: 2.3vh;
 	font-family: Georgia;
 }
-
+	/* End of the topics styles */
 
 
 
@@ -277,7 +277,7 @@ h2 > span{
 	display: inline-block;
 	font-size: 1.4vh;
 }
-
+	/* End of the comments styles */
 
 
 
@@ -299,17 +299,10 @@ h2 > span{
 	left: 0;
 	bottom: 0;
 	z-index: 1;
-	background-color: #333;
+	background-color: #B3F1E3;
 	overflow-x: hidden;
 	transition: 0.7s;
 	font-size: 12px;
-}
-.sideNavLinks {
-	color: white;
-	transition: 0.7s;
-}
-.sideNavLinks:hover {
-	color: #000000;
 }
 	/* The styles for the open button */
 .openNav {
@@ -342,30 +335,46 @@ h2 > span{
 	cursor: pointer;
 }
 		/* The styles for the sideNav's content */
+	/* The general styling */
+.sideNavLinks {
+	transition: 0.7s;
+	font-family: coolvetica;
+	font-size: 2.3vh;
+	transition: 0.3s;
+}
+.sideNavLinks:hover {
+	color: #053E61;
+	text-decoration: none;
+}
 	/* The latest topics */
 .sideNavTopics {
 	margin-left: 1vh;
 	margin-right: 1vh;
 	margin-bottom: 1vh;
 	padding: 1vh;
-	color: white;
-	background-color: #606060;
-    border: 2px solid #141414;
-    box-shadow: 0 0 5px 5px #141414;
-	border-radius: 1vh;
+	background-color: #F0F8FF;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
+}
+.sideNavCategory {
+	padding: 0vh;
+}
+.sideNavText {
+	padding-top: 1vh;
+	font-size: 1.8vh;
+	font-family: georgia;
 }
 	/* The latest comment for each topic if any */
 .sideNavComments {
 	margin-left: 5vh;
 	margin-right: 1vh;
 	padding: 1vh;
-	color: white;
-	background-color: #909090;
-    border: 2px solid #141414;
-    box-shadow: 0 0 5px 5px #141414;
-	border-radius: 1vh;
+	color: black;
+	background-color: #F0F8FF;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
 }
-
+	/* End of the sideNav styles */
 
 
 
@@ -399,7 +408,7 @@ h2 > span{
 /* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
 @media screen and (max-height: 450px) {
 }
-
+	/*hyphens: auto;*/
 
 
 
