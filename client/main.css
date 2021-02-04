@@ -115,6 +115,13 @@ h2 > span{
 	position: fixed;
 	width: 100%;
 	background-color: #F0F8FF;
+/* This is to hide the scrollbar on IE and Edge */
+	-ms-overflow-style: none;
+	scrollbar-width: none; 
+}
+.scrollingPart::-webkit-scrollbar {
+/* This is to hide the scrollbar on Chrome, Safari and Opera */
+    display: none;
 }
 	/* The scrollingPart for the home template */
 .homeScroll {
@@ -303,6 +310,13 @@ h2 > span{
 	overflow-x: hidden;
 	transition: 0.7s;
 	font-size: 12px;
+/* This is to hide the scrollbar on IE and Edge */
+	-ms-overflow-style: none;
+	scrollbar-width: none; 
+}
+.sideNav::-webkit-scrollbar {
+/* This is to hide the scrollbar on Chrome, Safari and Opera */
+    display: none;
 }
 	/* The styles for the open button */
 .openNav {
