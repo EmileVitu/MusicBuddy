@@ -85,7 +85,14 @@
 	margin-left: 40vh;
 	margin-right: 40vh;
 	text-align: left;
-	overflow-y: scroll; /* to try with hidden ? */
+	overflow-y: scroll; 
+/* This is to hide the scrollbar on IE and Edge */
+	-ms-overflow-style: none;
+	scrollbar-width: none; 
+}
+.singleTopicDescription::-webkit-scrollbar {
+/* This is to hide the scrollbar on Chrome, Safari and Opera */
+    display: none;
 }
 h2 > span{
 	display: inline-block;	
@@ -99,7 +106,7 @@ h2 > span{
 .commentButton {
 	margin-left: 40vh;
 	height: 3.5vh;
-	margin-bottom: 1vh;
+	padding-bottom: 1vh;
 }
 	/* End of the fixedParts styling */
 

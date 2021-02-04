@@ -412,7 +412,7 @@
 	{{>sideNav}}
 	<div class="fixedPart">
 		<h2>{{title}} <span class="SingleTopicCategory"> - <i>{{category}}</i></span></h2>
-		<p>Created by: <b>{{getUser createdBy}} </b>on: <i>{{createdAt}}</i></p>
+		<p><cite><i>Created by: <b>{{getUser createdBy}} </b>on: {{createdAt}}</i></cite></p>
 <!-- We need an if statement for the owner to be able to change the description (collection update) -->
 		<p class="singleTopicDescription">{{description}}</p>
 		<h4>Comments</h4>
