@@ -52,7 +52,7 @@
 	font-size: 2.5vh;
 	font-family: coolvetica;
 	text-align: left;
-	margin-left: 25vh;
+	margin-left: 40vh;
 }
 .fixedPartNewTopic {
 	padding-top: 7vh;
@@ -113,26 +113,6 @@
 
 
 
-
-		/* Now the styles for the topics and comments in the infinite lists */
-
-	/* For the topics */
-.eachTopic{
-	background-color: white;
-	margin-left: 25vh;
-	margin-right: 25vh;
-	margin-top: 1vh;
-	margin-bottom: 3vh;
-    border: 0.25vh solid #C0C0C0;
-	border-radius: 0.5vh;
-/* Issue here since not aligned on the right with the images */
-}
-	/* And the comments */
-
-
-
-
-
 		/* Now the styles for the grids */
 
 	/* Styles for the general grids */
@@ -170,15 +150,86 @@
 	font-size: 1.8vh;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-.formGrid {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-	column-gap: 2vh;
-	margin-left: 25vh;
-	margin-right: 25vh;
-	margin-top: 3vh;
-	margin-bottom: 5vh;
+
+
+
+
+		/* Now the styles for the topics in the infinite lists */
+
+	/* General stylings */
+.eachTopic{
+	background-color: white;
+/* Issue here since not aligned on the right with the images */
+	margin-left: 40vh;
+	margin-right: 40vh;
+	margin-top: 1vh;
+	margin-bottom: 3vh;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
 }
+	/* Sub-sections stylings */
+.topicUser	{
+	display: inline-block;
+	padding-top: 1vh;
+	padding-left: 1vh;
+}
+.topicDate{
+	display: inline-block;
+	padding-left: vh;
+}
+.topicTitleAndCategory {
+	grid-column: 1/2;
+	font-size: 2.5vh;
+	font-family: coolvetica;
+	padding-left: 3vh;
+}
+.topicTitleAndCategory > a{
+	font-size: 4vh;
+	font-family: coolvetica;
+	text-decoration: none;
+}
+.topicDescription{
+	grid-column: 1/4;
+	padding-left: 5vh;
+	padding-right: 5vh;
+	padding-bottom: 2vh;
+	font-size: 2.3vh;
+	font-family: Georgia;
+}
+
+
+
+
+
+		/* Now the styles for the comments in the infinite lists */
+
+	/* The last comment in the topics lists */
+.latestComment {
+	margin-left: 10vh;
+	margin-right: 10vh;
+	font-family: Georgia;
+}
+.latestCommentary {
+	font-size: 1.7vh;	
+}
+.latestCommentaryText {
+	font-size: 2.1vh;
+	color: #0B83BD;
+}
+.latestCommentUser {
+	display: inline-block;
+	font-size: 1.4vh;
+}
+.latestCommentDate {
+	display: inline-block;
+	font-size: 1.4vh;
+}
+	/* The comments in the singleTopic routes */
+
+
+
+
+
 
 
 
