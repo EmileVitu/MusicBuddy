@@ -98,14 +98,15 @@ h2 > span{
 }
 .commentButton {
 	margin-left: 40vh;
-	height: 3vh;
+	height: 3.5vh;
+	margin-bottom: 1vh;
 }
 	/* End of the fixedParts styling */
-	
-	
-	
-	
-	
+
+
+
+
+
 		/* Now the styling of the scrollingPart */
 
 	/* The scrollingPart general styling */
@@ -127,8 +128,8 @@ h2 > span{
 }
 	/* The scrollingPart for the singleTopic template */
 .singleTopicScroll {
-	height: 52vh;
-	margin-top: 48vh;
+	height: 51vh;
+	margin-top: 49vh;
 }
 	/* The scrollingPart for the searh template */
 .searchScroll {
@@ -255,7 +256,16 @@ h2 > span{
 	font-size: 1.4vh;
 }
 	/* The comments in the singleTopic routes */
-
+.eachComment{
+	background-color: white;
+/* Issue here since not aligned on the right with the images */
+	margin-left: 40vh;
+	margin-right: 40vh;
+	margin-top: 2vh;
+	margin-bottom: 3vh;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
+}
 
 
 

@@ -421,12 +421,11 @@
 
 	<!-- Then the comment list -->
 <template name="commentFeed">
-	<!-- Now to iterate every topics of the database by calling the topic template -->
-	<ul>
-		{{#each comments}}
+	{{#each comments}}
+		<div class="eachComment">
 			{{> comment}}
-		{{/each}}
-	</ul>
+		</div>
+	{{/each}}
 </template>
 
 	<!-- Now the comment template for the comment list above -->
