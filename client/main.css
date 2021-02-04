@@ -56,13 +56,12 @@
 	font-family: coolvetica;
 	text-align: left;
 	margin-left: 40vh;
-	display: inline-block;
 }
 .fixedPartNewTopic {
 	padding-top: 7vh;
 	height: 100vh
 }
-	/* The fixed part grid stylings */
+	/* The fixed part grid stylings for the 4 main categories routes */
 .fixedGrid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -79,7 +78,24 @@
 	font-size: 12vh;
 	font-family: coolvetica;
 }
-
+	/* The fixed part grid stylings for singleTopic route */
+.inlineCommentForm {
+	text-align: left;
+	margin-left: 40vh;
+}
+.inlineCommentForm > h5 {
+	display: inline-block;
+	font-size: 2.5vh;
+	font-family: coolvetica;
+}
+.inlineCommentForm > form {
+	display: inline-block;
+	padding-left: 2vh;
+}
+.newComment {
+	height: 10vh;
+	width: 60vh;
+}
 		/* Now the styling of the scrollingPart */
 
 	/* The scrollingPart div in topics or comments list */
@@ -94,8 +110,8 @@
 
 	/* For the home template */
 .homeScroll {
-	height: 46vh;
-	margin-top: 54vh;	
+	height: 51vh;
+	margin-top: 49vh;	
 }
 	/* For the 4 main category templates */
 .tabScroll {
@@ -107,12 +123,20 @@
 	height: 45vh;
 	margin-top: 55vh;
 }
+.singleTopicDescription {
+	font-size: 2.3vh;
+	font-family: georgia;
+	height: 10 vh;
+	margin-left: 50vh;
+	margin-right: 50vh;
+	text-align: left;
+	overflow-y: scroll; /* to try with hidden ? */
+}
 h2 > span{
 	display: inline-block;	
 	font-size: 3vh;
 	font-family: coolvetica;
 }
-
 .fixedPart > form {
 	display: inline-block;
 }
@@ -133,8 +157,8 @@ h2 > span{
 	display: grid;
 	grid-template-columns: auto auto auto auto;
 	column-gap: 2vh;
-	margin-left: 25vh;
-	margin-right: 25vh;
+	margin-left: 40vh;
+	margin-right: 40vh;
 	margin-top: 3vh;
 	margin-bottom: 5vh;
 }
@@ -159,7 +183,7 @@ h2 > span{
 	position: absolute;
 	color: white;
 	padding-left: 1vh;
-	padding-top: 22vh;
+	padding-top: 17vh;
 	font-size: 1.8vh;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
