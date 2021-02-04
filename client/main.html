@@ -430,13 +430,35 @@
 
 	<!-- Now the comment template for the comment list above -->
 <template name="comment">
-	<p><b>User: </b>{{createdBy}}</p>
-	<p><b>Created on: </b>{{createdAt}}</p>
-	<p><b>Comment:</b></p>
-	<p>{{commentary}}</p>
-	<hr class="dotted">
+	<p class="eachCommentary">{{commentary}}</p>	
+	<p class="eachCommentUserAndDate"><i>Added by: <b>{{createdBy}}</b>, on: {{createdAt}}</i>.</p>
 </template>
 	<!-- End of the comment template and of the single topic group of templates -->
+
+
+	<!-- Finally the topic template for each topic in the newsFeed
+<template name="topic">
+	<div class="topicUser">
+		<p>Created by: <b>{{getUser createdBy}}</b>,</p>
+	</div>
+	<div class="topicDate">
+		<p>on: <i>{{createdAt}}</i>.</p>
+	</div>	
+	<div class="topicTitleAndCategory">
+		<a href="/{{category}}/{{_id}}">{{title}} </a><i>- {{category}}</i>
+	</div>
+	<div class="topicDescription">
+		<p>{{description}}</p>
+	</div>
+	{{#each comments}}
+		<div class="latestComment">
+			{{> lastComment}}
+		</div>
+	{{/each}}
+</template>
+	Here is the end of the newsFeed for the homepage -->
+
+
 
 
 

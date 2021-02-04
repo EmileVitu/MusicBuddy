@@ -81,7 +81,7 @@
 .singleTopicDescription {
 	font-size: 2.3vh;
 	font-family: georgia;
-	height: 14vh;
+	height: 10vh;
 	margin-left: 40vh;
 	margin-right: 40vh;
 	text-align: left;
@@ -128,8 +128,8 @@ h2 > span{
 }
 	/* The scrollingPart for the singleTopic template */
 .singleTopicScroll {
-	height: 51vh;
-	margin-top: 49vh;
+	height: 55vh;
+	margin-top: 45vh;
 }
 	/* The scrollingPart for the searh template */
 .searchScroll {
@@ -234,6 +234,28 @@ h2 > span{
 
 		/* Now the styles for the comments in the infinite lists */
 
+	/* The comments in the singleTopic routes */
+.eachComment{
+	background-color: white;
+	margin-left: 40vh;
+	margin-right: 40vh;
+	margin-top: 2vh;
+	margin-bottom: 3vh;
+    border: 0.25vh solid #C0C0C0;
+	border-radius: 0.5vh;
+}
+.eachCommentary {
+	font-size: 2.5vh;
+	font-family: georgia;
+	padding-top: 1vh;
+	padding-left: 2vh;
+	padding-right: 2vh;
+	color: #0B83BD;
+}
+.eachCommentUserAndDate {
+	padding-right: 1vh;
+	text-align: right;
+}
 	/* The last comment in the topics lists */
 .latestComment {
 	margin-left: 10vh;
@@ -255,17 +277,7 @@ h2 > span{
 	display: inline-block;
 	font-size: 1.4vh;
 }
-	/* The comments in the singleTopic routes */
-.eachComment{
-	background-color: white;
-/* Issue here since not aligned on the right with the images */
-	margin-left: 40vh;
-	margin-right: 40vh;
-	margin-top: 2vh;
-	margin-bottom: 3vh;
-    border: 0.25vh solid #C0C0C0;
-	border-radius: 0.5vh;
-}
+
 
 
 
