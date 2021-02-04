@@ -175,7 +175,7 @@ Template.sideNav.helpers({
 Template.sideNavTopic.helpers({
 	comments(){
 		return Comments.find({topicId: this._id}, {sort:{createdAt: -1}, limit: 1});
-	}	
+	}
 });
 	/* This helper is for the newsFeed template in the home page */
 Template.newsFeed.helpers({
@@ -239,7 +239,17 @@ Template.singleTopic.helpers({
 		}
 	},
 });
-
+Template.sideNavTopic.helpers({
+	getUser: function(user_id){
+		var user = Meteor.users.findOne({_id:user_id});
+		if (user){
+			return user.username;
+		}
+		else {
+			return 'Anonymous user';
+		}
+	},
+});
 
 
 		/* Here are the events for the templates */

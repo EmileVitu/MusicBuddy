@@ -15,6 +15,8 @@
 
 
 
+
+
 	<!-- First the layout template which will be rendered on all the routes -->
 <template name="layout">
 	<div id="main">
@@ -59,6 +61,8 @@
 
 
 
+
+
 		<!-- This is the sideNav part, with it's latest updated topic list -->
 
 	<!-- Now the sideNav template with all the latests topics and latest comment associated if any -->
@@ -77,11 +81,11 @@
 <template name="sideNavTopic">
 	<div class="scrollingPartSideNav">
 		<div class="sideNavTopics">
-			<a class="sideNavLinks" href="/{{category}}/{{_id}}">
-			<p><b>Title: </b>{{title}}</p>
-			<p><b>Created on: </b>{{createdAt}}</p> <!-- getDate --> 
-			<p><b>Description: </b>{{description}}</p>
-			<p><b>Category: </b>{{category}}</p></a>
+			<a class="sideNavLinks" href="/{{category}}/{{_id}}">{{title}}</a>
+			<cite><i>{{category}}</i></cite>
+			<p class="sideNavText">{{description}}</p>
+			<p><cite><i>Created by: <b>{{getUser createdBy}}</b></i></cite></p>
+			<p><cite><i>On: {{createdAt}}.</i></cite></p> <!-- getDate --> 
 		</div>
 <!-- Here an if statement for the comments or not or new topic banner -->
 			{{#each comments}}
@@ -95,11 +99,14 @@
 	<!-- The sideNavLastComment template to complete the sideNavTopic template -->
 <template name="sideNavLastComment">
 	<div class="sideNavComments">
-		<p><b>Latest comment: </b>{{commentary}}</p>
-		<p><b>From: </b>{{createdBy}}</p>
+		<p><q class="sideNavText">{{commentary}}</q></p>
+		<p><cite><i>Added by: <b>{{createdBy}}</b></i></cite></p>
+		<p><cite><i>On: {{createdAt}}.</i></cite></p>
 	</div>
 </template>
 	<!-- End of the sideNavLastComment template -->
+
+
 
 
 
@@ -119,6 +126,8 @@
 	</div>
 </template>
 	<!-- End of the searchTool route -->
+
+
 
 
 
@@ -201,20 +210,20 @@
 	<!-- The lastComment template to complete the topic template and the newsFeed -->
 <template name="lastComment">
 	<div class="latestCommentary">
-		<p><b>Latest comment: </b><span class="latestCommentaryText">{{commentary}} </span></p>
+		<p><b>Latest comment: </b><span class="latestCommentaryText"><q>{{commentary}}</q></span></p>
 	</div>
 	<div class="latestCommentUser">
-		<p>Added by: <b>{{createdBy}}</b>,</p>
+		<p><cite><i>Added by: <b>{{createdBy}}</b>,</i></cite></p>
 	</div>
 	<div class="latestCommentDate">
-		<p>on: <i>{{createdAt}}</i>.</p>
+		<p><cite><i>on: {{createdAt}}.</i></cite></p>
 	</div>
 </template>
 	<!-- End of the lastComment template -->
 
 
 
-		<!-- Now we have the mainTab routes templates -->
+		<!-- Now we have the 4 mainTab routes templates -->
 		
 	<!-- First the general discussions template! -->
 <template name="general">
@@ -222,13 +231,13 @@
 	<div class="fixedPart">
 		<div class="fixedGrid">	
 			<div>
-				<img class="leftImage" src="symphony5_1.png">
+				<!--<img class="leftImage" src="symphony5_1.png">-->
 			</div>
 			<div>
 				<h1 class="fixedGridTitle">General</h1>
 			</div>
 			<div>
-				<img class="rightImage" src="symphony5_2.png">
+				<!--<img class="rightImage" src="symphony5_2.png">-->
 			</div>
 		</div>
 	</div>
@@ -256,13 +265,13 @@
 	<div class="fixedPart">
 		<div class="fixedGrid">	
 			<div>
-				<img class="leftImage" src="symphony5_1.png">
+				<!--<img class="leftImage" src="symphony5_1.png">-->
 			</div>
 			<div>
 				<h1 class="fixedGridTitle">Instruments</h1>
 			</div>
 			<div>
-				<img class="rightImage" src="symphony5_2.png">
+				<!--<img class="rightImage" src="symphony5_2.png">-->
 			</div>
 		</div>
 	</div>
@@ -286,13 +295,13 @@
 	<div class="fixedPart">
 		<div class="fixedGrid">	
 			<div>
-				<img class="leftImage" src="symphony5_1.png">
+				<!--<img class="leftImage" src="symphony5_1.png">-->
 			</div>
 			<div>
 				<h1 class="fixedGridTitle">Theory</h1>
 			</div>
 			<div>
-				<img class="rightImage" src="symphony5_2.png">
+				<!--<img class="rightImage" src="symphony5_2.png">-->
 			</div>
 		</div>
 	</div>
@@ -316,13 +325,13 @@
 	<div class="fixedPart">
 		<div class="fixedGrid">	
 			<div>
-				<img class="leftImage" src="symphony5_1.png">
+				<!--<img class="leftImage" src="symphony5_1.png">-->
 			</div>
 			<div>
 				<h1 class="fixedGridTitle">BuddyBands</h1>
 			</div>
 			<div>
-				<img class="rightImage" src="symphony5_2.png">
+				<!--<img class="rightImage" src="symphony5_2.png">-->
 			</div>
 		</div>
 	</div>
@@ -403,7 +412,7 @@
 	{{>sideNav}}
 	<div class="fixedPart">
 		<h2>{{title}} <span class="SingleTopicCategory"> - <i>{{category}}</i></span></h2>
-		<p>Created by: <b>{{getUser createdBy}} </b>on: <i>{{createdAt}}</i></p>
+		<p><cite><i>Created by: <b>{{getUser createdBy}} </b>on: {{createdAt}}</i></cite></p>
 <!-- We need an if statement for the owner to be able to change the description (collection update) -->
 		<p class="singleTopicDescription">{{description}}</p>
 		<h4>Comments</h4>
@@ -430,33 +439,10 @@
 
 	<!-- Now the comment template for the comment list above -->
 <template name="comment">
-	<p class="eachCommentary">{{commentary}}</p>	
+	<p class="eachCommentary"><q>{{commentary}}</q></p>	
 	<p class="eachCommentUserAndDate"><i>Added by: <b>{{createdBy}}</b>, on: {{createdAt}}</i>.</p>
 </template>
 	<!-- End of the comment template and of the single topic group of templates -->
-
-
-	<!-- Finally the topic template for each topic in the newsFeed
-<template name="topic">
-	<div class="topicUser">
-		<p>Created by: <b>{{getUser createdBy}}</b>,</p>
-	</div>
-	<div class="topicDate">
-		<p>on: <i>{{createdAt}}</i>.</p>
-	</div>	
-	<div class="topicTitleAndCategory">
-		<a href="/{{category}}/{{_id}}">{{title}} </a><i>- {{category}}</i>
-	</div>
-	<div class="topicDescription">
-		<p>{{description}}</p>
-	</div>
-	{{#each comments}}
-		<div class="latestComment">
-			{{> lastComment}}
-		</div>
-	{{/each}}
-</template>
-	Here is the end of the newsFeed for the homepage -->
 
 
 
