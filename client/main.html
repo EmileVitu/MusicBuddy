@@ -402,24 +402,15 @@
 <template name="singleTopic">
 	{{>sideNav}}
 	<div class="fixedPart">
-			<!-- First a quick sum up of the single topic selected -->
-		<div>
-			<h1>{{title}}</h1>
-			<hr class="solid">
-			<h4>Category: {{category}}</h4>
-			<p>Date of creation: {{createdAt}}</p>
-			<p>Created by: {{getUser createdBy}}</p>
+			<h2>{{title}} <span class="SingleTopicCategory"> - <i>{{category}}</i></span></h2>
+			<p>Created by: {{getUser createdBy}} on: {{createdAt}}</p>
 <!-- We need an if statement for the owner to be able to change the description (collection update) -->
 			<p>Description: {{description}}</p>
-			<hr class="dashed">
-		</div>
-			<!-- In second the comment form -->
-		<h3>Comments:</h3>
-		<form>
-			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
-			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
-			<button class="new-comment btn btn-info">Send!</button>
-		</form>
+			<h4>Comments:</h4>
+			<form>
+				<input id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="2" cols="42">
+				<button class="new-comment btn btn-info">Send!</button>
+			</form>
 	</div>
 			<!-- Finally all the comments for this single topic -->
 	<div class="scrollingPart singleTopicScroll">

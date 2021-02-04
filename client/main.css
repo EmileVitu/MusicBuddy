@@ -37,11 +37,14 @@
 	/* The fixed part general stylings */
 .fixedPart > h1 {
 	font-size: 12vh;
-	font-family: coolvetica;	
+	font-family: coolvetica;
+
 }
 .fixedPart > h2 {
+	padding-top: 1vh;
 	font-size: 5vh;
 	font-family: coolvetica;
+	display: inline-block;	
 }
 .fixedPart > h3 {
 	padding-top: 2vh;
@@ -53,6 +56,7 @@
 	font-family: coolvetica;
 	text-align: left;
 	margin-left: 40vh;
+	display: inline-block;
 }
 .fixedPartNewTopic {
 	padding-top: 7vh;
@@ -102,6 +106,15 @@
 .singleTopicScroll {
 	height: 45vh;
 	margin-top: 55vh;
+}
+h2 > span{
+	display: inline-block;	
+	font-size: 3vh;
+	font-family: coolvetica;
+}
+
+.fixedPart > form {
+	display: inline-block;
 }
 	/* For the searh template */
 .searchScroll {
