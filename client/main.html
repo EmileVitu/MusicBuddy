@@ -430,11 +430,8 @@
 
 	<!-- Now the comment template for the comment list above -->
 <template name="comment">
-	<p><b>User: </b>{{createdBy}}</p>
-	<p><b>Created on: </b>{{createdAt}}</p>
-	<p><b>Comment:</b></p>
-	<p>{{commentary}}</p>
-	<hr class="dotted">
+	<p class="eachCommentary">{{commentary}}</p>	
+	<p class="eachCommentUserAndDate"><i>Added by: <b>{{createdBy}}</b>, on: {{createdAt}}</i>.</p>
 </template>
 	<!-- End of the comment template and of the single topic group of templates -->
 
