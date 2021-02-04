@@ -23,7 +23,7 @@
 
 		/* First the two main classes in each route template */
 
-	/* The fixed div : header */
+	/* The fixed part general stylings */
 /* !!!!!!! must put everything in % or in vh !!!! */
 .fixedPart {
 	transition: margin-left .5s;
@@ -34,7 +34,6 @@
 	background-color: #F0F8FF;
 	font-size: 1.6vh;
 }
-	/* The fixed part general stylings */
 .fixedPart > h1 {
 	font-size: 12vh;
 	font-family: coolvetica;
@@ -79,56 +78,12 @@
 	font-family: coolvetica;
 }
 	/* The fixed part grid stylings for singleTopic route */
-.inlineCommentForm {
-	text-align: left;
-	margin-left: 40vh;
-}
-.inlineCommentForm > h5 {
-	display: inline-block;
-	font-size: 2.5vh;
-	font-family: coolvetica;
-}
-.inlineCommentForm > form {
-	display: inline-block;
-	padding-left: 2vh;
-}
-.newComment {
-	height: 10vh;
-	width: 60vh;
-}
-		/* Now the styling of the scrollingPart */
-
-	/* The scrollingPart div in topics or comments list */
-.scrollingPart {
-	overflow-y:scroll;
-	position: fixed;
-	width: 100%;
-	background-color: #F0F8FF;
-}
-
-		/* Now the sub-classes for each srolling div */
-
-	/* For the home template */
-.homeScroll {
-	height: 51vh;
-	margin-top: 49vh;	
-}
-	/* For the 4 main category templates */
-.tabScroll {
-	height: 81vh;
-	margin-top: 19vh;
-}
-	/* For the singleTopic template */
-.singleTopicScroll {
-	height: 45vh;
-	margin-top: 55vh;
-}
 .singleTopicDescription {
 	font-size: 2.3vh;
 	font-family: georgia;
-	height: 10 vh;
-	margin-left: 50vh;
-	margin-right: 50vh;
+	height: 14vh;
+	margin-left: 40vh;
+	margin-right: 40vh;
 	text-align: left;
 	overflow-y: scroll; /* to try with hidden ? */
 }
@@ -137,22 +92,57 @@ h2 > span{
 	font-size: 3vh;
 	font-family: coolvetica;
 }
-.fixedPart > form {
-	display: inline-block;
+.newComment {
+	text-align: left;
+	margin-left: 40vh;
 }
-	/* For the searh template */
+.commentButton {
+	margin-left: 40vh;
+}
+	/* End of the fixedParts styling */
+	
+	
+	
+	
+	
+		/* Now the styling of the scrollingPart */
+
+	/* The scrollingPart general styling */
+.scrollingPart {
+	overflow-y:scroll;
+	position: fixed;
+	width: 100%;
+	background-color: #F0F8FF;
+}
+	/* The scrollingPart for the home template */
+.homeScroll {
+	height: 51vh;
+	margin-top: 49vh;	
+}
+	/* The scrollingPart for the 4 main category templates */
+.tabScroll {
+	height: 81vh;
+	margin-top: 19vh;
+}
+	/* The scrollingPart for the singleTopic template */
+.singleTopicScroll {
+	height: 45vh;
+	margin-top: 55vh;
+}
+	/* The scrollingPart for the searh template */
 .searchScroll {
 	height: 88vh;
 	margin-top: 12vh;
 }
-	/* End of the global templates styles */
+	/* End of the scrollingPart styles */
+
 
 
 
 
 		/* Now the styles for the grids */
 
-	/* Styles for the general grids */
+	/* Styles for the general grid */
 .gridContainer {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
@@ -187,6 +177,8 @@ h2 > span{
 	font-size: 1.8vh;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+	/* End of the grids styling */
+
 
 
 
