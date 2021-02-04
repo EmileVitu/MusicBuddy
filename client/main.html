@@ -23,7 +23,7 @@
 		  <div class="container-fluid">
 					<!-- Here is the Header, title of the website and home page link-->
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/">Welcome to Music Buddy!</a>
+					<a class="navbar-brand" href="/">MusicBuddy!</a>
 				</div>
 					<!-- Now the links for the five mainTabs-->
 				<ul class="nav navbar-nav">
@@ -132,7 +132,7 @@
 			<div class="gridItem">
 				<a href="/General">
 					<p class="imgTitle">General</p>
-					<p class="imgText">A selection of general discussions topics</p>
+					<p class="imgText">A selection of general discussions</p>
 					<img src="General-phillip-blocker-b9CcBwmq30c-unsplash.jpg">
 				</a>
 			</div>
@@ -146,14 +146,14 @@
 			<div class="gridItem">
 				<a href="/Theory" class="aa">
 					<p class="imgTitle">Theory</p>
-					<p class="imgText">Music theory topics and </p>
+					<p class="imgText">Music theory topics</p>
 					<img src="Theory-marius-masalar-rPOmLGwai2w-unsplash.jpg">
 				</a>
 			</div>
 			<div class="gridItem">
 				<a href="/BuddyBands">
 					<p class="imgTitle">BuddyBands</p>
-					<p class="imgText">A selection of general discussions topics</p>
+					<p class="imgText">Gathering musicians together!</p>
 					<img src="BuddyBands-john-matychuk-gUK3lA3K7Yo-unsplash.jpg">
 				</a>
 			</div>
@@ -347,7 +347,7 @@
 			<div class="gridItem">
 				<a href="/General">
 					<p class="imgTitle">General</p>
-					<p class="imgText">A selection of general discussions topics</p>
+					<p class="imgText">A selection of general discussions</p>
 					<img src="General-phillip-blocker-b9CcBwmq30c-unsplash.jpg">
 				</a>
 			</div>
@@ -361,14 +361,14 @@
 			<div class="gridItem">
 				<a href="/Theory" class="aa">
 					<p class="imgTitle">Theory</p>
-					<p class="imgText">Music theory topics and </p>
+					<p class="imgText">Music theory topics</p>
 					<img src="Theory-marius-masalar-rPOmLGwai2w-unsplash.jpg">
 				</a>
 			</div>
 			<div class="gridItem">
 				<a href="/BuddyBands">
 					<p class="imgTitle">BuddyBands</p>
-					<p class="imgText">A selection of general discussions topics</p>
+					<p class="imgText">Gathering musicians together!</p>
 					<img src="BuddyBands-john-matychuk-gUK3lA3K7Yo-unsplash.jpg">
 				</a>
 			</div>
@@ -379,7 +379,7 @@
 				<input id="topic-title" type="form-control" name="title" placeholder="Please enter a topic title" size="47"/>
 			</div>
 			<div class="form-group">
-				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter your topic description" rows="2" cols="50"></textarea>
+				<textarea id="topic-content" type="form-control" name="description" placeholder="Please enter your topic description" rows="7" cols="50"></textarea>
 			</div>
 			<div class="form-group">
 				<select id="category" name="category" type="form-control">
@@ -402,26 +402,17 @@
 <template name="singleTopic">
 	{{>sideNav}}
 	<div class="fixedPart">
-			<!-- First a quick sum up of the single topic selected -->
-		<div>
-			<h1>{{title}}</h1>
-			<hr class="solid">
-			<h4>Category: {{category}}</h4>
-			<p>Date of creation: {{createdAt}}</p>
-			<p>Created by: {{getUser createdBy}}</p>
+		<h2>{{title}} <span class="SingleTopicCategory"> - <i>{{category}}</i></span></h2>
+		<p>Created by: <b>{{getUser createdBy}} </b>on: <i>{{createdAt}}</i></p>
 <!-- We need an if statement for the owner to be able to change the description (collection update) -->
-			<p>Description: {{description}}</p>
-			<hr class="dashed">
-		</div>
-			<!-- In second the comment form -->
-		<h3>Comments:</h3>
-		<form>
-			<label for="topic-comment" style="vertical-align:middle">Feel free to add a comment: </label>
-			<textarea id="topic-comment" type="text" class="new-comment" name="commentary" placeholder="Please enter your comment here" rows="5" cols="42"></textarea>
-			<button class="new-comment btn btn-info">Send!</button>
+		<p class="singleTopicDescription">{{description}}</p>
+		<h4>Comments</h4>
+		<form class="newComment">
+			<textarea type="text" name="commentary" placeholder="Please enter your comment here" rows="4" cols="59"></textarea>
+			<br>
+			<button class="commentButton btn btn-info">Send!</button>
 		</form>
 	</div>
-			<!-- Finally all the comments for this single topic -->
 	<div class="scrollingPart singleTopicScroll">
 	{{> commentFeed}}
 	</div>
