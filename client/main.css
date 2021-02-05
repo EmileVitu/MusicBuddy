@@ -117,6 +117,47 @@ h2 > span{
 	height: 3.5vh;
 	padding-bottom: 1vh;
 }
+		/* Now the styles for the grids */
+
+	/* Styles for the general grid */
+.gridContainer {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(auto, 30vh));
+	column-gap: 2vh;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
+	padding-left: 2vh;
+	padding-right: 2vh;
+}
+	/* Styles for the items */
+.gridItem {
+	display: flex;
+	font-size: 4vh;
+	font-family: coolvetica;
+}
+.gridItem > a > img {
+	height: 100%;
+	width: 100%;
+	border-radius: 1vh;
+}
+.imgTitle {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	font-size: 4vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.imgText {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	padding-top: 17vh;
+	font-size: 1.8vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 	/* End of the fixedParts styling */
 
 
@@ -165,44 +206,7 @@ h2 > span{
 
 
 
-		/* Now the styles for the grids */
 
-	/* Styles for the general grid */
-.gridContainer {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-	column-gap: 2vh;
-	margin-left: 40vh;
-	margin-right: 40vh;
-	margin-top: 3vh;
-	margin-bottom: 5vh;
-}
-	/* Styles for the items */
-.gridItem {
-	font-size: 4vh;
-	font-family: coolvetica;
-}
-.gridItem > a > img {
-	height: 100%;
-	width: 100%;
-	border-radius: 1vh;
-}
-.imgTitle {
-	position: absolute;
-	color: white;
-	padding-left: 1vh;
-	font-size: 4vh;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-.imgText {
-	position: absolute;
-	color: white;
-	padding-left: 1vh;
-	padding-top: 17vh;
-	font-size: 1.8vh;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-	/* End of the grids styling */
 
 
 
@@ -232,7 +236,6 @@ h2 > span{
 	padding-left: vh;
 }
 .topicTitleAndCategory {
-	grid-column: 1/2;
 	font-size: 2.5vh;
 	font-family: coolvetica;
 	padding-left: 3vh;
@@ -243,10 +246,8 @@ h2 > span{
 	text-decoration: none;
 }
 .topicDescription{
-	grid-column: 1/4;
 	padding-left: 5vh;
 	padding-right: 5vh;
-	padding-bottom: 2vh;
 	font-size: 2.3vh;
 	font-family: Georgia;
 }
@@ -416,10 +417,10 @@ h2 > span{
 
 
 
-		/* Now the media queries for responsiveness */
-
-	/* First to do a special query to remove the sideNav */
-@media screen and (max-width: 1500px) {
+		/* Here are the media queries for responsiveness */
+		
+	/* First for mid-sized screens */
+@media screen and (max-width: 1250px) {
 	.openNav {
 		display: none;
 	}
@@ -429,6 +430,13 @@ h2 > span{
 /* this is for the homePage */
 	.fixedPart > h1 {
 		font-size: 8vh;
+	}
+	.imgTitle {
+		padding-left: 1vh;
+		font-size: 3vh;
+	}
+	.imgText {
+		display: none;
 	}
 /* For the mainTab fixed part */
 	.fixedGridTitle {
@@ -443,13 +451,25 @@ h2 > span{
 	.newComment {
 		margin-left: 10vh;
 	}
+/* This is for the topics lists */
+	.eachTopic{
+		margin-left: 10vh;
+		margin-right: 10vh;
+		margin-bottom: 2vh;
+	}
+	.latestComment {
+		margin-left: 8vh;
+		margin-right: 8vh;
+	}
+/* This is for the commentList */
+	.eachComment{
+		margin-left: 10vh;
+		margin-right: 10vh;
+		margin-bottom: 2vh;
+	}
 }
 
-
-
-
-
-
+	/* Now for very small-sized screens */
 @media screen and (max-width: 750px) {
 	.navbar {
 		display: none;
@@ -457,19 +477,13 @@ h2 > span{
 	.homeFixedPart {
 		height: 49vh;
 	}
-
-
-
-
-
-
-
-
-
-
 /* this is for the homePage */
 	.fixedPart > h1 {
 		font-size: 5vh;
+	}
+	.imgTitle {
+		padding-left: 0.5vh;
+		font-size: 1.8vh;
 	}
 /* For the mainTab fixed part */
 	.fixedGridTitle {
@@ -502,9 +516,62 @@ h2 > span{
 		text-align: left;
 		margin-left: 2vh;
 	}
+/* This is for the topics lists */
+	.eachTopic{
+		margin-left: 2vh;
+		margin-right: 2vh;
+		margin-bottom: 1vh;
+	}
+	.topicUser	{
+		font-size: 1.5vh;
+	}	
+	.topicDate{
+		font-size: 1.5vh;
+	}
+	.topicTitleAndCategory {
+		font-size: 2vh;
+		padding-left: 1vh;
+	}
+	.topicTitleAndCategory > a{
+		font-size: 3vh;
+	}
+	.topicDescription{
+		padding-left: 2vh;
+		padding-right: 4vh;
+		padding-bottom: 0vh;
+		font-size: 1.8vh;
+	}
+	.latestComment {
+		margin-left: 5vh;
+		margin-right: 5vh;
+	}
+	.latestCommentary {
+		font-size: 1.3vh;
+	}
+	.latestCommentaryText {
+		font-size: 1.5vh;
+	}
+	.latestCommentUser {
+		font-size: 1vh;
+	}
+	.latestCommentDate {
+		font-size: 1vh;
+	}
+/* This is for the commentList */
+	.eachComment{
+		margin-left: 2vh;
+		margin-right: 2vh;
+		margin-bottom: 1vh;
+	}
+	.eachCommentary {
+		font-size: 1.8vh;
+	}
+	.eachCommentUserAndDate {
+		font-size: 1.3vh;
+	}
 		/*hyphens: auto;*/ 
 }
-
+/* End of the media queries */
 
 
 
@@ -516,13 +583,6 @@ h2 > span{
 /* hover effect on the main navbar as well on the <a> tags */
 /* !!!!!!!!!!!! */
 
-
-
-
-
-/*!!!!!!!!!!!!!!!!!!*/
-/* Here we have all this to go through */
-/*!!!!!!!!!!!!!!!!!!*/
 
 
 
