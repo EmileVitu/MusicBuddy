@@ -20,40 +20,50 @@
 	<!-- First the layout template which will be rendered on all the routes -->
 <template name="layout">
 	<div id="main">
-					<!-- The navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="container-fluid">
-					<!-- Here is the Header, title of the website and home page link-->
+			<div class="container-fluid">
 				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#musicBuddyNavBar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
 					<a class="navbar-brand" href="/">MusicBuddy!</a>
 				</div>
-					<!-- Now the links for the five mainTabs-->
-				<ul class="nav navbar-nav">
-					<li><a href="/General">General</a></li>
-					<li><a href="/Instruments">Instruments</a></li>
-					<li><a href="/Theory">Theory</a></li>
-					<li><a href="/BuddyBands">BuddyBands</a></li>
-					<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus plus"></span></a></li>
-				</ul>
-					<!-- Now the sign-in form for users who want to be able to contribute -->
-				<ul class="nav navbar-nav navbar-right">
-					<!-- We want it to the full right so it must be read before the search tool -->
-					<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
-				</ul>
-					<!-- Now the searchTool to find directly a keyword-related topic -->
-				<form class="navbar-form navbar-right" action="/action_page.php">
-				  <div class="input-group">
-					<a href="/Search"><input id="search" type="text" class="form-control" placeholder="Search..."></a>
-					<div class="input-group-btn">
-					  <a href="/Search"></a>
-					</div>
-				  </div>
-				</form>
-					<!-- End of the searchTool -->
-		  </div>
-					<!-- End of the navBar -->
+				<div class="collapse navbar-collapse" id="musicBuddyNavBar">
+		
+					<ul class="nav navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/General">General</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/Instruments">Instruments</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/Theory">Theory</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/BuddyBands">BuddyBands</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/NewTopic" aria-disabled="true">New topic <span class="glyphicon glyphicon-plus plus"></span></a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item">
+							<form class="nav navbar-nav navbar-form navbar-right">
+							<a href="/Search">
+								<input id="search" type="text" class="nav-item form-control" placeholder="Search...">
+							</a>
+							</form>
+						</li>
+						<li class="nav-item">
+							<p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</nav>
-					<!-- Now to yield the homepage layout -->
 		{{> yield}}
 	</div>
 </template>

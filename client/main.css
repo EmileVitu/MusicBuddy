@@ -24,6 +24,7 @@
 
 
 
+
 		/* First the two main classes in each route template */
 
 	/* The fixed part general stylings */
@@ -424,12 +425,12 @@ h2 > span{
 	.openNav {
 		display: none;
 	}
-	.navbar {
-		display: none;
-	}
 /* this is for the homePage */
 	.fixedPart > h1 {
 		font-size: 8vh;
+	}
+	.fixedPart > h4 {
+		margin-left: 10vh;
 	}
 	.imgTitle {
 		padding-left: 1vh;
@@ -471,9 +472,6 @@ h2 > span{
 
 	/* Now for very small-sized screens */
 @media screen and (max-width: 750px) {
-	.navbar {
-		display: none;
-	}
 	.homeFixedPart {
 		height: 49vh;
 	}
@@ -496,6 +494,7 @@ h2 > span{
 /* For the latestTopics and comments lists in the homePage and singleTopic routes */
 	.fixedPart > h4 {
 		font-size: 1.8vh;
+		margin-left: 2vh;
 	}
 /* For the singleTopic routes */
 	.fixedPart > h2 {
@@ -572,8 +571,6 @@ h2 > span{
 		/*hyphens: auto;*/ 
 }
 /* End of the media queries */
-
-
 
 
 
