@@ -16,7 +16,10 @@
 	margin-top: 4vh;
 	background: lavender;
 }
-
+	/* The "plus" sign for the new topic tab */
+.plus{
+	padding-left: 0.5vh;
+}
 
 
 
@@ -58,21 +61,27 @@
 }
 .fixedPartNewTopic {
 	padding-top: 7vh;
-	height: 100vh
+	height: 100%;
+}
+.homeFixedPart {
+	height: 49vh;
+}
+.singleTopicFixedPart {
+	height: 45vh;
 }
 	/* The fixed part grid stylings for the 4 main categories routes */
 .fixedGrid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: auto auto auto;
 }
-.leftImage {
+/*.leftImage {
 	padding-top: 5vh;
 	height: 14vh;
 }
 .rightImage {
 	padding-top: 5vh;
 	height: 15vh;
-}
+}*/
 .fixedGridTitle {
 	font-size: 12vh;
 	font-family: coolvetica;
@@ -133,7 +142,7 @@ h2 > span{
 	/* The scrollingPart for the home template */
 .homeScroll {
 	height: 51vh;
-	margin-top: 49vh;	
+	margin-top: 49vh;
 }
 	/* The scrollingPart for the 4 main category templates */
 .tabScroll {
@@ -407,6 +416,100 @@ h2 > span{
 
 
 
+		/* Now the media queries for responsiveness */
+
+	/* First to do a special query to remove the sideNav */
+@media screen and (max-width: 1500px) {
+	.openNav {
+		display: none;
+	}
+	.navbar {
+		display: none;
+	}
+/* this is for the homePage */
+	.fixedPart > h1 {
+		font-size: 8vh;
+	}
+/* For the mainTab fixed part */
+	.fixedGridTitle {
+		font-size: 8vh;
+	}
+/* For the fixedPart of the singleTopic route */
+	.singleTopicDescription {
+		height: 10vh;
+		margin-left: 10vh;
+		margin-right: 10h;
+	}
+	.newComment {
+		margin-left: 10vh;
+	}
+}
+
+
+
+
+
+
+@media screen and (max-width: 750px) {
+	.navbar {
+		display: none;
+	}
+	.homeFixedPart {
+		height: 49vh;
+	}
+
+
+
+
+
+
+
+
+
+
+/* this is for the homePage */
+	.fixedPart > h1 {
+		font-size: 5vh;
+	}
+/* For the mainTab fixed part */
+	.fixedGridTitle {
+		font-size: 5vh;
+	}
+/* For the title in the search route and the newTopic route */
+	.fixedPart > h3 {
+		font-size: 2.5vh;
+	}
+/* For the latestTopics and comments lists in the homePage and singleTopic routes */
+	.fixedPart > h4 {
+		font-size: 1.8vh;
+	}
+/* For the singleTopic routes */
+	.fixedPart > h2 {
+		font-size: 3vh;
+		display: inline-block;	
+	}
+	h2 > span{
+		display: inline-block;	
+		font-size: 2vh;
+	}
+	.singleTopicDescription {
+		height: 10vh;
+		margin-left: 2vh;
+		margin-right: 2vh;
+		font-size: 1.8vh;
+	}
+	.newComment {
+		text-align: left;
+		margin-left: 2vh;
+	}
+		/*hyphens: auto;*/ 
+}
+
+
+
+
+
+
 
 
 /* !!!!!!!!!!!! */
@@ -420,16 +523,12 @@ h2 > span{
 /*!!!!!!!!!!!!!!!!!!*/
 /* Here we have all this to go through */
 /*!!!!!!!!!!!!!!!!!!*/
-		/* The navbar */
-.welcomeUserItem{
-}
-/* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
-.plus{
-}
-/* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
-@media screen and (max-height: 450px) {
-}
-	/*hyphens: auto;*/
+
+
+
+
+
+
 
 
 

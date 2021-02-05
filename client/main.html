@@ -33,13 +33,13 @@
 					<li><a href="/Instruments">Instruments</a></li>
 					<li><a href="/Theory">Theory</a></li>
 					<li><a href="/BuddyBands">BuddyBands</a></li>
-					<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus"></span></a></li>
+					<li><a href="/NewTopic" class="js-add-topic">New topic <span class="glyphicon glyphicon-plus plus"></span></a></li>
 				</ul>
 					<!-- Now the sign-in form for users who want to be able to contribute -->
 				<ul class="nav navbar-nav navbar-right">
 					<!-- We want it to the full right so it must be read before the search tool -->
 					<li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{> loginButtons align="right"}}</p></li>
-				</ul>		
+				</ul>
 					<!-- Now the searchTool to find directly a keyword-related topic -->
 				<form class="navbar-form navbar-right" action="/action_page.php">
 				  <div class="input-group">
@@ -135,7 +135,7 @@
 		
 	<!-- First the route for the homePage -->
 <template name="home">
-	<div class="fixedPart">
+	<div class="fixedPart homeFixedPart">
 		<h1>MusicBuddy!</h1>
 		<div class="gridContainer">
 			<div class="gridItem">
