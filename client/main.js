@@ -319,6 +319,18 @@ Template.singleTopic.events({
 
 
 
+/*
+function GetFormattedDate() {
+var todayTime = new Date();
+var month = format(todayTime . getMonth()
+var day = format(todayTime . getDate());
+var year = format(todayTime . getFullYear.
+return month + "/" + day + "/" + year;
+}
+
+*/
+
+
 
 
 /* !!!!!!!!!!!!!!!!!! All the rest we must sort out !!!!!!!!!!!!!!!!!!! */

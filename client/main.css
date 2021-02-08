@@ -418,6 +418,10 @@ h2 > span{
 
 
 
+
+
+
+
 		/* Here are the media queries for responsiveness */
 		
 	/* First for mid-sized screens */
@@ -439,13 +443,25 @@ h2 > span{
 	.imgText {
 		display: none;
 	}
+	.homeScroll {
+		height: 55vh;
+		margin-top: 45vh;
+	}
 /* For the mainTab fixed part */
 	.fixedGridTitle {
 		font-size: 8vh;
 	}
+	.tabScroll {
+		height: 86vh;
+		margin-top: 14vh;
+	}
 /* For the fixedPart of the singleTopic route */
+	.singleTopicScroll {
+		height: 60vh;
+		margin-top: 40vh;
+	}
 	.singleTopicDescription {
-		height: 10vh;
+		height: 5vh;
 		margin-left: 10vh;
 		margin-right: 10h;
 	}
@@ -473,7 +489,11 @@ h2 > span{
 	/* Now for very small-sized screens */
 @media screen and (max-width: 750px) {
 	.homeFixedPart {
-		height: 49vh;
+		height: 35vh;
+	}
+	.homeScroll {
+		height: 65vh;
+		margin-top: 35vh;
 	}
 /* this is for the homePage */
 	.fixedPart > h1 {
@@ -506,7 +526,7 @@ h2 > span{
 		font-size: 2vh;
 	}
 	.singleTopicDescription {
-		height: 10vh;
+		height: 3vh;
 		margin-left: 2vh;
 		margin-right: 2vh;
 		font-size: 1.8vh;
@@ -514,6 +534,20 @@ h2 > span{
 	.newComment {
 		text-align: left;
 		margin-left: 2vh;
+	}
+	.singleTopicScroll {
+		height: 65vh;
+		margin-top: 35vh;
+	}
+/* This is for the mainTabs */
+	.tabScroll {
+		height: 90vh;
+		margin-top: 10vh;
+	}
+/* The search route */
+	.searchScroll {
+		height: 90vh;
+		margin-top: 10vh;
 	}
 /* This is for the topics lists */
 	.eachTopic{
