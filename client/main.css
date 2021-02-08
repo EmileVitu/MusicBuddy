@@ -16,6 +16,10 @@
 	margin-top: 4vh;
 	background: lavender;
 }
+	/* The "plus" sign for the new topic tab */
+.plus{
+	padding-left: 0.5vh;
+}
 
 
 
@@ -58,21 +62,27 @@
 }
 .fixedPartNewTopic {
 	padding-top: 7vh;
-	height: 100vh
+	height: 100%;
+}
+.homeFixedPart {
+	height: 49vh;
+}
+.singleTopicFixedPart {
+	height: 45vh;
 }
 	/* The fixed part grid stylings for the 4 main categories routes */
 .fixedGrid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: auto auto auto;
 }
-.leftImage {
+/*.leftImage {
 	padding-top: 5vh;
 	height: 14vh;
 }
 .rightImage {
 	padding-top: 5vh;
 	height: 15vh;
-}
+}*/
 .fixedGridTitle {
 	font-size: 12vh;
 	font-family: coolvetica;
@@ -108,6 +118,47 @@ h2 > span{
 	height: 3.5vh;
 	padding-bottom: 1vh;
 }
+		/* Now the styles for the grids */
+
+	/* Styles for the general grid */
+.gridContainer {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(auto, 30vh));
+	column-gap: 2vh;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
+	padding-left: 2vh;
+	padding-right: 2vh;
+}
+	/* Styles for the items */
+.gridItem {
+	display: flex;
+	font-size: 4vh;
+	font-family: coolvetica;
+}
+.gridItem > a > img {
+	height: 100%;
+	width: 100%;
+	border-radius: 1vh;
+}
+.imgTitle {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	font-size: 4vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.imgText {
+	position: absolute;
+	color: white;
+	padding-left: 1vh;
+	padding-top: 17vh;
+	font-size: 1.8vh;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 	/* End of the fixedParts styling */
 
 
@@ -133,7 +184,7 @@ h2 > span{
 	/* The scrollingPart for the home template */
 .homeScroll {
 	height: 51vh;
-	margin-top: 49vh;	
+	margin-top: 49vh;
 }
 	/* The scrollingPart for the 4 main category templates */
 .tabScroll {
@@ -156,44 +207,7 @@ h2 > span{
 
 
 
-		/* Now the styles for the grids */
 
-	/* Styles for the general grid */
-.gridContainer {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-	column-gap: 2vh;
-	margin-left: 40vh;
-	margin-right: 40vh;
-	margin-top: 3vh;
-	margin-bottom: 5vh;
-}
-	/* Styles for the items */
-.gridItem {
-	font-size: 4vh;
-	font-family: coolvetica;
-}
-.gridItem > a > img {
-	height: 100%;
-	width: 100%;
-	border-radius: 1vh;
-}
-.imgTitle {
-	position: absolute;
-	color: white;
-	padding-left: 1vh;
-	font-size: 4vh;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-.imgText {
-	position: absolute;
-	color: white;
-	padding-left: 1vh;
-	padding-top: 17vh;
-	font-size: 1.8vh;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-	/* End of the grids styling */
 
 
 
@@ -223,7 +237,6 @@ h2 > span{
 	padding-left: vh;
 }
 .topicTitleAndCategory {
-	grid-column: 1/2;
 	font-size: 2.5vh;
 	font-family: coolvetica;
 	padding-left: 3vh;
@@ -234,10 +247,8 @@ h2 > span{
 	text-decoration: none;
 }
 .topicDescription{
-	grid-column: 1/4;
 	padding-left: 5vh;
 	padding-right: 5vh;
-	padding-bottom: 2vh;
 	font-size: 2.3vh;
 	font-family: Georgia;
 }
@@ -409,6 +420,196 @@ h2 > span{
 
 
 
+
+
+		/* Here are the media queries for responsiveness */
+		
+	/* First for mid-sized screens */
+@media screen and (max-width: 1250px) {
+	.openNav {
+		display: none;
+	}
+/* this is for the homePage */
+	.fixedPart > h1 {
+		font-size: 8vh;
+	}
+	.fixedPart > h4 {
+		margin-left: 10vh;
+	}
+	.imgTitle {
+		padding-left: 1vh;
+		font-size: 3vh;
+	}
+	.imgText {
+		display: none;
+	}
+	.homeScroll {
+		height: 55vh;
+		margin-top: 45vh;
+	}
+/* For the mainTab fixed part */
+	.fixedGridTitle {
+		font-size: 8vh;
+	}
+	.tabScroll {
+		height: 86vh;
+		margin-top: 14vh;
+	}
+/* For the fixedPart of the singleTopic route */
+	.singleTopicScroll {
+		height: 60vh;
+		margin-top: 40vh;
+	}
+	.singleTopicDescription {
+		height: 5vh;
+		margin-left: 10vh;
+		margin-right: 10h;
+	}
+	.newComment {
+		margin-left: 10vh;
+	}
+/* This is for the topics lists */
+	.eachTopic{
+		margin-left: 10vh;
+		margin-right: 10vh;
+		margin-bottom: 2vh;
+	}
+	.latestComment {
+		margin-left: 8vh;
+		margin-right: 8vh;
+	}
+/* This is for the commentList */
+	.eachComment{
+		margin-left: 10vh;
+		margin-right: 10vh;
+		margin-bottom: 2vh;
+	}
+}
+
+	/* Now for very small-sized screens */
+@media screen and (max-width: 750px) {
+	.homeFixedPart {
+		height: 35vh;
+	}
+	.homeScroll {
+		height: 65vh;
+		margin-top: 35vh;
+	}
+/* this is for the homePage */
+	.fixedPart > h1 {
+		font-size: 5vh;
+	}
+	.imgTitle {
+		padding-left: 0.5vh;
+		font-size: 1.8vh;
+	}
+/* For the mainTab fixed part */
+	.fixedGridTitle {
+		font-size: 5vh;
+	}
+/* For the title in the search route and the newTopic route */
+	.fixedPart > h3 {
+		font-size: 2.5vh;
+	}
+/* For the latestTopics and comments lists in the homePage and singleTopic routes */
+	.fixedPart > h4 {
+		font-size: 1.8vh;
+		margin-left: 2vh;
+	}
+/* For the singleTopic routes */
+	.fixedPart > h2 {
+		font-size: 3vh;
+		display: inline-block;	
+	}
+	h2 > span{
+		display: inline-block;	
+		font-size: 2vh;
+	}
+	.singleTopicDescription {
+		height: 3vh;
+		margin-left: 2vh;
+		margin-right: 2vh;
+		font-size: 1.8vh;
+	}
+	.newComment {
+		text-align: left;
+		margin-left: 2vh;
+	}
+	.singleTopicScroll {
+		height: 65vh;
+		margin-top: 35vh;
+	}
+/* This is for the mainTabs */
+	.tabScroll {
+		height: 90vh;
+		margin-top: 10vh;
+	}
+/* The search route */
+	.searchScroll {
+		height: 90vh;
+		margin-top: 10vh;
+	}
+/* This is for the topics lists */
+	.eachTopic{
+		margin-left: 2vh;
+		margin-right: 2vh;
+		margin-bottom: 1vh;
+	}
+	.topicUser	{
+		font-size: 1.5vh;
+	}	
+	.topicDate{
+		font-size: 1.5vh;
+	}
+	.topicTitleAndCategory {
+		font-size: 2vh;
+		padding-left: 1vh;
+	}
+	.topicTitleAndCategory > a{
+		font-size: 3vh;
+	}
+	.topicDescription{
+		padding-left: 2vh;
+		padding-right: 4vh;
+		padding-bottom: 0vh;
+		font-size: 1.8vh;
+	}
+	.latestComment {
+		margin-left: 5vh;
+		margin-right: 5vh;
+	}
+	.latestCommentary {
+		font-size: 1.3vh;
+	}
+	.latestCommentaryText {
+		font-size: 1.5vh;
+	}
+	.latestCommentUser {
+		font-size: 1vh;
+	}
+	.latestCommentDate {
+		font-size: 1vh;
+	}
+/* This is for the commentList */
+	.eachComment{
+		margin-left: 2vh;
+		margin-right: 2vh;
+		margin-bottom: 1vh;
+	}
+	.eachCommentary {
+		font-size: 1.8vh;
+	}
+	.eachCommentUserAndDate {
+		font-size: 1.3vh;
+	}
+		/*hyphens: auto;*/ 
+}
+/* End of the media queries */
+
+
+
+
+
 /* !!!!!!!!!!!! */
 /* hover effect on the main navbar as well on the <a> tags */
 /* !!!!!!!!!!!! */
@@ -417,19 +618,8 @@ h2 > span{
 
 
 
-/*!!!!!!!!!!!!!!!!!!*/
-/* Here we have all this to go through */
-/*!!!!!!!!!!!!!!!!!!*/
-		/* The navbar */
-.welcomeUserItem{
-}
-/* Now to style the "plus" sign for the new topic tab (to be adjusted with a bigger font size)*/
-.plus{
-}
-/* !!!!!!!!!!!!!!!!We will have to check these last two attributes !!!!!!!!!!!!!!! */
-@media screen and (max-height: 450px) {
-}
-	/*hyphens: auto;*/
+
+
 
 
 
