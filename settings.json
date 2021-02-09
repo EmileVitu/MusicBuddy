@@ -1,7 +1,8 @@
 {
   "galaxy.meteor.com": {
      "env": {
-       "MONGO_URL": "mongodb://emilev:xB4pjwiAMRTSpRRE8@SG-galaxycluster-38726.servers.mongodirector.com:27017,SG-galaxycluster-38727.servers.mongodirector.com:27017/musicbuddy-meteorapp-com?replicaSet=RS-galaxycluster-0&ssl=true"
+       "ROOT_URL": "http://musicbuddy.meteorapp.com/", 
+	   "MONGO_URL": "mongodb://emilev:xB4pjwiAMRTSpRRE8@SG-galaxycluster-38726.servers.mongodirector.com:27017,SG-galaxycluster-38727.servers.mongodirector.com:27017/musicbuddy-meteorapp-com?replicaSet=RS-galaxycluster-0&ssl=true"
      }
    }
 }
