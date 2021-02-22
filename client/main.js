@@ -1,6 +1,6 @@
 /* Javascript file for MusicBuddy Client side */
 
-
+//meteor deploy http://musicbuddy.meteorapp.com/ --mongo --free
 
 			/* First the general code for the whole website */
 
@@ -30,6 +30,9 @@ Meteor.subscribe('search');
 	/* The route for the "layout" template */
 Router.configure({
 	layoutTemplate: 'layout',
+	//onAfterAction: function(){
+	//	$('.navbar-toggle').click();
+	//}
 });
 	/* The route for the "homepage" */
 Router.route('/', {

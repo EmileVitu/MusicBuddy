@@ -22,9 +22,26 @@
 }
 
 
+/*
+.navbar .navbar-nav {
+	float: left;
+	margin: 0px;
+}
+.nav>li {
+	float: left;
+}
+.fixed-item {
+	
+}
 
+/*
+.navbar-nav {
+  display: inline-block;
+}
 
-
+.navbar-nav>li {
+   display: inline-block;
+}
 		/* First the two main classes in each route template */
 
 	/* The fixed part general stylings */
@@ -89,9 +106,9 @@
 }
 	/* The fixed part grid stylings for singleTopic route */
 .singleTopicDescription {
-	font-size: 2.3vh;
+	font-size: 2vh;
 	font-family: georgia;
-	height: 10vh;
+	height: 15vh;
 	margin-left: 40vh;
 	margin-right: 40vh;
 	text-align: left;
@@ -193,8 +210,8 @@ h2 > span{
 }
 	/* The scrollingPart for the singleTopic template */
 .singleTopicScroll {
-	height: 55vh;
-	margin-top: 45vh;
+	height: 50vh;
+	margin-top: 50vh;
 }
 	/* The scrollingPart for the searh template */
 .searchScroll {
@@ -604,6 +621,132 @@ h2 > span{
 	}
 		/*hyphens: auto;*/ 
 }
+
+
+
+
+
+/* Now for extra-small-sized screens 
+@media screen and (max-width: 600px){
+	.homeFixedPart {
+		height: 16vh;
+	}
+	.homeScroll {
+		height: 84vh;
+		margin-top: 16vh;
+	}
+/* this is for the homePage 
+	.fixedPart > h1 {
+		
+	}
+	.imgTitle {
+		padding-top: 0.5vh;
+		font-size: 1vh;
+	}
+	.gridContainer {
+		column-gap: 1vh;
+		margin-top: 4vh;
+		margin-bottom: 0.5vh;
+	}
+/* For the mainTab fixed part 
+	.fixedGridTitle {
+		padding-top: 2vh;
+		font-size: 3vh;
+	}
+/* For the latestTopics and comments lists in the homePage and singleTopic routes 
+	.fixedPart > h4 {
+		font-size: 1.5vh;
+		margin-left: 2vh;
+	}
+/* For the singleTopic routes 
+	.fixedPart > h2 {
+		font-size: 3vh;
+		display: inline-block;	
+	}
+	h2 > span{
+		display: inline-block;	
+		font-size: 2vh;
+	}
+	.singleTopicDescription {
+		height: 3vh;
+		margin-left: 2vh;
+		margin-right: 2vh;
+		font-size: 1.8vh;
+	}
+	.newComment {
+		text-align: left;
+		margin-left: 2vh;
+	}
+	.singleTopicScroll {
+		height: 65vh;
+		margin-top: 35vh;
+	}
+/* This is for the mainTabs 
+	.tabScroll {
+		height: 90vh;
+		margin-top: 10vh;
+	}
+/* The search route 
+	.searchScroll {
+		height: 90vh;
+		margin-top: 10vh;
+	}
+/* This is for the topics lists 
+	.eachTopic{
+		margin-left: 1vh;
+		margin-right: 1vh;
+		margin-bottom: 1vh;
+	}
+	.topicUser	{
+		font-size: 1vh;
+	}	
+	.topicDate{
+		font-size: 1vh;
+		padding-left: 1vh;
+	}
+	.topicTitleAndCategory {
+		font-size: 1.5vh;
+		padding-left: 1vh;
+	}
+	.topicTitleAndCategory > a{
+		font-size: 2.5vh;
+	}
+	.topicDescription{
+		padding-left: 2vh;
+		font-size: 1.2vh;
+	}
+	.latestComment {
+		margin-left: 3vh;
+		margin-right: 3vh;
+	}
+	.latestCommentary {
+		font-size: 1vh;
+	}
+	.latestCommentaryText {
+		font-size: 1.2vh;
+	}
+	.latestCommentUser {
+		font-size: 1vh;
+	}
+	.latestCommentDate {
+		font-size: 1vh;
+	}
+/* This is for the commentList 
+	.eachComment{
+		margin-left: 1vh;
+		margin-right: 1vh;
+		margin-bottom: 1vh;
+	}
+	.eachCommentary {
+		font-size: 1.5vh;
+	}
+	.eachCommentUserAndDate {
+		font-size: 1vh;
+	}
+		/*hyphens: auto;*
+}
+
+
 /* End of the media queries */
 
 
