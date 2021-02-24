@@ -368,7 +368,7 @@ h2 > span{
 }
 	/* Style for the close button */
 .closeNav {
-	padding-left: 27vh;
+	padding-left: 30vh;
 	padding-top: 4vh;
 	left: 0;
 	position: absolute;
@@ -626,39 +626,38 @@ h2 > span{
 
 
 
-/* Now for extra-small-sized screens 
-@media screen and (max-width: 600px){
+/* Now for extra-small-sized screens */
+@media screen and (max-width: 500px){
 	.homeFixedPart {
-		height: 16vh;
+		height: 23vh;
 	}
 	.homeScroll {
-		height: 84vh;
-		margin-top: 16vh;
+		height: 77vh;
+		margin-top: 23vh;
 	}
-/* this is for the homePage 
-	.fixedPart > h1 {
-		
+	.fixedPart {
+		margin-left: 0vh;
 	}
+/* this is for the homePage */
 	.imgTitle {
-		padding-top: 0.5vh;
-		font-size: 1vh;
+		display: none;
 	}
 	.gridContainer {
-		column-gap: 1vh;
-		margin-top: 4vh;
+		column-gap: 0.5vh;
+		margin-top: 1vh;
 		margin-bottom: 0.5vh;
 	}
-/* For the mainTab fixed part 
+/* For the mainTab fixed part */
 	.fixedGridTitle {
 		padding-top: 2vh;
 		font-size: 3vh;
 	}
-/* For the latestTopics and comments lists in the homePage and singleTopic routes 
+/* For the latestTopics and comments lists in the homePage and singleTopic routes */
 	.fixedPart > h4 {
 		font-size: 1.5vh;
 		margin-left: 2vh;
 	}
-/* For the singleTopic routes 
+/* For the singleTopic routes */
 	.fixedPart > h2 {
 		font-size: 3vh;
 		display: inline-block;	
@@ -681,17 +680,17 @@ h2 > span{
 		height: 65vh;
 		margin-top: 35vh;
 	}
-/* This is for the mainTabs 
+/* This is for the mainTabs */
 	.tabScroll {
 		height: 90vh;
 		margin-top: 10vh;
 	}
-/* The search route 
+/* The search route */
 	.searchScroll {
 		height: 90vh;
 		margin-top: 10vh;
 	}
-/* This is for the topics lists 
+/* This is for the topics lists */
 	.eachTopic{
 		margin-left: 1vh;
 		margin-right: 1vh;
@@ -731,7 +730,7 @@ h2 > span{
 	.latestCommentDate {
 		font-size: 1vh;
 	}
-/* This is for the commentList 
+/* This is for the commentList */
 	.eachComment{
 		margin-left: 1vh;
 		margin-right: 1vh;
@@ -743,19 +742,10 @@ h2 > span{
 	.eachCommentUserAndDate {
 		font-size: 1vh;
 	}
-		/*hyphens: auto;*
 }
 
 
 /* End of the media queries */
-
-
-
-
-
-/* !!!!!!!!!!!! */
-/* hover effect on the main navbar as well on the <a> tags */
-/* !!!!!!!!!!!! */
 
 
 
